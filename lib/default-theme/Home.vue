@@ -1,24 +1,24 @@
 <template>
   <div>
     <div class="main-about-wrapper">
-      <div class="flip-container">
-        <div class="flipper">
+      <div class="flip-container" @click="flipItem(0)">
+        <div class="flipper" :class="{ 'flip-ani' :flipBlocks[0].isFlip }">
           <div class="front">
-            <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
+           ABC
           </div>
           <div class="back">
-            <p>vkontakte</p>
+             <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
           </div>
         </div>
       </div>
       <div class="flip-container">
-        <div class="flipper">
+        <div class="flipper flip-ani">
           <div class="front">A</div>
           <div class="back back-long">1234</div>
         </div>
       </div>
       <div class="flip-container">
-        <div class="flipper">
+        <div class="flipper flip-ani">
           <div class="front">B</div>
           <div class="back">
             <p>vkontakte</p>
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="flip-container">
-        <div class="flipper">
+        <div class="flipper flip-ani">
           <div class="front">C</div>
           <div class="back">
             <p>vkontakte</p>
@@ -54,6 +54,34 @@
 import NavLink from "./NavLink.vue";
 
 export default {
+  data() {
+    return {
+      istest: false,
+      flipBlocks: [
+        {
+          id: 0,
+          isFlip: true
+        },
+        {
+          id: 1,
+          isFlip: false
+        },
+        {
+          id: 2,
+          isFlip: false
+        },
+        {
+          id: 3,
+          isFlip: false
+        }
+      ]
+    };
+  },
+  methods: {
+    flipItem: function(id) {
+      this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip;
+    }
+  },
   components: { NavLink },
   mounted() {
     this.$http
@@ -224,7 +252,7 @@ export default {
 
 // reserval card
 .flip-container {
-  cursor pointer;
+  cursor: pointer;
   perspective: 1000;
   width: 50%;
   height: 50%;
@@ -234,6 +262,10 @@ export default {
 
 /* turning on hover */
 .flip-container:hover .flipper {
+  // transform: rotateY(180deg);
+}
+
+ .flip-ani {
   transform: rotateY(180deg);
 }
 

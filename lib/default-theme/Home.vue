@@ -4,30 +4,33 @@
       <div class="flip-container" @click="flipItem(0)">
         <div class="flipper" :class="{ 'flip-ani' :flipBlocks[0].isFlip }">
           <div class="front">
-           ABC
+              <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
           </div>
           <div class="back">
-             <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
+             assddddddd
           </div>
         </div>
       </div>
-      <div class="flip-container">
-        <div class="flipper flip-ani">
+      <div class="flip-container" @click="flipItem(1)">
+        <div class="flipper"
+             :class="{ 'flip-ani' :flipBlocks[1].isFlip }">
           <div class="front">A</div>
           <div class="back back-long">1234</div>
         </div>
       </div>
-      <div class="flip-container">
-        <div class="flipper flip-ani">
+      <div class="flip-container" @click="flipItem(2)">
+        <div class="flipper"
+             :class="{ 'flip-ani' :flipBlocks[2].isFlip }">
           <div class="front">B</div>
           <div class="back">
             <p>vkontakte</p>
           </div>
         </div>
       </div>
-      <div class="flip-container">
-        <div class="flipper flip-ani">
-          <div class="front">C</div>
+      <div class="flip-container" @click="flipItem(3)">
+        <div class="flipper"
+             :class="{ 'flip-ani' :flipBlocks[3].isFlip }">
+          <div class="front">这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活</div>
           <div class="back">
             <p>vkontakte</p>
           </div>
@@ -35,13 +38,13 @@
       </div>
     </div>
 
-    <div class="home">
-      <div class="features" v-if="data.features && data.features.length">
-        <div class="feature" v-for="feature in data.features">
-          <h2>{{ feature.title }}</h2>
-          <p>{{ feature.details }}</p>
-        </div>
+      <div class="main-info-icon">
+          <a id="github" href="https://github.com/Tiffany270">
+          </a>
+          <a id="csdn" href="http://blog.csdn.net/qq_38277033"></a>
       </div>
+
+    <div class="home">
 
       <Content custom />
 
@@ -51,16 +54,16 @@
 </template>
 
 <script>
-import NavLink from "./NavLink.vue";
+import NavLink from './NavLink.vue'
 
 export default {
-  data() {
+  data () {
     return {
       istest: false,
       flipBlocks: [
         {
           id: 0,
-          isFlip: true
+          isFlip: false
         },
         {
           id: 1,
@@ -75,32 +78,32 @@ export default {
           isFlip: false
         }
       ]
-    };
+    }
   },
   methods: {
-    flipItem: function(id) {
-      this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip;
+    flipItem: function (id) {
+      this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip
     }
   },
   components: { NavLink },
-  mounted() {
+  mounted () {
     this.$http
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then(response => console.log(response));
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => console.log(response))
   },
 
   computed: {
-    data() {
-      return this.$page.frontmatter;
+    data () {
+      return this.$page.frontmatter
     },
-    actionLink() {
+    actionLink () {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="stylus">
@@ -245,7 +248,7 @@ export default {
   height: 450px;
   position: relative;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 70px;
   border-radius: 20px;
   background-color: #a1c6e6;
 }
@@ -254,16 +257,16 @@ export default {
 .flip-container {
   cursor: pointer;
   perspective: 1000;
+       -webkit-perspective: 1000;
   width: 50%;
   height: 50%;
-  perspective: 1000;
   float: left;
 }
 
 /* turning on hover */
-.flip-container:hover .flipper {
-  // transform: rotateY(180deg);
-}
+/*.flip-container:hover .flipper {*/
+   /*transform: rotateY(180deg);*/
+/*}*/
 
  .flip-ani {
   transform: rotateY(180deg);
@@ -272,6 +275,7 @@ export default {
 .flip-container, .front, .back {
   img {
     width: 100%;
+      border-radius: 18px;
   }
 }
 
@@ -307,5 +311,39 @@ export default {
 
 .back-long {
   width: 450px;
+}
+
+    // 图标排列
+       .main-info-icon{
+           width: 450px;
+           height: 450px;
+           position: relative;
+           margin: auto;
+    a{
+           background-color: #b8d6ec;
+           width: 50px;
+           height: 50px;
+           transition: 1s;
+           display: inline-block;
+           margin-top: 10px;
+           border-bottom: none;
+           border-radius: 20px;
+           opacity: 0.25;
+           color: #ffffff;}
+
+a:hover {
+    background-color: #6b94c0;
+    opacity: 1;
+    border-radius: 10px;}
+}
+
+#github {
+    background: url(https://static.easyicon.net/preview/119/1196537.gif);
+    background-size: 100%;
+       }
+
+#csdn {
+    background: url(https://static.easyicon.net/preview/118/1188653.gif);
+    background-size: 110%;
 }
 </style>

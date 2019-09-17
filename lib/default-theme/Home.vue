@@ -1,27 +1,52 @@
 <template>
-  <div class="home">
-    <div class="hero">
-      <img v-if="data.heroImage" :src="$withBase(data.heroImage)" alt="hero" />
-
-      <h1>{{ data.heroText || $title || 'Hello' }}</h1>
-
-      <p class="description">{{ data.tagline || $description || 'Welcome to your VuePress site' }}</p>
-
-      <p class="action" v-if="data.actionText && data.actionLink">
-        <NavLink class="action-button" :item="actionLink" />
-      </p>
-    </div>
-
-    <div class="features" v-if="data.features && data.features.length">
-      <div class="feature" v-for="feature in data.features">
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+  <div>
+    <div class="main-about-wrapper">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
+          </div>
+          <div class="back">
+            <p>vkontakte</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">A</div>
+          <div class="back back-long">1234</div>
+        </div>
+      </div>
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">B</div>
+          <div class="back">
+            <p>vkontakte</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">C</div>
+          <div class="back">
+            <p>vkontakte</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <Content custom />
+    <div class="home">
+      <div class="features" v-if="data.features && data.features.length">
+        <div class="feature" v-for="feature in data.features">
+          <h2>{{ feature.title }}</h2>
+          <p>{{ feature.details }}</p>
+        </div>
+      </div>
 
-    <div class="footer" v-if="data.footer">{{ data.footer }}</div>
+      <Content custom />
+
+      <div class="footer" v-if="data.footer">{{ data.footer }}</div>
+    </div>
   </div>
 </template>
 
@@ -184,5 +209,71 @@ export default {
       }
     }
   }
+}
+
+// 中间
+.main-about-wrapper {
+  width: 450px;
+  height: 450px;
+  position: relative;
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 20px;
+  background-color: #a1c6e6;
+}
+
+// reserval card
+.flip-container {
+  cursor pointer;
+  perspective: 1000;
+  width: 50%;
+  height: 50%;
+  perspective: 1000;
+  float: left;
+}
+
+/* turning on hover */
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  img {
+    width: 100%;
+  }
+}
+
+/* flipping speed here */
+.flipper {
+  height: 100%;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* making the the other side hidden while flipping */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front side is in front of a back side */
+.front {
+  z-index: 2;
+  color: white;
+}
+
+/* back side */
+.back {
+  width: 100%;
+  background-color: aliceblue;
+  height: 100%;
+  transform: rotateY(180deg);
+}
+
+.back-long {
+  width: 450px;
 }
 </style>

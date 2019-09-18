@@ -1,0 +1,586 @@
+<template>
+  <div class="theme-container">
+    <div class="content">
+    <h3>flex</h3>
+    <div class="container container-1">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>inline-flex</h3>
+    <div class="container  container-2">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-dirction:row-reverse </h3>
+    <div class="container  container-3">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-dirction:column </h3>
+    <div class="container  container-4">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-wrap:warp 尝试缩小视窗</h3>
+    <div class="container  container-5">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-wrap:nowarp 尝试缩小视窗</h3>
+    <div class="container  container-6">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-wrap:wrap-reverse 尝试缩小视窗</h3>
+    <div class="container  container-7">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>Demo:flex-direction: column;height: 300px;flex-wrap: wrap;</h3>
+    <div class="container  container-8">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>justify-content:flex-end</h3>
+    <div class="container  container-9">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+    </div>
+
+    <h3>justify-content:center</h3>
+    <div class="container  container-10">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+    </div>
+
+
+    <h3>justify-content:space-between</h3>
+    <div class="container  container-11">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+    </div>
+
+    <h3>justify-content:space-around:空格:最后空格=2：1</h3>
+    <div class="container  container-12">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+    </div>
+
+    <h3>justify-content:space-evenly:每个空格1:1</h3>
+    <div class="container  container-13">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+    </div>
+
+    <h3>align-items；stretch</h3>
+    <div class="container  container-14">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>align-items；flex-end</h3>
+    <div class="container  container-15">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>align-items；center</h3>
+    <div class="container  container-16">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>align-items；center</h3>
+    <div class="container  container-17">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>algin-content；flex-start</h3>
+    <div class="container  container-18">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>algin-content；flex-end</h3>
+    <div class="container  container-19">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>order；item-2:order:1</h3>
+    <div class="container  container-20">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+
+    <h3>flex-grow,item3:item6=3:2</h3>
+    <div class="container  container-21">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-shrink：0（缩小视窗不压缩）</h3>
+    <div class="container  container-22">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+        <div class="flex-item item-6">item-6</div>
+        <div class="flex-item item-7">item-7</div>
+        <div class="flex-item item-8">item-8</div>
+        <div class="flex-item item-9">item-9</div>
+    </div>
+
+    <h3>flex-shrink：item-4:4 同时给宽度（缩小视窗）</h3>
+    <div class="container  container-23">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+
+    </div>
+    <h3>flex-basis</h3>
+    <div class="container  container-24">
+        <div class="flex-item item-1">item-1 flex-basis</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+
+    </div>
+
+    <h3>align-self</h3>
+    <div class="container  container-25">
+        <div class="flex-item item-1">item-1</div>
+        <div class="flex-item item-2">item-2</div>
+        <div class="flex-item item-3">item-3</div>
+        <div class="flex-item item-4">item-4</div>
+        <div class="flex-item item-5">item-5</div>
+
+    </div>
+
+
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  methods: {
+   
+  }
+}
+</script>
+
+<style>
+    .container {
+        border: 6px solid black;
+    }
+
+    .flex-item {
+        color: white;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        text-align: center
+    }
+
+    .item-1 {
+        background-color: #ff8080;
+    }
+
+    .item-2 {
+        background-color: #ffff80;
+    }
+
+    .item-3 {
+        background-color: #00ff80;
+    }
+
+    .item-4 {
+        background-color: #0080ff;
+    }
+
+    .item-5 {
+        background-color: #ff80c0;
+    }
+
+    .item-6 {
+        background-color: #800040;
+    }
+
+    .item-7 {
+        background-color: #ff8000;
+    }
+
+    .item-8 {
+        background-color: #400000;
+    }
+
+    .item-9 {
+        background-color: #808000;
+    }
+
+    /* 00-dispaly */
+
+    .container-1 {
+        display: flex;
+    }
+
+    .container-2 {
+        display: inline-flex;
+    }
+
+    /* flex-dirction */
+
+    .container-3 {
+        display: inline-flex;
+        flex-direction: row-reverse;
+    }
+
+    .container-4 {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    /* flex-wrap */
+
+    .container-5 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .container-6 {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .container-7 {
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+
+    /* funny exmple for flex-wrap&flex-direction */
+
+    .container-8 {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        flex-wrap: wrap;
+    }
+
+    /* justify-content */
+
+    .container-9 {
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    .container-10 {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .container-11 {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .container-12 {
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .container-13 {
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    /* align-items */
+
+    .container-14 {
+        display: flex;
+        height: 200px;
+        align-items: stretch;
+
+    }
+
+    .container-15 {
+        display: flex;
+        height: 200px;
+        align-items: flex-end;
+
+    }
+
+    .container-16 {
+        display: flex;
+        height: 200px;
+        align-items: center;
+
+    }
+
+    /* BaseLine Demo */
+    .container-17 {
+        display: flex;
+        height: 200px;
+        align-items: baseline;
+
+    }
+
+    .container-17 .item-1 {
+        padding-bottom: 2rem;
+    }
+
+    .container-17 .item-2 {
+        padding-bottom: 3rem;
+    }
+
+    .container-17 .item-3 {
+        font-size: 3rem;
+    }
+
+    /* algin-content */
+
+    .container-18 {
+        display: flex;
+        height: 200px;
+        align-content: flex-start;
+        flex-wrap: wrap;
+
+    }
+
+    .container-19 {
+        display: flex;
+        height: 200px;
+        align-content: flex-end;
+        flex-wrap: wrap;
+
+    }
+
+    /* order */
+
+    .container-20 {
+        display: inline-flex;
+    }
+
+    .container-20 .item-2 {
+        order: 1;
+    }
+
+    /* flex-grow */
+
+    .container-21 {
+        display: flex;
+    }
+
+    .container-21 .item-3 {
+        flex-grow: 3;
+    }
+
+    .container-21 .item-6 {
+        flex-grow: 2;
+    }
+
+    /* flex-shrink */
+
+    .container-22 {
+        display: flex;
+    }
+
+    .container-22 .flex-item {
+        flex-shrink: 0;
+    }
+
+    .container-23 {
+        display: flex;
+    }
+
+    .container-23 .flex-item {
+        /* flex-shrink: 0; */
+        width: 8rem;
+    }
+
+    .container-23 .item-4 {
+        flex-shrink: 4
+    }
+
+    /* flex-basis */
+
+    .container-24 {
+        display: flex;
+    }
+
+    .container-24 .item-1 {
+        flex-basis: 400px;
+    }
+
+    /* align-self */
+
+    .container-25 {
+        display: flex;
+        height: 200px;
+    }
+
+    .container-25 .item-1 {
+        align-self: flex-start;
+    }
+
+    .container-25 .item-2 {
+        align-self: flex-end;
+    }
+
+    .container-25 .item-3 {
+        align-self: center;
+    }
+
+    .container-25 .item-4 {
+        align-self: stretch;
+    }
+    .container-25 .item-5 {
+        align-self: auto;
+    }
+</style>

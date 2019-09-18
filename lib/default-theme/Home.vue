@@ -4,11 +4,9 @@
       <div class="flip-container" @click="flipItem(0)">
         <div class="flipper" :class="{ 'flip-ani' :flipBlocks[0].isFlip }">
           <div class="front">
-           ABC
+            <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
           </div>
-          <div class="back">
-             <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
-          </div>
+          <div class="back">{{flipBlocks[0]}}</div>
         </div>
       </div>
       <div class="flip-container">
@@ -265,7 +263,7 @@ export default {
   // transform: rotateY(180deg);
 }
 
- .flip-ani {
+.flip-container:hover .flip-ani {
   transform: rotateY(180deg);
 }
 

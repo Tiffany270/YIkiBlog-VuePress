@@ -30,8 +30,25 @@
           </div>
           <div class="flip-container" @click="flipItem(1)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[1].isFlip }">
-              <div class="front">A</div>
-              <div class="back back-long">1234</div>
+              <div class="front">
+                <Rooling></Rooling>
+              </div>
+              <div class="back back-long">
+                <div class="about">
+                  <div class="about-title">Portfolio</div>
+                  <div class="word">more detailsabuout me</div>
+                  <div class="info-wrapper">
+                    <div class="info-block">
+                      <span>Name：</span>
+                      <span>YIKI LEE</span>
+                    </div>
+                    <div class="info-block">
+                      <span>Email：</span>
+                      <span>Yiki270@foxmail.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="flip-container" @click="flipItem(2)">
@@ -44,10 +61,20 @@
           </div>
           <div class="flip-container" @click="flipItem(3)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[3].isFlip }">
-              <div class="front">这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活</div>
-              <div class="back">
-                <p>vkontakte</p>
+              <div class="front">
+                <pre>
+┏┓  
+┃┃╱╲ Java 
+┃╱╱╲╲  JavaScript
+╱╱╭╮╲╲  bugs 
+▔▏┗┛▕▔    EScript
+╱▔▔▔▔▔▔▔▔▔▔╲  
+ Enjoy our Code
+╱╱┏┳┓╭╮┏┳┓ ╲╲ 
+▔▏┗┻┛┃┃┗┻┛▕▔
+              </pre>
               </div>
+              <div class="back">这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活</div>
             </div>
           </div>
         </div>
@@ -69,6 +96,7 @@
 
 <script>
 import NavLink from "./NavLink.vue";
+import Rooling from "../Demo/Rooling.vue";
 
 export default {
   data() {
@@ -92,7 +120,7 @@ export default {
           isFlip: false
         }
       ],
-      rainData: ["0"]
+      rainData: ["0", "1", "0", "1", "0", "1", "0"]
     };
   },
   methods: {
@@ -101,7 +129,7 @@ export default {
         if (this.flipBlocks[id].isFlip === false) {
           this.addRainng();
         } else {
-          this.rainData = ["0"];
+          this.rainData = ["0", "1", "0", "1", "0", "1", "0"];
         }
       }
       this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip;
@@ -123,7 +151,7 @@ export default {
       }, 300);
     }
   },
-  components: { NavLink },
+  components: { NavLink, Rooling },
   mounted() {
     this.$http
       .get("https://api.coindesk.com/v1/bpi/currentprice.json")
@@ -353,7 +381,6 @@ export default {
   background-color: aliceblue;
   height: 100%;
   transform: rotateY(180deg);
-  border-radius: 18px;
 }
 
 .back-long {
@@ -399,6 +426,10 @@ export default {
 // clud-animation
 .ani-1 {
   background-color: #364b71;
+}
+
+.ani-2 {
+  background-color: #0b111d;
 }
 
 .container-clud {
@@ -500,6 +531,53 @@ export default {
     50% {
       left: 40px;
     }
+  }
+}
+
+.about {
+  width: 100%;
+  background-color: #333e48;
+  height: 100%;
+
+  .about-title {
+    position: absolute;
+    bottom: 68%;
+    right: 10%;
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #4dbfbe;
+  }
+
+  .word {
+    position: absolute;
+    width: 300px;
+    height: 40px;
+    text-align: left;
+    bottom: 52%;
+    left: 45%;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+
+  .word:hover {
+    color: #d1e1ff;
+  }
+
+  .info-wrapper {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+  }
+
+  .info-block {
+    width: 300px;
+    height: 25px;
+    padding: 7px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #d8e2ea;
   }
 }
 </style>

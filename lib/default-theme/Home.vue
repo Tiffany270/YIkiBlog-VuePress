@@ -30,13 +30,11 @@
           </div>
           <div class="flip-container" @click="flipItem(1)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[1].isFlip }">
-              <div class="front">
-                <Rooling></Rooling>
-              </div>
+              <div class="front ki">KI</div>
               <div class="back back-long">
                 <div class="about">
                   <div class="about-title">Portfolio</div>
-                  <div class="word">more detailsabuout me</div>
+                  <div class="word">more details abuout me</div>
                   <div class="info-wrapper">
                     <div class="info-block">
                       <span>Name：</span>
@@ -53,9 +51,9 @@
           </div>
           <div class="flip-container" @click="flipItem(2)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[2].isFlip }">
-              <div class="front">B</div>
+              <div class="front yi">YI</div>
               <div class="back">
-                <p>vkontakte</p>
+                <Rooling></Rooling>
               </div>
             </div>
           </div>
@@ -63,14 +61,14 @@
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[3].isFlip }">
               <div class="front">
                 <pre>
-┏┓  
-┃┃╱╲ Java 
+┏┓
+┃┃╱╲ Java
 ┃╱╱╲╲  JavaScript
-╱╱╭╮╲╲  bugs 
+╱╱╭╮╲╲  bugs
 ▔▏┗┛▕▔    EScript
-╱▔▔▔▔▔▔▔▔▔▔╲  
- Enjoy our Code
-╱╱┏┳┓╭╮┏┳┓ ╲╲ 
+╱▔▔▔▔▔▔▔▔▔▔╲
+ srping vue react angular
+╱╱┏┳┓╭╮┏┳┓ ╲╲
 ▔▏┗┻┛┃┃┗┻┛▕▔
               </pre>
               </div>
@@ -95,11 +93,11 @@
 </template>
 
 <script>
-import NavLink from "./NavLink.vue";
-import Rooling from "../Demo/Rooling.vue";
+import NavLink from './NavLink.vue'
+import Rooling from '../Demo/Rooling.vue'
 
 export default {
-  data() {
+  data () {
     return {
       istest: false,
       flipBlocks: [
@@ -120,56 +118,55 @@ export default {
           isFlip: false
         }
       ],
-      rainData: ["0", "1", "0", "1", "0", "1", "0"]
-    };
+      rainData: ['0', '1', '0', '1', '0', '1', '0']
+    }
   },
   methods: {
-    flipItem: function(id) {
+    flipItem: function (id) {
       if (id === 0) {
         if (this.flipBlocks[id].isFlip === false) {
-          this.addRainng();
+          this.addRainng()
         } else {
-          this.rainData = ["0", "1", "0", "1", "0", "1", "0"];
+          this.rainData = ['0', '1', '0', '1', '0', '1', '0']
         }
       }
-      this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip;
+      this.flipBlocks[id].isFlip = !this.flipBlocks[id].isFlip
     },
-    addRainng() {
-      const cur = this;
-      let loopFunData = setInterval(function() {
-        let lastChar;
-        lastChar = cur.rainData[cur.rainData.length - 1];
+    addRainng () {
+      const cur = this
+      const loopFunData = setInterval(function () {
+        const lastChar = cur.rainData[cur.rainData.length - 1]
         if (cur.flipBlocks[0].isFlip === false) {
-          clearInterval(loopFunData);
+          clearInterval(loopFunData)
         }
-        if (lastChar === "0") {
-          cur.rainData.push("1");
+        if (lastChar === '0') {
+          cur.rainData.push('1')
         } else {
-          cur.rainData.push("0");
+          cur.rainData.push('0')
         }
-        if (cur.rainData.length === 35) clearInterval(loopFunData);
-      }, 300);
+        if (cur.rainData.length === 35) clearInterval(loopFunData)
+      }, 300)
     }
   },
   components: { NavLink, Rooling },
-  mounted() {
-    this.$http
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then(response => console.log(response));
+  mounted () {
+    // this.$http
+    //   .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+    //   .then(response => console.log(response));
   },
 
   computed: {
-    data() {
-      return this.$page.frontmatter;
+    data () {
+      return this.$page.frontmatter
     },
-    actionLink() {
+    actionLink () {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="stylus">
@@ -359,6 +356,10 @@ export default {
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
+}
+
+.front:hover {
+  opacity: 0.8;
 }
 
 /* making the the other side hidden while flipping */
@@ -579,5 +580,15 @@ export default {
     line-height: 25px;
     color: #d8e2ea;
   }
+}
+
+.yi, .ki {
+  font: normal 130px / 225px 'Open Sans';
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.ki {
+  margin-left: 30px;
 }
 </style>

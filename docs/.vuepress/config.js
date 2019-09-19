@@ -21,7 +21,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'vuejs/vuepress',
+    repo: 'Tiffany270/YIkiBlog-VuePress',
     editLinks: true,
     docsDir: 'docs',
     locales: {
@@ -38,47 +38,60 @@ module.exports = {
         },
         nav: [
           {
-            
-            text: 'Guidesss',
-            // link: '/guide/',
-            items:[
-              { text: 'vuepresss',
-              link: '/vuepress/'},
-              { text: 'vuepress2',
-              link: '/vuepresss/'},
+
+            text: 'Blog',
+            items: [
+              {
+                text: 'Algorithms',
+                items: [{
+                  text: 'Algorithm',
+                  link: '/Algorithms/'
+                },
+                {
+                  text: 'LeetCode',
+                  link: '/guide/'
+                }
+                ]
+              },
+              {
+                text: '前端',
+                items: [{ text: '1', link: '/guide/' }, { text: '2', link: '/guide/' }]
+              },
             ]
           },
           {
-            text: 'Config Reference',
-            link: '/config/'
+            text: 'Project Demo',
+            link: 'http://localhost:8080/PJwrapper/flexBox'
           },
           {
-            text: 'Default Theme Config',
+            text: 'Resume',
             link: '/default-theme-config/'
           },
           {
-            text: 'Changelog',
-            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
+            text: 'Friends',
+            link: '/x'
           }
         ],
         sidebar: {
-          '/guide/': genSidebarConfig('Guide')
+          '/Algorithms/': titleAlgorithms('Algorithms'),
+          '/guide/': genSidebarConfig('Guide'),
         }
       }
     }
   }
 }
 
-function genSidebarConfig (title) {
+function titleAlgorithms(title) {
   return [
     {
       title,
       collapsable: false,
       children: [
         '',
-        'getting-started',
+        'selectSort',
         'basic-config',
         'assets',
+        'getting-started',
         'markdown',
         'using-vue',
         'custom-themes',
@@ -88,3 +101,23 @@ function genSidebarConfig (title) {
     }
   ]
 }
+function genSidebarConfig(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        'basic-config',
+        'assets',
+        'markdown',
+        'using-vue',
+        'custom-themes',
+        'i18n',
+        'getting-started',
+        'deploy'
+      ]
+    }
+  ]
+}
+

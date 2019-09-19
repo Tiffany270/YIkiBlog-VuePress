@@ -55,7 +55,7 @@ module.exports = {
               },
               {
                 text: '前端',
-                items: [{ text: '1', link: '/guide/' }, { text: '2', link: '/guide/' }]
+                items: [{ text: '1', link: '/guide1/' }, { text: '2', link: '/guide/' }]
               },
             ]
           },

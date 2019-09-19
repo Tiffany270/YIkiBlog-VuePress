@@ -52,14 +52,14 @@
           <div class="flip-container" @click="flipItem(2)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[2].isFlip }">
               <div class="front yi">YI</div>
-              <div class="back">
+              <div class="back ani-4">
                 <Rooling></Rooling>
               </div>
             </div>
           </div>
           <div class="flip-container" @click="flipItem(3)">
             <div class="flipper" :class="{ 'flip-ani' :flipBlocks[3].isFlip }">
-              <div class="front">
+              <div class="front ani-3">
                 <pre>
 ┏┓
 ┃┃╱╲ Java
@@ -315,7 +315,6 @@ export default {
     height: 450px;
     position: relative;
     margin: auto;
-    background: aliceblue;
   }
 }
 
@@ -431,6 +430,16 @@ export default {
 
 .ani-2 {
   background-color: #0b111d;
+}
+
+.ani-3 {
+  width: 100%;
+  height: 100%;
+  background-color: #2a5980;
+}
+
+.ani-4 {
+  background-color: #ffffff;
 }
 
 .container-clud {
@@ -589,6 +598,6 @@ export default {
 }
 
 .ki {
-  margin-left: 30px;
+  margin-left: 30%;
 }
 </style>

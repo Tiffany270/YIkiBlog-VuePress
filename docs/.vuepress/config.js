@@ -54,8 +54,14 @@ module.exports = {
                 ]
               },
               {
-                text: '前端',
+                text: 'front-end',
                 items: [{ text: '1', link: '/guide1/' }, { text: '2', link: '/guide/' }]
+              },
+              {
+                text: 'rear-end',
+                items: [
+                { text: 'Redis', link: '/Redis/' },
+                { text: 'Spring', link: '/guide/' }]
               },
             ]
           },
@@ -74,6 +80,7 @@ module.exports = {
         ],
         sidebar: {
           '/Algorithms/': titleAlgorithms('Algorithms'),
+          '/Redis/': RedisSidebarConfig('Redis'),
           '/guide/': genSidebarConfig('Guide'),
         }
       }
@@ -120,4 +127,15 @@ function genSidebarConfig(title) {
     }
   ]
 }
-
+function RedisSidebarConfig(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '01DataType',
+        ''
+      ]
+    }
+  ]
+}

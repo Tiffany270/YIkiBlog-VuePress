@@ -60,10 +60,14 @@ module.exports = {
               {
                 text: 'rear-end',
                 items: [
-                { text: 'Redis', link: '/Redis/' },
-                { text: 'Spring', link: '/guide/' }]
+                  { text: 'Redis', link: '/Redis/' },
+                  { text: 'Spring', link: '/guide/' }]
               },
             ]
+          },
+          {
+            text:'Diary',
+            link:'/Diary/'
           },
           {
             text: 'Project Demo',
@@ -82,6 +86,7 @@ module.exports = {
           '/Algorithms/': titleAlgorithms('Algorithms'),
           '/Redis/': RedisSidebarConfig('Redis'),
           '/guide/': genSidebarConfig('Guide'),
+          '/Diary/': DiarySidebarConfig('Diary'),
         }
       }
     }
@@ -133,8 +138,21 @@ function RedisSidebarConfig(title) {
       title,
       collapsable: false,
       children: [
+        '',
         '01DataType',
-        ''
+        '02Persistence'
+      ]
+    }
+  ]
+}
+function DiarySidebarConfig(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        '2019-10',
       ]
     }
   ]

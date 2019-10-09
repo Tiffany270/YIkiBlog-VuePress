@@ -66,8 +66,8 @@ module.exports = {
             ]
           },
           {
-            text:'Diary',
-            link:'/Diary/'
+            text: 'Diary',
+            link: '/Diary/'
           },
           {
             text: 'Project Demo',
@@ -140,7 +140,8 @@ function RedisSidebarConfig(title) {
       children: [
         '',
         '01DataType',
-        '02Persistence'
+        '02Persistence',
+        '03Transaction'
       ]
     }
   ]

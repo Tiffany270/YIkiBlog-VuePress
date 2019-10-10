@@ -123,7 +123,6 @@
         <div class="flex-item item-5">item-5</div>
     </div>
 
-
     <h3>justify-content:space-between</h3>
     <div class="container  container-11">
         <div class="flex-item item-1">item-1</div>
@@ -242,7 +241,6 @@
         <div class="flex-item item-9">item-9</div>
     </div>
 
-
     <h3>flex-grow,item3:item6=3:2</h3>
     <div class="container  container-21">
         <div class="flex-item item-1">item-1</div>
@@ -298,7 +296,6 @@
 
     </div>
 
-
     </div>
   </div>
 </template>
@@ -306,8 +303,11 @@
 <script>
 
 export default {
+
+  name: 'FlexBox',
+
   methods: {
-   
+
   }
 }
 </script>

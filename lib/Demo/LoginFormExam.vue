@@ -31,6 +31,7 @@
 export default {
 
   name: 'LoginformExam',
+
   data: function () {
     return {
       errors: [],

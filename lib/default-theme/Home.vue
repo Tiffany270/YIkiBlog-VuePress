@@ -94,7 +94,7 @@
 
 <script>
 import NavLink from './NavLink.vue'
-import Rooling from '../Demo/Rooling.vue'
+import Rooling from '../demo/rooling.vue'
 
 export default {
   data () {

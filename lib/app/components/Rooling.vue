@@ -364,7 +364,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style>
@@ -406,7 +406,7 @@ export default {};
 }
 
 /* animate the dashes and particles to translate horizontally
-double the duration, but same velocity to show the elements only as the droid leans left 
+double the duration, but same velocity to show the elements only as the droid leans left
 */
 .dash,
 .particle {

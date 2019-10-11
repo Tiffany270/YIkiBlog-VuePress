@@ -37,7 +37,7 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import SWUpdatePopup from './SWUpdatePopup.vue'
-import text from '../Demo/ProjectWrapper'
+// import text from '../component/ProjectWrapper'
 
 import { resolveSidebarItems } from './util'
 
@@ -100,7 +100,7 @@ export default {
   },
 
   mounted () {
-    this.$router.addRoutes([{ path: '/homess', component: text }])
+    // this.$router.addRoutes([{ path: '/homess', component: text }])
 
     window.addEventListener('scroll', this.onScroll)
 

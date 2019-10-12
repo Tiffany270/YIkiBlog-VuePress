@@ -56,13 +56,25 @@ module.exports = {
               },
               {
                 text: 'front-end',
-                items: [{ text: '1', link: '/guide1/' }, { text: '2', link: '/guide/' }]
+                items: [
+                  { text: 'vue', link: '/guide1/' },
+                  { text: 'react', link: '/guide/' },
+                  { text: 'angular2', link: '/guide1/' }]
               },
               {
                 text: 'rear-end',
                 items: [
+                  { text: 'Spring', link: '/guide/' },
+                ]
+
+              },
+              {
+                text: 'Linux',
+                items: [
                   { text: 'Redis', link: '/Redis/' },
-                  { text: 'Spring', link: '/guide/' }]
+                  { text: 'Nginx', link: '/Nginx/' },
+                ]
+
               },
             ]
           },
@@ -86,7 +98,7 @@ module.exports = {
         sidebar: {
           '/Algorithms/': titleAlgorithms('Algorithms'),
           '/Redis/': RedisSidebarConfig('Redis'),
-          '/guide/': genSidebarConfig('Guide'),
+          '/Nginx/': NginxSidebarConfig('Nginx'),
           '/Diary/': DiarySidebarConfig('Diary'),
         }
       }
@@ -114,21 +126,14 @@ function titleAlgorithms(title) {
     }
   ]
 }
-function genSidebarConfig(title) {
+function NginxSidebarConfig(title) {
   return [
     {
       title,
       collapsable: false,
       children: [
         '',
-        'basic-config',
-        'assets',
-        'markdown',
-        'using-vue',
-        'custom-themes',
-        'i18n',
-        'getting-started',
-        'deploy'
+        '01Orders',
       ]
     }
   ]

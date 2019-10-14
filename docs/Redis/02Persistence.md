@@ -8,7 +8,7 @@
  - 在进行大规模数据的恢复且对于数据恢复的完整性不是非常敏感，那RDB方面比AOF方式更加高效。
  - RDB在最后一次持久化后数据可能丢失。
 
- ```
+ ``` bash
 修改 redis.conf
 save 900 1
 save 120 10 ## 120s内修改十次以上
@@ -17,7 +17,7 @@ save 60 10000
  ```
  在客户端两分钟内set之后，出现redis-check-dump
 
- ```
+ ``` bash
 -rwxr-xr-x. 1 root root   25000 Sep 30 11:00 redis-check-aof
 -rw-rw-r--. 1 root root    6328 Sep 19  2014 redis-check-aof.c
 -rw-r--r--. 1 root root   33664 Sep 30 11:00 redis-check-aof.o
@@ -42,7 +42,7 @@ save 60 10000
  - redis重启时会根据日志文件地内容将写指令从前到后执行一次以完成数据地恢复工作
  - aof保存的是appendonly.aof文件
 
- ```
+ ``` bash
  redis.conf修改开启
  appendonly yes
 

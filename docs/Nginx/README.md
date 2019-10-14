@@ -26,7 +26,7 @@ ngix是一个高性能http和反向代理服务器，专为性能优化而开发
  - zlib 压缩和解压缩的方式
  - OpenSSL 安全套接字层密码库
 
- ```
+ ``` bash
 yum install gcc-c++
 yum install -y pcre pcre-devel
 yum install -y zlib zlib-devel
@@ -36,7 +36,7 @@ yum install -y openssl openssl-devel
 
  - 关闭防火墙
 
- ```
+ ``` bash
 # 安装firewalld 防火墙
 yum install firewalld
 
@@ -81,7 +81,8 @@ firewall-cmd --query-service tcp
  ### 安装nginx
 
  - 初步（依次进行命令）
- ```
+
+ ``` bash
 wget -c https://nginx.org/download/nginx-1.17.0.tar.gz
 tar -zxvf nginx-1.17.0.tar.gz
 cd nginx-1.17.0
@@ -92,12 +93,13 @@ make install
 
  - 查找安装的路径
  
- ```
+ ``` bash
 whereis nginx
  ```
 
  - 启动和停止（路径依据上面的命令）
- ```
+
+ ``` bash
 cd /usr/local/nginx/sbin/
 ./nginx
 ./nginx -s stop
@@ -107,7 +109,7 @@ cd /usr/local/nginx/sbin/
 
  - 查看进程
 
-```
+``` bash
  ps aux|grep nginx
 ```
 

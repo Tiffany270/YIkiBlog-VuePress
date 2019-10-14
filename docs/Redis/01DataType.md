@@ -16,7 +16,7 @@ k-v对的集合，适用于存储对象，类似于map<string,object>
 
 ## 键(key)
 
-```
+``` bash
 keys *              --查看所有key
 exists [key]        --判断某个key的存在
 move [key] [db]     --把key移动到另一个数据库db
@@ -27,7 +27,7 @@ type [key]          --查看key类型
 
 ## String
 
-```
+``` bash
 set/get/del/append/strlen             --基本操作
 incr/decr/incrby/decrby               --数字操作（必须为数字）
 getrange/setrange [num1] [num2]       --获取/增加覆盖指定范围内的值
@@ -39,7 +39,7 @@ getset                                --先get再set
 
 ## List
 
-```
+``` bash
 lpush [listname] [v1 v2 ...]            --创建list并初始化
 rpush [listname] [v1 v2 ...]            --插入
 lrange [listname] [num1] [num2]         --选取查看某个范围 -1全部
@@ -56,7 +56,7 @@ linsert [key] before/after [v1] [v2]    --在v1前/后 插入 v2
 
 ## Set
 
-```
+``` bash
 sadd/smembers/sismember           --创建/查看/xx是否xx的成员
 scard                             --获取集合离得元素个数
 srem [key] [value]                --删除元素
@@ -71,7 +71,7 @@ sunion [k1] [k2]                  --并集
 
 ## Hash
 
-```
+``` bash
 hset [key] [k-v]                       --新建
 hget/hmset/hmget/hgetall/hdel          --基本操作
 hlen                                   --长度
@@ -89,7 +89,7 @@ hsetnx                                 --当且仅当域 field 不存在才被�
 s1  vk1-v1  vk2-v2  vk3-v3
 zs1 [score1-v1] [score2-v2] ...
 
-```
+``` bash
 zadd ([score] [v]...)                         --创建
 zrange                                        --with scores
 zrangebysocre key [score1] [score2]           --范围

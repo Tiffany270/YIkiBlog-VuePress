@@ -57,9 +57,9 @@ module.exports = {
               {
                 text: 'front-end',
                 items: [
-                  { text: 'vue', link: '/guide1/' },
+                  { text: 'vue', link: '/vue/' },
                   { text: 'react', link: '/guide/' },
-                  { text: 'angular2', link: '/guide1/' }]
+                  { text: 'angular2', link: '/angular2/' }]
               },
               {
                 text: 'rear-end',
@@ -84,7 +84,7 @@ module.exports = {
           },
           {
             text: 'Project Demo',
-            link: 'http://localhost:8080/PJwrapper/flexBox'
+            link: '/PJwrapper/flexBox'
           },
           {
             text: 'Resume',
@@ -114,14 +114,6 @@ function titleAlgorithms(title) {
       children: [
         '',
         'selectSort',
-        'basic-config',
-        'assets',
-        'getting-started',
-        'markdown',
-        'using-vue',
-        'custom-themes',
-        'i18n',
-        'deploy'
       ]
     }
   ]
@@ -147,7 +139,9 @@ function RedisSidebarConfig(title) {
         '',
         '01DataType',
         '02Persistence',
-        '03Transaction'
+        '03Transaction',
+        '04PublishSubscribe'
+
       ]
     }
   ]

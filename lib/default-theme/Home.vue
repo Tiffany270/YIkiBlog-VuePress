@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="Flex-home-wrapper">
-      <div class="flex-item-home">1</div>
+      <div class="flex-item-home">yiki</div>
       <div class="flex-item-home">
         <div class="main-about-wrapper">
           <div class="flip-container" @click="flipItem(0)">
@@ -72,7 +72,9 @@
 ▔▏┗┻┛┃┃┗┻┛▕▔
               </pre>
               </div>
-              <div class="back">这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活</div>
+              <div class="back">
+                <div class="text">" 这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活. "</div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,7 +83,7 @@
           <a id="csdn" href="http://blog.csdn.net/qq_38277033"></a>
         </div>
       </div>
-      <div class="flex-item-home">3</div>
+      <div class="flex-item-home">yiki</div>
     </div>
 
     <div class="home">
@@ -378,9 +380,10 @@ export default {
 /* back side */
 .back {
   width: 100%;
-  background-color: aliceblue;
+  background-color: #000000;
   height: 100%;
   transform: rotateY(180deg);
+  color: aliceblue;
 }
 
 .back-long {
@@ -414,12 +417,12 @@ export default {
 }
 
 #github {
-  background: url('https://static.easyicon.net/preview/119/1196537.gif'); // static.easyicon.net/preview/119/1196537.gif);
+  background: url('/vuepress/icons/android-chrome-512x512.png');
   background-size: 100%;
 }
 
 #csdn {
-  background: url('https://static.easyicon.net/preview/118/1188653.gif'); // static.easyicon.net/preview/118/1188653.gif);
+  background: url('/vuepress/icons/android-chrome-512x512.png');
   background-size: 110%;
 }
 
@@ -599,5 +602,13 @@ export default {
 
 .ki {
   margin-left: 30%;
+}
+
+.text {
+  padding: 5%;
+  line-height: 30px;
+  font-size: 18px;
+  min-height: 40px;
+  font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
 }
 </style>

@@ -4,7 +4,7 @@
 
 效果：将本机ip或（域名）的80端口直接转发到tomcat的8080端口上
 
-```
+``` bash
 whereis nginx               ---查看本机位置
 cd /usr/local/nginx/conf    ---打开配置文件的位置
 vi nginx.conf               ---编写配置文件

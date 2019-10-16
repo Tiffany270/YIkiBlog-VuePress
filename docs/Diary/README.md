@@ -3,12 +3,19 @@
 
 ### base
 
+- To ：`Welcome my blog, hope u enjoy here`
 - Type :loop:： `coder/programmer`
 - Default： `♀`
 - Cat :cat:： `true`
 - GirlsGeneration： `GG forever!`
-- nation：`China`
-- quote：`这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活`
+- Nation：`China`
+- Quote：`这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活`
+
+- anyQ?:
+  - [INS](https://instagram.com/yiki270)
+  - [GITHUB](https://github.com/Tiffany270)
+  - [CSDN](https://blog.csdn.net/qq_38277033)
+  - Email：yiki270@foxmail.com
 
 **其他**
 

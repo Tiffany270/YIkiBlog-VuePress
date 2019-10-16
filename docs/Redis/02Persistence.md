@@ -1,4 +1,4 @@
-# Reids持久化
+# Persistence
 
 ## RDB(Redis DataBase)
 

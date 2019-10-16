@@ -84,7 +84,7 @@ module.exports = {
           },
           {
             text: 'Project Demo',
-            link: '/PJwrapper/flexBox'
+            link: '/PJwrapper/flexBox/'
           },
           {
             text: 'Resume',
@@ -140,7 +140,8 @@ function RedisSidebarConfig(title) {
         '01DataType',
         '02Persistence',
         '03Transaction',
-        '04PublishSubscribe'
+        '04PublishSubscribe',
+        '05MasterSlave'
 
       ]
     }

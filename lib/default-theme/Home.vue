@@ -79,17 +79,17 @@
           </div>
         </div>
         <div class="main-info-icon">
-          <a id="github" href="https://github.com/Tiffany270"></a>
-          <a id="csdn" href="http://blog.csdn.net/qq_38277033"></a>
+          <a id="github" title="github" target="_blank" href="https://github.com/Tiffany270"></a>
+          <a id="csdn" title="csdn" target="_blank" href="http://blog.csdn.net/qq_38277033"></a>
+          <a id="ins" title="INS"  target="_blank" href="https://instagram.com/yiki270"></a>
+
         </div>
       </div>
       <div class="flex-item-home">yiki</div>
     </div>
 
     <div class="home">
-      <!-- <Content custom /> -->
-
-      <div class="footer" v-if="data.footer">{{ data.footer }}</div>
+      <div class="footer" v-if="data.footer">MIT Licensed | Copyright © 2018-present Yiki Lee</div>
     </div>
   </div>
 </template>
@@ -391,6 +391,7 @@ export default {
 }
 
 .main-info-icon {
+  text-align: center;
   width: 450px;
   height: 450px;
   position: relative;
@@ -417,12 +418,17 @@ export default {
 }
 
 #github {
-  background: url('/vuepress/icons/android-chrome-512x512.png');
+  background: url('/vuepress/icons/my/github.png');
   background-size: 100%;
 }
 
 #csdn {
-  background: url('/vuepress/icons/android-chrome-512x512.png');
+  background: url('/vuepress/icons/my/csdn.png');
+  background-size: 110%;
+}
+
+#ins {
+  background: url('/vuepress/icons/my/ins.png');
   background-size: 110%;
 }
 

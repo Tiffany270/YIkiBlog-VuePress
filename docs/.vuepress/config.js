@@ -141,7 +141,8 @@ function RedisSidebarConfig(title) {
         '02Persistence',
         '03Transaction',
         '04PublishSubscribe',
-        '05MasterSlave'
+        '05MasterSlave',
+        '06Springboot-redis'
 
       ]
     }

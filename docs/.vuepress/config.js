@@ -64,7 +64,7 @@ module.exports = {
               {
                 text: 'rear-end',
                 items: [
-                  { text: 'Spring', link: '/guide/' },
+                  { text: 'SpringBoot', link: '/SpringBoot/' },
                 ]
 
               },
@@ -100,6 +100,7 @@ module.exports = {
           '/Redis/': RedisSidebarConfig('Redis'),
           '/Nginx/': NginxSidebarConfig('Nginx'),
           '/Diary/': DiarySidebarConfig('Diary'),
+          '/SpringBoot/': SpringBootSidebarConfig('SpringBoot')
         }
       }
     }
@@ -157,6 +158,18 @@ function DiarySidebarConfig(title) {
       children: [
         '',
         '2019-10',
+      ]
+    }
+  ]
+}
+function SpringBootSidebarConfig(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        '01SpringSecurity',
       ]
     }
   ]

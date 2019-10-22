@@ -142,7 +142,8 @@ function RedisSidebarConfig(title) {
         '03Transaction',
         '04PublishSubscribe',
         '05MasterSlave',
-        '06Springboot-redis'
+        '06Springboot-redis',
+        '07Spring-Redis-Cache'
 
       ]
     }

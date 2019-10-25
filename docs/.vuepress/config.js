@@ -84,7 +84,7 @@ module.exports = {
           },
           {
             text: 'Project Demo',
-            link: '/PJwrapper/flexBox/'
+            link: '/PJwrapper/GuiderLink/'
           },
           {
             text: 'Resume',

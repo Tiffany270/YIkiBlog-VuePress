@@ -55,3 +55,19 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+#flexbox {
+  background: white;
+
+  iframe {
+    position: relative;
+    margin: auto;
+    bottom: 0;
+    top: 85px;
+    height: 500px;
+    left: 5%;
+    width: 90%;
+  }
+}
+</style>

@@ -59,7 +59,9 @@ module.exports = {
                 items: [
                   { text: 'vue', link: '/vue/' },
                   { text: 'react', link: '/guide/' },
-                  { text: 'angular2', link: '/angular2/' }]
+                  { text: 'angular2', link: '/angular2/' },
+                  { text: 'JavaScript', link: '/JavaScript/' }
+                ]
               },
               {
                 text: 'rear-end',
@@ -100,7 +102,9 @@ module.exports = {
           '/Redis/': RedisSidebarConfig('Redis'),
           '/Nginx/': NginxSidebarConfig('Nginx'),
           '/Diary/': DiarySidebarConfig('Diary'),
-          '/SpringBoot/': SpringBootSidebarConfig('SpringBoot')
+          '/SpringBoot/': SpringBootSidebarConfig('SpringBoot'),
+          '/JavaScript/': JavaScriptSidebarConfig('JavaScript')
+
         }
       }
     }
@@ -115,6 +119,17 @@ function titleAlgorithms(title) {
       children: [
         '',
         'selectSort',
+      ]
+    }
+  ]
+}
+function JavaScriptSidebarConfig(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
       ]
     }
   ]

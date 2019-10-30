@@ -185,6 +185,7 @@ function SpringBootSidebarConfig(title) {
       children: [
         '',
         '01SpringSecurity',
+        '02JWT'
       ]
     }
   ]

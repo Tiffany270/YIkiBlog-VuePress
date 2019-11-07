@@ -111,7 +111,7 @@ export default {
     margin: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.28);
     cursor: pointer;
-    flex: 30%;
+    overflow: auto;
   }
 
   .popular-grid {

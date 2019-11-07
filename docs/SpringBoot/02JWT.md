@@ -223,7 +223,7 @@ http.csrf().disable();
 ```
 - 拦截器的配置（InterceptorConfig）
 
-  把该拦截的设置拦截，把该放行的放行
+  把该拦截的设置拦截，把该放行的放行，自行添加
 
 ``` java
 package com.yiki.blog.config;

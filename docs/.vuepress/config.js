@@ -90,7 +90,7 @@ module.exports = {
           },
           {
             text: 'Resume',
-            link: '/default-theme-config/'
+            link: '/PJwrapper/Resume/'
           },
           {
             text: 'Friends',

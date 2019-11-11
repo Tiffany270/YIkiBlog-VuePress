@@ -9,8 +9,8 @@
               <iframe src="/vuepress/FlexBox/index.html"></iframe>
             </div>
             <div class="meta">
-              纯css的hover特效
-              <a href="/PJwrapper/Roo/">查看</a>
+              FlexBoxDemo
+              <a href="/vuepress/FlexBox/index.html" target="blank">查看</a>
             </div>
           </div>
           <div class="single-pen">

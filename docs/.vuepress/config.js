@@ -60,7 +60,8 @@ module.exports = {
                   { text: 'vue', link: '/vue/' },
                   { text: 'react', link: '/guide/' },
                   { text: 'angular2', link: '/angular2/' },
-                  { text: 'JavaScript', link: '/JavaScript/' }
+                  { text: 'JavaScript', link: '/JavaScript/' },
+                  { text: 'webpack', link: '/Webpack/' }
                 ]
               },
               {
@@ -98,12 +99,77 @@ module.exports = {
           }
         ],
         sidebar: {
-          '/Algorithms/': titleAlgorithms('Algorithms'),
-          '/Redis/': RedisSidebarConfig('Redis'),
-          '/Nginx/': NginxSidebarConfig('Nginx'),
-          '/Diary/': DiarySidebarConfig('Diary'),
-          '/SpringBoot/': SpringBootSidebarConfig('SpringBoot'),
-          '/JavaScript/': JavaScriptSidebarConfig('JavaScript')
+          '/Algorithms/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                'selectSort',
+              ]
+            }
+          ],
+          '/Redis/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01DataType',
+                '02Persistence',
+                '03Transaction',
+                '04PublishSubscribe',
+                '05MasterSlave',
+                '06Springboot-redis',
+                '07Spring-Redis-Cache'
+        
+              ]
+            }
+          ],
+          '/Nginx/':[
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01Orders',
+              ]
+            }
+          ],
+          '/Diary/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '2019-10',
+                '2019-11',
+              ]
+            }
+          ],
+          '/SpringBoot/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01SpringSecurity',
+                '02JWT'
+              ]
+            }
+          ],
+          '/JavaScript/':  [
+            {
+              collapsable: false,
+              children: [
+                '',
+              ]
+            }
+          ],
+          '/Webpack/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+              ]
+            }
+          ],
 
         }
       }
@@ -111,82 +177,4 @@ module.exports = {
   }
 }
 
-function titleAlgorithms(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        'selectSort',
-      ]
-    }
-  ]
-}
-function JavaScriptSidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-      ]
-    }
-  ]
-}
-function NginxSidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        '01Orders',
-      ]
-    }
-  ]
-}
-function RedisSidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        '01DataType',
-        '02Persistence',
-        '03Transaction',
-        '04PublishSubscribe',
-        '05MasterSlave',
-        '06Springboot-redis',
-        '07Spring-Redis-Cache'
 
-      ]
-    }
-  ]
-}
-function DiarySidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        '2019-10',
-      ]
-    }
-  ]
-}
-function SpringBootSidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        '01SpringSecurity',
-        '02JWT'
-      ]
-    }
-  ]
-}

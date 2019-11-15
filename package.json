@@ -1,7 +1,7 @@
 {
   "name": "vuepress",
   "version": "0.13.1",
-  "description": "Minimalistic doc generator with Vue component based layout system",
+  "description": "Welcome to my world",
   "main": "lib/index.js",
   "bin": {
     "vuepress": "bin/vuepress.js"
@@ -9,7 +9,6 @@
   "scripts": {
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
-    "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
     "release": "/bin/bash scripts/release.sh",
     "test": "node test/prepare.js && jest --config test/jest.config.js"
@@ -23,18 +22,17 @@
     "vue",
     "generator"
   ],
-  "author": "Evan You",
+  "author": "Yiki Lee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
+    "url": "http://www.yiki.site/vuepress/"
   },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "homepage": "http://www.yiki.site/vuepress/",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "eslint --fix",
       "git add"
     ]
   },

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7ce21fcd-71d6-4b74-ac37-cf1e1487ad9c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/default-theme/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/lib/default-theme/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/default-theme/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/lib/default-theme/Sidebar.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,6 +17,7 @@
     <session id="1621546516">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -127,7 +126,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/default-theme/Home.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="71">
+                <state relative-caret-position="18">
                   <caret line="277" column="26" selection-start-line="277" selection-start-column="26" selection-end-line="277" selection-end-column="26" />
                 </state>
               </provider>
@@ -278,31 +277,40 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568635344520</updated>
-      <workItem from="1568635347191" duration="7655000" />
+      <workItem from="1568635347191" duration="8898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7655000" />
+    <option name="totallyTimeSpent" value="8898000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="npm" sideWeight="0.50373137" side_tool="true" weight="0.20238096" />
       <window_info id="Favorites" sideWeight="0.50373137" side_tool="true" weight="0.20238096" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987715" visible="true" weight="0.20238096" />
-      <window_info id="Structure" order="1" sideWeight="0.5012285" side_tool="true" visible="true" weight="0.20238096" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3902439" visible="true" weight="0.20238096" />
+      <window_info id="Structure" order="1" sideWeight="0.6097561" side_tool="true" visible="true" weight="0.20238096" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" sideWeight="0.49925596" weight="0.3294893" />
-      <window_info anchor="bottom" id="Terminal" sideWeight="0.49627978" weight="0.09060956" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50074404" side_tool="true" visible="true" weight="0.3294893" />
+      <window_info active="true" anchor="bottom" id="Terminal" sideWeight="0.49627978" visible="true" weight="0.9324547" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50074404" side_tool="true" weight="0.3294893" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49925596" visible="true" weight="0.3294893" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49925596" weight="0.3294893" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />

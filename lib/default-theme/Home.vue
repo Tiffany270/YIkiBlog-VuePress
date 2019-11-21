@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <div class="Flex-home-wrapper">
       <div class="flex-item-home">yiki</div>
@@ -313,7 +313,6 @@ export default {
   min-height: 600px;
 
   .flex-item-home {
-    width: 450px;
     height: 450px;
     position: relative;
     margin: auto;

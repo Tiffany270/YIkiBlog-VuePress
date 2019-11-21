@@ -14,17 +14,17 @@
             </div>
           </div>
           <div class="single-pen">
-            <span>TT</span>
+            <span>Vuex</span>
             <div class="iframe-wrap">
-              <iframe src="FlexBox/index.html"></iframe>
+              <iframe src="/vuepress/Vuex"></iframe>
             </div>
             <div class="meta">
-              Flex布局例子
-              <a href="PJwrapper/flexBox/">查看</a>
+              vuex Demo
+              <a href="/vuepress/Vuex">查看</a>
             </div>
           </div>
           <div class="single-pen">
-            <span>TT</span>
+            <span>test</span>
             <div class="iframe-wrap"></div>
             <div class="meta">XXXXXXXX</div>
           </div>

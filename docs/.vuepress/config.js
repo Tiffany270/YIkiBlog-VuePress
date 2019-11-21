@@ -57,7 +57,7 @@ module.exports = {
               {
                 text: 'front-end',
                 items: [
-                  { text: 'vue', link: '/vue/' },
+                  { text: 'vue', link: '/Vue/' },
                   { text: 'react', link: '/guide/' },
                   { text: 'angular2', link: '/angular2/' },
                   { text: 'JavaScript', link: '/JavaScript/' },
@@ -163,6 +163,15 @@ module.exports = {
             }
           ],
           '/Webpack/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+              ]
+            }
+          ],
+          '/Vue/': [
             {
               collapsable: false,
               children: [

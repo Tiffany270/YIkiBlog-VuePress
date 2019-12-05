@@ -158,7 +158,8 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
-                'TheDefinitiveGuide'
+                'TheDefinitiveGuide',
+                'ProfessionalForJS'
               ]
             }
           ],

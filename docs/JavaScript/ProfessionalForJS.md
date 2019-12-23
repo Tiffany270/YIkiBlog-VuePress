@@ -1,6 +1,6 @@
 # JS高程笔记
 
-## 第6章面向对象的程序设计
+## 第六章面向对象的程序设计-上
 
 sth about obj ...
 
@@ -203,3 +203,338 @@ let persion = {
     f.constructor === Person //false
 
     ```
+
+    - **组合构造函数模式和原型模式**
+    每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存  
+    次模式是ES里使用最广泛、认同度最高的一种创建自定义类型的方法
+
+    ``` js
+
+    function Person(name, age, job){
+        this.name = name;
+        //...
+    }
+
+    Person.prototype = {
+        constructor: Person,
+        sayName : function(){ 
+            //... 
+        }
+    }
+
+    ```
+
+    - **动态原型模式**
+    它把所有信息都封装在构造函数中，而通过在构造函数中初始化原型，保持了同事使用构造函数和原型的优点
+    
+    ``` js
+
+    function Person(name, age, job){
+        this.name = name;
+        this.age = age;
+        //... 属性
+
+        if(typeof this.sayName !== 'function'){
+            // add to prototype
+        }
+    }
+
+
+
+    ```
+
+    - **寄生构造函数模式**
+    创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后再返回新创建的对象，除了new 操作符，其实和工厂模式一样。
+
+    ``` js
+
+    function Person(name, age, obj){
+        let o =  new Object();
+        o.age = name;
+        //... 
+        o.sayName = function(){
+            // ...
+        }
+
+        return o; 
+
+    }
+
+    // when u use it
+    let friend  = new Person('yiki', 18,'worker');
+
+    ```
+
+    - **稳妥构造函数模式**
+    Durable objects 指的是没有公共属性，而且其方法不引用this的对象，稳妥构造函数模式新创建对象的实例方法不引用this,也不使用new操作符  
+    此模式适合在一些安全环境或防止数据被其他应用程序改动时使用
+    
+    
+    ``` js
+    function Person(name, age, obj){
+        let o =  new Object();
+        o.sayName = function(){
+            // ...
+        }
+
+        retrun o;
+    }
+    // when u use it
+    let friend  =  Person('yiki', 18,'worker');
+
+
+    ```
+
+## 第六章面向对象的程序设计-下
+
+sth still... about OO ... we call '继承'
+
+- **先来小结**
+  - 原型链
+  - 借用构造函数
+  - 组合继承
+  - 原型式继承
+  - 寄生式继承
+  - 寄生组合式继承  
+
+
+ - **原型链**  
+ 其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法，层层递进，就构成了实例与原型的链条
+
+ ``` js
+
+ function SuperType(){
+     this.property = true;
+ }
+
+ SuperType.prototype.getSuperValue = function(){
+     return this.property;
+ }
+
+ function SubType(){
+     this.subproperty = false;
+ } 
+
+ SubType.prototype = new SuperType();//extend
+
+ SubType.prototype.getSubValue = function(){
+     return this.subproperty;
+ }
+
+ // here are some problems such as ...
+
+ function Father(){
+     this.colors = ['red','blue','black'];
+ }
+
+ function Kid(){}
+
+ Kid.prototype = new Father();
+
+ let child1 = new Kid();
+ child1.colos.push('white');// colors.len = 4;
+
+ let child2 = new Kid();
+ // colors.len = 4
+
+ //你可以看到共享了color属性
+
+
+
+ ```
+
+ - **借用构造函数**  
+ this can explain that what is `xx.call(this)` which u can find it in some situation  
+ 在子类构造函数的内部调用超类型构造函数
+ ``` js
+ function SuperType(){
+     this.colors = ['red', 'blue', 'black'];
+
+ }
+ 
+ function SubType(){
+     SuperType.call(this)
+ }
+
+ function Father(){
+     this.colors = ['red','blue','black'];
+ }
+
+ function Kid(){}
+
+ Kid.prototype = new Father();
+
+ let child1 = new Kid();
+ child1.colos.push('white');// colors.len = 4;
+
+ let child2 = new Kid();
+ // colors.len = 3
+
+ // colors没有被共享
+
+
+
+ // 传递参数的版本
+
+ function SuperType(name){
+     this.name = name;
+
+ }
+ 
+ function SubType(){
+     SuperType.call(this,'pram');//可以允许传递参数
+ }
+
+ ```
+
+ - **组合继承**  
+ 又叫伪经典继承，指的是将原型链和借用构造函数组合一起，既通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性
+ 缺点：无论在什么情况下，都会调用两次超类型构造函数
+
+ ``` js
+ function Father(name){
+     this.name = name;
+ }
+
+ Father.prototype.sayName = function(){
+     console.log(this.name);
+ }
+
+ function Kid(name, age){
+     Father.call(this, name); // 缺点：第二次调用
+ }
+ 
+ //use it
+ Kid.prototype = new Father();// 缺点：第一次调用
+ Kid.prototype.constructor = Kid;
+ Kid.prototype.sayAge = function()
+{
+    // ..
+}
+ ```
+
+
+ - **原型式继承**
+
+ ``` js
+ function object(o){ // 传入一个对象 浅复制
+     function F(){}; // 创建一个临时性的构造函数
+     F.prototype = o; // 将传入的对象作为这个构造函数原型
+     return new F(); // 返回这个临时类型的新实例
+ }
+
+
+ ```
+
+ ES5新增`Object.creatr()`方法规范这个原型式继承，
+ 
+ ``` js
+ let person = Object.create(person,{ // 如果只有一个参数===object()
+     name:{
+         value: 'yiki'
+     }
+ })
+
+ ```
+
+
+ - **寄生式继承**  
+创建一个仅用于封装过程的函数，该函数在内部以某种方式来增强对象，然后再像真的是它做了所有工作一样返回对象
+
+``` js
+function create(origin){
+    let clone  =  objcet(origin); // 通过调用函数创建一个新对象
+    clone.sayHi = function(){ // 以某种方式来增强这个对象
+        // do sth...
+    }
+    retrun clone;
+}
+
+```
+
+
+
+ - **寄生组合式继承**  
+ 即通过借用构造函数来继承属性，通过原型链的混合形式来继承方法，不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非是超类型原型的一个副本而已。
+ ``` js
+ function inheritPor(Father,Kid){
+     let prototype = objcet (Father.prototype);     //create obj
+     prototype.constructor = Kid;                   // inhance obj
+     ked.prototype = prototype;                     //aim for obj
+ }
+
+ ```
+
+## 第二十二章高级技巧上
+
+- **安全的类型检测**
+利用`toString()`方法，可以避免某些`typeof`或者`instanceof`无法判断或混乱的类型检测  
+由于原生数组的构造函数名和全局作用域无关，因此使用toString能保证返回一致的值
+
+``` js
+
+function isArray(value){
+    return Objcet.prototype.toString.call(value) === '[object Array]'
+}
+
+function isFucntion(value){
+    return Objcet.prototype.toString.call(value) === '[object Function]'
+}
+
+function isRegExg(value){
+    return Objcet.prototype.toString.call(value) === '[object RegExp]'
+}
+
+```
+
+- **作用域安全的构造函数**  
+在忘记/不用new的情况下，误将this绑定在window上会导致错误对象属性的意外增加，所以  
+在进行任何更改前，首先确认this对象是正确的类型的实例，如果不是，那么会创建新的实例并返回
+``` js
+
+function Person(name, age, job){
+    if(this instanceof Person){
+        this.name = name;
+        // ...
+    }else{
+        return new Person(name, age, job);
+    }
+}
+
+
+```
+用构造函数窃取结合使用原型链或者寄生组合（其实我也不懂什么意思）来解决继承被破坏(?)
+``` js
+function Polygon(sides){
+    if (this instanceof Polygon) {
+        this.sides = sides;
+        this.getArea = function(){
+            return 0;
+        };
+    } else{
+        return new Polygon(sides);
+    }
+}
+
+function Rectangle(width, height){
+    Polygon.call(this, 2);
+    this.width = width;
+    this.height = height;
+    this.getArea = function(){
+        return this.width * this.height;
+    }
+}
+
+Rectangle.prototype = new Polygon();// point!
+
+let rect  = new Rectangel(5, 10);
+console.log(rect.sides);// 2
+
+
+```
+
+
+
+
+
+

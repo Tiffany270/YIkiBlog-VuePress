@@ -533,6 +533,59 @@ console.log(rect.sides);// 2
 
 ```
 
+- **惰性载入函数**  
+表示函数分支只执行一次。(这部分没看懂，和XHR有关吗？)  
+方法:
+    - 在函数被调用时再处理函数
+    - 在声明函数时就指定适当的函数
+
+- **函数绑定**  
+    - 关于函数`bind()`相关
+    - 函数绑定药创建一个函数，可以在特定this环境中以指定参数调用另一个函数，该技巧常常和`回调函数`和`事件处理程序`一起使用，以便将函数作为变量传递的同时保持代码的执行能力  
+    - 只要是将某个函数指针以值得形式进行传递，同时该函数在特定环境中执行，被绑定函数得效果就突显出来。  
+    - 它们主要用于事件处理以及`setTimeOut()`和`setInterval()`
+    - 绑定函数比普通函数有更多的开销
+
+``` js
+
+let handler = {
+    message: 'event type',
+
+    handleClick: function(event){
+        console.log(this.message,event.type);
+    }
+}
+
+let btn = document.getElementById('BTN');
+EventUtil.addHandler(btn,'click',handler.handleClick);//unuseful
+
+// add a closure to solve this problem, 
+// but this way will probably case your code hard to debug and understand
+EventUtil.addHandler(btn,'click',function(event){
+    handler.handleClick(event);
+});//working
+
+// use a function from JS call bind(), bind() creats a closure
+function bind(fn, context){
+    return function(){
+        return fn.apply(context, arguments);
+    }
+}
+//ues it
+EventUtil.addHandler(btn,'click', bind(hander.handleClick,handler));
+
+// in ES5, there aready have a bind() function that u can use it easily
+EventUtil.addHandler(btn,'click', hander.handleClick.bind(handler));
+
+
+```
+
+- **函数柯里化**  
+实质:柯里化是指这样一个函数(假设叫做createCurry)，他接收函数A作为参数，运行后能够返回一个新的函数。并且这个新的函数能够处理函数A的剩余参数
+
+
+
+
 
 
 

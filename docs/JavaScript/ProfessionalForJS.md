@@ -465,7 +465,11 @@ function create(origin){
 
  ```
 
-## 第二十二章高级技巧上
+
+## 第二十章JSON
+
+
+## 第二十二章高级技巧
 
 - **安全的类型检测**
 利用`toString()`方法，可以避免某些`typeof`或者`instanceof`无法判断或混乱的类型检测  
@@ -582,6 +586,71 @@ EventUtil.addHandler(btn,'click', hander.handleClick.bind(handler));
 
 - **函数柯里化**  
 实质:柯里化是指这样一个函数(假设叫做createCurry)，他接收函数A作为参数，运行后能够返回一个新的函数。并且这个新的函数能够处理函数A的剩余参数
+
+``` js
+//ES5里,bind()实现了柯里化
+
+EventUtil.addHandler(btn,'click', hander.handleClick.bind(handler),'mybtn');
+
+```
+
+- **防篡改对象**
+    - 不可扩展对象：`Objcect.preventExtensions()`使不能再给对象添加属性和方法
+    - 密封的对象：`Object.seal()`
+    - 冻结的对象：`Object.freeze()`
+
+- **Yielding Processes**  
+和JS线程相关，当你发现某个循环占用了大量时间（满足同步，按顺序），可以使用定时器分割这个循环，叫`数组分块`
+思路：为要处理的项目创建一个队列，然后使用定时器取出下一个要处理的项目进行处理，接着再设置另一个定时器。
+
+``` js
+function chunk(array, process, context){// arr fn this
+ setTimeout(function(){
+     let item =  arr.shift();
+     process.call(context, item);
+     
+     if(array.length > 0){
+         setTimeout(arguments.callee, 100);
+        //callee返回正在执行的函数本身的引用。
+        //callee是arguments的一个属性，
+        //这个属性是一个指针，指向这个拥有arguments对象的函数
+     }
+ },100)
+
+}
+
+let data = [....];//略
+function priintValue(item){
+    console.log(item+'yiki');
+}
+
+chunk(data,printValue); 
+
+
+```
+
+- **函数节流**  
+某些代码不可以再没有间断的情况连续重复执行。节流在`resize`事件中比较常见
+
+``` js
+function throttle(method, context){//fn,this
+    clearTime(method.tId);// 定时器的ID是存储在tId中的
+    method.tId =  setTimeout(fucntion(){
+        method.call(context);// call确保方法在适当的环境中执行
+    },100);
+}
+
+//example
+function resizeDiv(){
+    //do sth
+}
+
+window.onresize =  function(){
+    throttle(resizeDiv);
+}
+
+```
+
 
 
 

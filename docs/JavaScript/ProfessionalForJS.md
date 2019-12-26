@@ -466,7 +466,102 @@ function create(origin){
  ```
 
 
+
 ## 第二十章JSON
+
+sth about json like this
+
+``` js
+
+{"cityCode":"101280101","cityStr":"广州"}
+
+```
+
+- **Base**  
+    - 支持所有类型，除了`undefine`
+    - 是一个键值对,无声明变量的概念
+    - 属性名是一定要加双引号的
+
+- **解析与序列化**  
+    - `stringify()`把JS对象序列化为JSON字符串
+    - `parse()` 把JSON字符串解析为原生JS值
+
+
+## 第二十一章Ajax
+
+- **小结**
+    - Asynchronous JavaScript + xml
+    - 核心为XHLHttpRequest对象(XHR)。该对象能以异步的方式从服务器取得更多信息
+ 
+- **XHR**  
+    - `responstText` 返回的文本
+    - `responseXML` 保存着响应数据的XML DOM文档
+    - `status` HTTP状态
+    - `statusText` HTTP状态的说明
+    - `timeout` 请求在等待响应多少ms后就终止
+    - `ontimeout` 规定时间无响应会触发`timeout`事件进而调用此事件处理程序
+    - `readyState` 请求/响应过程的当前活动阶段
+        - 0 : 未初始化，未调用open()
+        - 1 : 启动，已调用open()未调用send()
+        - 2 : 发送，已调用send()未收到响应
+        - 3 ：接收，接收部分数据
+        - 4 ：接收，接收全部数据
+    - `readyStatechange事件` 每次readyState改变会触发
+    - `onreadystatechage` 在调用open()之前指定该事件才能确保跨浏览器的兼容性
+``` js
+
+let xhr = createXHR();
+xhr.onreadystatechage = function(){
+    if((xhr.status >= 200) && (xhr.status< 300 >)){
+        console.log(xhr.responseText);
+    }else{
+        console.log('request was unsuccessful');
+    }
+}
+
+// requesttype / url / if asyc
+xhr.open('get','url',false);
+xhr.send(null);// data?data:null
+
+//if cancal
+xhr.abort();
+
+```
+
+- **XHR2.0**
+    - FormData 表单数据序列化
+    ``` js
+    let data = new FormData();
+    data.append('name','yiki');
+    xhr.send(data);
+
+    ```
+    - `overrideMimeType()` 用于重写XHR响应的MIME类型
+    - load事件 响应接收完毕会触发此事件
+    ``` js
+    xhr.onload = function(){
+        //...
+    }
+
+    ```
+    - process事件，回在浏览器接收新数据期间周期性地触发
+    ``` js
+    xhr.onprocess = function(event){
+        if(even.lengthComputable){//表示进度信息是否可用，布尔
+            //... event.totalSize/positon
+
+        } 
+
+    }
+
+    ```
+
+- **Comet**  
+是一种服务器向页面推送数据地技术(比如处理比赛分数和股票报价)
+    - 传统轮询(不算comet) : 浏览器定时向服务器发送请求
+    - 长轮询 ：页面发起一个请求，服务器一直保持连接打开，直到有数据儿科发送。发送完数据后浏览器关闭连接然后又再发送一个新请求
+    - HTTP流 ：页面的整个生命周期内只使用一个Http连接。浏览器向服务器发送一个请求而服务器保持**连续** 打开，周期性地向浏览器发送数据
+
 
 
 ## 第二十二章高级技巧

@@ -465,6 +465,114 @@ function create(origin){
 
  ```
 
+## 第十二章 DOM2和DOM3
+
+- **base**
+    - `DOM1` 定义HTML和XML文档的底层结构
+    - `DOM2/DOM3` 在DOM1的基础上引入更多的交互能力，也支持更高级的XML特性
+    - `DOM2 Core` 为节点添加更多方法和属性
+    - `DOM2 Views` 为文档定义了基于样式信息的不同试图
+    - `DOM2 Events` 事件与DOM文档交互
+    - `DOM2 Style` 以编程方式来访问和改变CSS样式信息
+    - `DOM2 HTML` 在DOM1的HTML基础上构建，添加更多属性、方法、新接口
+- **命名空间-Node的变化**
+    - DOM2(包含以下特定于命名空间的属性)
+        - `localName`
+        - `namespaceURI`
+        - `prefix`
+    ``` html
+    <s:svg xmlns:s="http:www.ws.org/2000/svg" version="1.1" ....>
+    ....
+    </s:svg>
+    <!--  
+       localName；svg
+       namespaceURI: http:www.ws.org/2000/svg
+       prefix:null
+    -->
+    ```
+    - DOM3(以下是方法，方法！)
+        - `isDefaultNamespace()` boolean
+        - `lookupNamespaceURI(prefix)` 返回给定prefix的命名空间
+        - `lookupPrefix(namespaceURI)` 返回namespaceURI的前缀
+- **命名空间-Document的变化**
+    - DOM2(function)
+        - `createElementNS(namespaceURI, tagName)`
+        - `createAttributeNS(namespaceURI, arrtname)`
+        - `getElementsByTagName(namespaceURI, tagName)`
+- **命名空间-Element类型的变化**
+太多了不想打
+- **NamedNodeMap类型的变化**
+too much ~~~~ 😭
+
+- **元素大小-偏移量**
+    - `offsetHeight`
+    - `offsetLeft`
+    - `offsetTop`
+    - `offsetWidth`
+    - (其他) 要知道某个元素在页面上的偏移量，要将这个元素的offsetLeft和offsetTop与其offsetParent的相同属性相加，如此循环直至根元素
+    ``` js
+    function getElementLeft(ele){
+        let actualLeft =  ele.offsetLeft;
+        let current = ele.offsetParent;
+        while(current!=null){
+            actualLeft += current.offsetLeft;
+            current = current.offsetParent;
+        }
+
+    return actualLeft;
+    }
+
+    ```
+- **元素大小-客户区大小**
+指元素**内容**及其**内边距**占据的空间大小（不包含**边框**）
+    - `clientWidth`
+    - `clientHeight`
+
+- **元素-滚动大小**
+    - `scrollHeight`
+    - `scrollWidth`
+    - `scrollLeft`
+    - `scrollTop`
+
+- **遍历**
+都是基于depth-first的遍历操作
+    - `NodeIterator`
+    用`document.createNodeIterator(...)`创建，API太多了不写了
+    ``` js
+    let iterator = document.createNodeIterator
+    (div, //root
+    NodeFilter.SHOW_ELEMENT, // whatToShow 
+    null, // filter
+    false); // entityReferenceExpansion
+
+    let node = iterator.nextNode();
+    while( node !== null){
+        console.log(node.tagname);
+        node = iterator.nextNode();
+    }
+
+    ```
+    - `TreeWalker`
+    在以上基础上增加用于在不同方向上遍历DOM结构的方法
+    API太多了也不写了
+    ``` js
+
+    let walker = document.createTreeWalker 
+    (div, //root
+    NodeFilter.SHOW_ELEMENT, // whatToShow 
+    null, // filter
+    false); // entityReferenceExpansion
+
+    let node = walker.firstChild();
+    while( node !== null){
+        console.log(node.tagname);
+        node = walker.nextSibling();
+    }
+
+    ```
+        
+
+
 ## 第十八章 JS与XML
 
 - **DOM2级核心**

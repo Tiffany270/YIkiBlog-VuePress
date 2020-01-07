@@ -465,6 +465,9 @@ function create(origin){
 
  ```
 
+## 第十八章 JS与XML
+
+- **DOM2级核心**
 
 
 ## 第二十章JSON
@@ -561,6 +564,30 @@ xhr.abort();
     - 传统轮询(不算comet) : 浏览器定时向服务器发送请求
     - 长轮询 ：页面发起一个请求，服务器一直保持连接打开，直到有数据儿科发送。发送完数据后浏览器关闭连接然后又再发送一个新请求
     - HTTP流 ：页面的整个生命周期内只使用一个Http连接。浏览器向服务器发送一个请求而服务器保持**连续** 打开，周期性地向浏览器发送数据
+- **Server-sent Event**
+服务器发送事件是围绕只读Comet交互推出的API/模式。SSE API用于创建到服务器的单向连接，服务器通过这个连接可以发送任意数量的数据。
+
+- **WEB Sockets**
+目标在一个单独的持久连接上提供全双工、双向通信。在JS创建websocket后会有一个HTTP请求发送到浏览器以发起连接，获得响应后的连接会从HTTP协议交换为WEBsoket协议
+    - 加密的连接url开头为`wss://`
+    - 未加密的连接为`ws://`
+    - 适合移动端应用
+    - 制定协议的事件比制定JS API的时间还长
+``` js
+let socket = new WebSocket('ws://www.exmple.com/server.jsp');
+socket.send();
+socket.send(JSONobj);
+
+socket.onmessage = function(event){
+    let data =  event.data;
+    // ....
+}
+
+socket.onopen/onerrror/onclose =  function(){
+    //....
+}
+
+```
 
 
 

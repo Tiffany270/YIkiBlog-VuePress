@@ -465,6 +465,76 @@ function create(origin){
 
  ```
 
+
+## 第八章 BOM
+
+BOM means 'The Brower Object Model', which is a instance of brower. It's core obj is 'window'  
+(网页中定义的任何一个对象、变量和函数都以window作为其Globle对象，因此可以直接使用像parseInt()等方法)
+
+- **points**
+    - 在全局作用域中声明的变量、函数都会变成window的属性和方法
+    - **定义的**的全局变量不能通过delete操作符删除，而在window对象上定义的属性可以
+    ``` js
+    let age = 18;           // delete window.age ==>false
+    window.color = 'red';   // delete window.color ==> true
+
+    ```
+    - window.location和document.location引用的是同一个对象
+
+## 第九章 客服端检测
+
+就是检测一些功能，平时常用的可能是检测支持xx特性的浏览器，提醒用户更换浏览器或者下载相关吧。
+``` js
+if(object.propertyInQestion){
+    // ....
+}
+```
+
+- 确定一个对象是否支持排序
+``` js
+
+function isSortable(obj){
+    return typeof object.sort == 'function';
+} 
+
+```
+... 太多了，用到时候再翻书吧
+
+## 第十章 DOM
+
+- 文档节点是每个文档的根节点，`<html>`元素为文档元素
+- 每个节点都有一个n`odeType`属性(1~12种)，用于表明节点的类型。为了确保浏览器兼容，最好将nodeType属性和数字值进行比较。
+- 每一个节点都保存一个`childNodes`属性，里面保存着`NodeList`对象。但是nodelist并不是Array的实例，它实际是基于DOM结构动态执行查询的结果，因此DOM结构的变化能够自动反映再NodeList对象中。
+- `document`对象是HTMLDocument的一个实例，表示整个HTML页面
+- `Elementl`类型表现XML或HTML，提供了对元素标签名、子节点及特性的访问
+- `HTML`元素都由HTMLElement类型表示
+- `Text`表示纯文本内容
+
+- 一些常用原生常用的方法方法
+    - `Node.appendChild()`
+    - `Node.replaceChild(new, node)`
+    - `Node.removeChild()`
+    - `Node.cloneNode()`
+    - `document.implementation.hashFeature()`检测浏览器对DOM的实现
+    - `dom.write/writeln/open/close()`
+    - `div.get/setAttribute()`
+    - `normalize()`把相邻文本节点合并
+
+- NodeList的动态的，所以访问次数要尽量减少，避免不必要的开销
+- NamedNodeMap
+- HTMLCollection
+
+## 第十一章 DOM扩展
+
+- querySelector(cssname) 接后一个CSS选择符，返回匹配的**第一个元素**
+- querySelectorAll(cssname) 返回的是nodelist实例
+- matchesSelector()
+- document.activeElement 是个元素，引用DOM当前获取了焦点的元素
+- document.readyState 字符串，loading/complete
+- charset 文档使用的字符集，默认utf-16，可以通过meta标签修改
+- data- 自定义数据属性
+
+
 ## 第十二章 DOM2和DOM3
 
 - **base**
@@ -570,7 +640,104 @@ too much ~~~~ 😭
     }
 
     ```
+
+
+## 第十四章 表单脚本
+
+- **Base**
+`<from>`在JS里对应为`HTMLFormElement`,继承`HTMLElement`，所以拥有和HTML元素相同的默认属性，也有自己独有的属性和方法
+    - `acceptCharset` 服务器能处理的字符集
+    - `action` 接收请求的URL
+    - `elements` 所有控件合集
+    - `enctype` 请求的编码类型
+    - `length` 控件数量
+    - `method`
+    - `name`
+    - `reset()` 将所有表单域重置为默认值
+    - `submit()` (阻止：preventDefalut())
+    - `target` 用于发送请求和接收响应的窗口名称
+- **表单字段属性**
+    - `disabled` boolean,当前字段是否被禁用
+    - `form` 指向当前字段所属的表单的指针，只读
+    - `name`
+    - `readOnly` boolean ，当前字段是否只读
+    - `tabIndex` 当前字段切换tab的序号
+    - `value`
+    - `type`
+- **表单字段方法**
+    - `focus()`
+    - `blur()`
+- **表单字段事件**
+    - blur
+    - change
+    - focus
+- **文本相关**
+    - select() 选择文本框中的所有文本
+    - selectionStart
+    - selectionEnd
+    - setSelectionRange(num1, num2) 可选择文本范围
+- **过滤输入**
+    - 对`keypress`检测对应的字符编码来阻止特定字符的响应
+    ``` js
+    EventUtil.addHandler(textbox, 'keypress' ,function(event){
         
+        let charCode = EventUtil.getCharCode(event);
+        if(String.fromCharCode(charCode)){//fake code
+        EventUtil.preventDefault(event);
+
+        }
+    })
+
+    ```
+ - **剪贴板事件**
+    - beforecopy
+    - copy
+    - beforecut
+    - cut
+    - beforepaste
+    - paste
+- **自动切换焦点**
+比如填写固定的电话号码，可以在前一个文本框中的字符达到最大数量后，自动将焦点切换到下一个文本框
+``` js
+function tabForward(event){
+
+    event = EventUtil.getEvent(event);
+    let target = EventUtil.getTarget(event);
+    if(target.value.length) === target.maxLength{
+        let form =  target.form;
+
+        for(let i = 0; len = form.elements.length; i<len; i++){
+            if(form.elements[i]=== target){
+                if(form.elements[i+1]){
+                    form.elements[i+1].focus(); //point here
+                }
+
+                return;
+            }
+        }
+
+    }
+
+}
+
+
+```
+
+- HTML5约束验证API(表单)
+即使JS被禁用或者未能加载也能确保基本的验证
+    - `required`
+    - `type` 分为`email` 和 `url`
+    - 数值范围入`number/range`等，不推荐
+    - `pattern` 正则
+    - `checkValidity()` 所有表单都有这个，检测表单某个字段是否有效，返回boolean(注意约束为以上AIP的条件，而不是自定义的)
+    - `validity` 包含多个属性(太多不写)每个属性会返回一个boolean，这个属性会告诉你为什么字段有效或无效，
+    - `nobalidate` 告诉表单不用验证
+
+
+    
+        
+
+
 
 
 ## 第十八章 JS与XML

@@ -283,3 +283,43 @@ preventTouch() {
 
 
 ```
+
+## debug移动端软键盘出现使CSS错位
+ - **前提**
+  - 关闭触屏伸缩功能（其实我也不知道有没有影响）
+  - 如果你的高度使以vh来定位的话适用
+
+- **尝试却无效的方法**
+  - 软键盘出现改变body和html的高度无效
+  - 设置input的focus时改变某个父div的高度无效（因为有时候软键盘又不挤压视窗了）
+  - z-index下沉无效
+
+- **解决思路**
+  - 用resize，如果你是框架运用就更好办了，并且找准在软键盘出现（即视窗=1/2原来的时候哪个CSS定位属性能够影响定位，你可以自己找到那个属性，我实测我vh改变无效，需要用到transform的translateY
+  - 双向绑定或者JS在视窗改变的时候动态添加和移除该属性
+  - 软键盘的实质（只适用移动端）：软键盘出现，是改变视窗大小，非html和body，但是你又无法检测这个高度的变化，可以用resize的handler去监听，反正一来一回只触发两次
+  - resize去监听初始化的innerHeight高度，当软键盘出现，继续监听最后的innerHeight高度，当两个相减小遇innerHeight的三分之一时，你就默认软键盘出现，你就改变CSS即可
+
+- **代码**
+``` js
+if (window.screen.width < 768) {
+      const windowViewWeight = window.innerHeight;
+      let afterResizt = 0;
+      const thirdWeight = window.innerHeight / 3;
+      // 视窗改变代表软键盘出现
+      const cur = this;
+      window.onresize = function () {
+        afterResizt = window.innerHeight;
+        if ((windowViewWeight - afterResizt) > thirdWeight) {
+          cur.blurKeybordformobile = true;
+        } else {
+          cur.blurKeybordformobile = false;
+        }
+
+      };
+
+    }
+
+// blurKeybordformobile 是 控制CSS样式的，你要找到这个动态修改你错位DIV的样式CSS代码
+
+``` 

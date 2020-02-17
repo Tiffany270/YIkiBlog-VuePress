@@ -323,3 +323,49 @@ if (window.screen.width < 768) {
 // blurKeybordformobile 是 控制CSS样式的，你要找到这个动态修改你错位DIV的样式CSS代码
 
 ``` 
+
+
+## 上传图片为base64并压缩(canvas)图片
+
+首先你要有个canvas容器，设置画布大小，默认的尺寸一般不会符合的，会造成画布太大的问题
+``` html
+<canvas width=100px; height=100px; id="canvas"></canvas>
+
+//button 可以用labal隐藏input
+ <div class="template-api">
+            <input type="text" spellcheck="false">
+            <div class="btn-before template-button" (click)="request()">请求</div>
+  </div>
+
+```
+
+然后开始写代码
+``` js
+ handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(this.fileToUpload);
+    const cur = this;
+    reader.onload = function (e) {
+      // 压缩
+      const obj: any = (e.target as any).result;
+      const img = new Image();
+      img.src = String(obj);
+      img.onload = () => {
+        const w = 100;// 这里是你要压缩图片的大小 px
+        const h = 100;
+        const quality = 0.8;
+        const canvas = <HTMLCanvasElement>document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff'; // png->j格式会把背景涂黑，所以要设置白色的背景
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        const base64 = canvas.toDataURL('image/jpeg', quality);
+        cur.currentThumbnail = String(base64);
+      };
+
+    };
+
+  }
+
+```

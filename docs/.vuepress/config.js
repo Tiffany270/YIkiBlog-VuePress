@@ -68,8 +68,8 @@ module.exports = {
                 text: 'rear-end',
                 items: [
                   { text: 'SpringBoot', link: '/SpringBoot/' },
+                  { text: 'Mysql', link: '/Mysql/' },
                 ]
-
               },
               {
                 text: 'Linux',
@@ -120,11 +120,11 @@ module.exports = {
                 '05MasterSlave',
                 '06Springboot-redis',
                 '07Spring-Redis-Cache'
-        
+
               ]
             }
           ],
-          '/Nginx/':[
+          '/Nginx/': [
             {
               collapsable: false,
               children: [
@@ -153,7 +153,16 @@ module.exports = {
               ]
             }
           ],
-          '/JavaScript/':  [
+          '/Mysql/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+              ]
+            }
+          ],
+          '/JavaScript/': [
             {
               collapsable: false,
               children: [

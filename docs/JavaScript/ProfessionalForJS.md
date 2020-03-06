@@ -1,5 +1,7 @@
 # JS高程笔记
 
+## 第五章 引用类型
+
 ## 第六章面向对象的程序设计-上
 
 sth about obj ...
@@ -758,11 +760,15 @@ sth about json like this
 - **Base**  
     - 支持所有类型，除了`undefine`
     - 是一个键值对,无声明变量的概念
-    - 属性名是一定要加双引号的
+    - 属性名是一定要加**双引号**的
 
 - **解析与序列化**  
     - `stringify()`把JS对象序列化为JSON字符串
+        - `stringfy(obj,obj[...])`里面可以写key，这样出来的数据将会只打印你写过的key
+        - `stringfy(obj,func)`这里func(key,value)你可以用swich指定你要的key的velue变成什么样子
+        - `stringfy(obj,func,num)`num控制缩进和空白符，如果不是数值，会变成替换的字符
     - `parse()` 把JSON字符串解析为原生JS值
+        - `parse(obj,func)`func会遍历每个k-v，你可以用它来控制来生成你要的东西
 
 
 ## 第二十一章Ajax

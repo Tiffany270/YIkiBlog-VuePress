@@ -58,7 +58,7 @@ module.exports = {
                 text: 'front-end',
                 items: [
                   { text: 'vue', link: '/Vue/' },
-                  { text: 'react', link: '/guide/' },
+                  { text: 'react', link: '/React/' },
                   { text: 'angular2', link: '/angular2/' },
                   { text: 'JavaScript', link: '/JavaScript/' },
                   { text: 'webpack', link: '/Webpack/' }
@@ -140,6 +140,15 @@ module.exports = {
                 '',
                 '2019-10',
                 '2019-11',
+              ]
+            }
+          ],
+          '/React/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                'redux'
               ]
             }
           ],

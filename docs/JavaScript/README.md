@@ -369,3 +369,127 @@ if (window.screen.width < 768) {
   }
 
 ```
+
+## checkbox全选/取消的基本逻辑
+
+[点此查看](https://blog.csdn.net/qq_38277033/article/details/88951209)
+
+这里只写JS
+``` js
+export class PermissionComponent implements OnInit {
+ 
+  constructor() { }
+ 
+ 
+  // 用户组已选
+  selectedUser = [];
+  selectedUserCount = 0;
+  // 用户btn状态
+  btnUserAllow = false;
+ 
+  userList = [{
+    uid: '000',
+    username: 'yiki',
+    groupname: 't',
+    status: 'available',
+  }, {
+    uid: '001',
+    username: 'yiki',
+    groupname: 't',
+    status: 'available',
+  }
+  ];
+ 
+ 
+ 
+  /**
+   * 点击用户全选
+   */
+  selectAlluser(e) {
+    const checkbox = e.target;
+    const action = (checkbox.checked ? 'add' : 'remove');
+    if (action === 'add') {
+      this.selectedUserCount = this.userList.length;
+    } else {
+      this.selectedUserCount = 0;
+    }
+    this.userList.forEach((elt) => {
+      const entity = elt.uid;
+      this.updateSelected(action, entity, this.selectedUser);
+    });
+ 
+ 
+    this.isUserBtnAllow();
+  }
+ 
+  isUserBtnAllow() {
+ 
+    if (this.selectedUserCount !== 0) {
+      this.btnUserAllow = true;
+    } else {
+      this.btnUserAllow = false;
+    }
+  }
+  isSelectedAlluser() {
+    return this.userList.length === this.selectedUserCount;
+  }
+  isCheckUser(item) {
+    return this.selectedUser.findIndex(value => value === item) >= 0;
+  }
+  clickUser(e, item) {
+    const checkbox = e.target;
+    const action = (checkbox.checked ? 'add' : 'remove');
+    if (action === 'add') {
+      this.selectedUserCount++;
+    } else {
+      this.selectedUserCount--;
+    }
+    console.log(this.selectedUser, this.selectedUserCount);
+    this.updateSelected(action, item, this.selectedUser);
+    this.isUserBtnAllow();
+  }
+ 
+  /**
+   * @param action 行为
+   * @param item item
+   * @param selectedList 辨别是用于users还是groups
+   */
+  private updateSelected(action, item, selectedList) {
+    if (action === 'add' && selectedList.findIndex(value => value === item) === -1) {
+      console.log('执行添加');
+      selectedList.push(item);
+    }
+    if (action === 'remove' && selectedList.findIndex(value => value === item) !== -1) {
+      console.log('执行删除');
+      selectedList.splice(selectedList.findIndex(value => value === item), 1);
+ 
+    }
+    console.log(this.selectedUser);
+  }
+ 
+ 
+}
+```
+## String->Function
+用字符串变成可运行的代码。
+- 可以用eval
+- 用Function
+``` js
+const option = 
+(new Function('return ' + json))(); // +{ }
+```
+## 字符串去除首位{}
+``` js
+removeBlock(str) {
+    if (str) {
+      str = str.replace('option = ', '');
+      const reg = /^\{/gi;
+      const reg2 = /\}$/gi;
+      str = str.replace(reg, '');
+      str = str.replace(reg2, '');
+      return str;
+    } else {
+      return str;
+    }
+
+```

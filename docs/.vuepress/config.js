@@ -90,10 +90,6 @@ module.exports = {
             link: '/PJwrapper/GuiderLink/'
           },
           {
-            text: 'Resume',
-            link: '/PJwrapper/Resume/'
-          },
-          {
             text: 'Friends',
             link: '/x'
           }

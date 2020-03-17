@@ -36,3 +36,11 @@ const store = createStore(reducer)
 ```
 
 ### react-redux
+
+- 引入
+``` bash
+    <Provider store={store}>...your app </Provide>
+>npm install --save prop-types
+
+```
+- 

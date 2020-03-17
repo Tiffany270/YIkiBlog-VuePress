@@ -18,6 +18,10 @@
     serve build
     ## defult in port 5000
     ```
+- 出现webpack文件
+    ``` bash
+    npm run eject
+    ```
 - 引入路由
     ``` bash
     npm install --save react-router-dom
@@ -61,6 +65,35 @@
     ``` bash
     npm install antd-mobile --save
     ## 其他自己去官网看吧，就是c+v，有些index.html的配置
+    ## 注意这里按需加入需要的babel，但是坑爹要用蛮多东西的
+    ```
+- 引入babelrc
+    - 根目录创建`.babelrc`
+    ``` js
+    {
+        "plugins": [
+            [
+                "import",
+                { libraryName: "antd-mobile", style: "css"
+                }
+            ] // `style: true` 会加载 less 文件
+        ]
+    }
+    ```
+    - 让app使babelrc生效
+    ``` 下载
+    >npm i -D react-app-rewired customize-cra --save
+
+    ```
+    - 根目录创建config-overrides.js
+    ``` js
+        /* config-overrides.js */
+    const { useBabelRc, override } = require('customize-cra')
+
+    const config = override(useBabelRc())
+
+    module.exports = config
+
     ```
 
     

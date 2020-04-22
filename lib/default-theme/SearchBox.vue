@@ -26,8 +26,10 @@
         @mouseenter="focus(i)"
       >
         <a :href="s.path" @click.prevent>
-          <span class="page-title">{{ s.title || s.path }}</span>
-          <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
+          <span class="page-title">
+            {{ s.title || s.path }}</span>
+          <span v-if="s.header" 
+          class="header">&gt; {{ s.header.title }}</span>
         </a>
       </li>
     </ul>
@@ -140,6 +142,7 @@ export default {
     },
 
     focus (i) {
+      console.log(i)
       this.focusIndex = i
     },
 

@@ -496,11 +496,11 @@ removeBlock(str) {
 
 ## 搜索框中文/英文/拼音匹配过滤逻辑
 思路：
-输入框的逻辑：
-要监控input的输入，根据框架自己选择绑定事件
-要有focus和blur的方法，input的focus和下拉框的click冲突的话应该用mousedown
-英文和中文：直接indexof匹配
-拼音：把源数据列表转为拼音，格式必须是保留大小写，匹配关键字的时候转化key的首字母大写
+- 要监控input的输入，根据框架自己选择绑定事件
+- 要有focus和blur的方法，input的focus和下拉框的click冲突的话应该用**mousedown**
+- 英文和中文：直接**indexof**匹配
+- 拼音：把源数据列表转为拼音，格式必须是保留大小写，匹配关键字的时候转化key的首字母大写
+- 展开下拉框并点击下拉框的条目后，会发现已经是focus状态，再点击无法响应展开下拉框，这时候需要特殊处理（用**tabindex**)
 
 ``` html
 <div class="inputcss" 
@@ -512,6 +512,7 @@ removeBlock(str) {
         <input 
         type="text" 
         placeholder="店铺搜索" 
+        tabindex="{{focused?-1:0}}"
         (focus)="onfocus()"
         (blur)="onblur()"
         [(ngModel)]="searchkey"

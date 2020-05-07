@@ -3,7 +3,7 @@
 
 ### base
 
-- To ：`Welcome my blog, hope u enjoy here`
+- To ：`Welcome to my blog, hope u can enjoy here`
 - Type :loop:： `coder/programmer`
 - Default： `♀`
 - Cat :cat:： `true`
@@ -15,6 +15,7 @@
   - [INS](https://instagram.com/yiki270)
   - [GITHUB](https://github.com/Tiffany270)
   - [CSDN](https://blog.csdn.net/qq_38277033)
+  - [Lang8](https://lang-8.com/1589676/journals)
   - Email：yiki270@foxmail.com
 
 **其他**

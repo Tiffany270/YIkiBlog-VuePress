@@ -1034,25 +1034,45 @@ chunk(data,printValue);
 
 - **函数节流**  
 某些代码不可以再没有间断的情况连续重复执行。节流在`resize`事件中比较常见
+    - 基本思想
+    ``` js
 
-``` js
-function throttle(method, context){//fn,this
-    clearTime(method.tId);// 定时器的ID是存储在tId中的
-    method.tId =  setTimeout(fucntion(){
-        method.call(context);// call确保方法在适当的环境中执行
-    },100);
-}
+    let timerId = null;
+    handelFunc(){
+        // do your real work
+    }
 
-//example
-function resizeDiv(){
-    //do sth
-}
+    // 如果你连续触发这个，
+    //实际上不断延迟，到delay后才会触发最后一次
+    deboundleFunc(delay){
+        clearTimeout(this.timerId);
+        const cur = this;
+        this.timerId = setTimeout(()=>{
+            this.handelFunc();
+        },delay);
+    }
 
-window.onresize =  function(){
-    throttle(resizeDiv);
-}
 
-```
+    ```
+
+    ``` js
+    function throttle(method, context){//fn,this
+        clearTime(method.tId);// 定时器的ID是存储在tId中的
+        method.tId =  setTimeout(fucntion(){
+            method.call(context);// call确保方法在适当的环境中执行
+        },100);
+    }
+
+    //example
+    function resizeDiv(){
+        //do sth
+    }
+
+    window.onresize =  function(){
+        throttle(resizeDiv);
+    }
+
+    ```
 
 
 

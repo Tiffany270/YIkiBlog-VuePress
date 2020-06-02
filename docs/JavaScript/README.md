@@ -503,28 +503,22 @@ removeBlock(str) {
 - 展开下拉框并点击下拉框的条目后，会发现已经是focus状态，再点击无法响应展开下拉框，这时候需要特殊处理（用**tabindex**)
 
 ``` html
-<div class="inputcss" 
-    *ngIf="this.currentComponent.SearchStore"
-    [ngClass]="{'searchStoreFocus': this.focused}">
-    <span class="searchicon">
-        <i class="fas fa-search"></i>
-    </span>
-        <input 
-        type="text" 
+ <div class="inputcss" 
+ *ngIf="this.currentComponent.SearchStore" [ngClass]="{'searchStoreFocus': focused}">
+        <span class="searchicon">
+            <i class="fas fa-search"></i>
+        </span>
+
+        <input tabindex="{{focused?0:-1}}" type="text" 
         placeholder="店铺搜索" 
-        tabindex="{{focused?-1:0}}"
-        (focus)="onfocus()"
-        (blur)="onblur()"
-        [(ngModel)]="searchkey"
+        (mousedown)="onfocus()"
+        (blur)="onblur()" 
+        [(ngModel)]="searchkey" 
         (input)="onSearchChange($event.target.value)" />
 
-        <ul 
-        *ngIf="showSearchitem()" class="search-ul">
-            <li
-            *ngIf="nodata"
-            >暂无数据</li>
-            <li
-            (mousedown)="selectSearchitem(item)"
+        <ul *ngIf="showSearchitem()" class="search-ul">
+            <li *ngIf="nodata">暂无数据</li>
+            <li (mousedown)="selectSearchitem(item)" 
             *ngFor="let item of searchitemList">
                 {{item.title}}
             </li>
@@ -1071,3 +1065,117 @@ public static ucfirst(initial) {
   }
 
 ```
+
+## arr.reduce实现多条件筛选（并集）
+
+``` js
+
+  keyList = new Map(); // 保存你的关键字，别的数据结构也可以
+  handelColumKeyFilter(key, index) {
+ 
+    if (key === '') {
+      this.keyList.delete(index);
+    } else {
+      this.keyList.set(index, key);
+    }
+    if (this.keyList.size === 0) {
+      // do sth..
+    } else {
+      // arr.reduce-> get an union set but not a intersection.
+      this.firstInitPage = this.arr.reduce((ary, item, curindex) => {
+ 
+        this.keyList.forEach((v, i) => {// 循环你的keylist
+          if (item[i].indexOf(v) !== -1) {
+            if (!ary.find(k => k === item)) {
+              ary.push(item); // 并集push
+            }
+          }
+        });
+        return ary;
+      }, []);
+    }
+  }
+```
+
+## 延迟settimeout去push数组
+
+  - 基本
+  ```js
+  /*  first page lazy load,
+          add a item at each 120ms until it reaches the current pagelenght.*/
+          const cur = this;
+          for (let i = 0; i < this.currentComponent.TablePageLength && i < result.Rows.length; i++) {
+            const item = JSON.parse(JSON.stringify(result.Rows[i]));
+            setTimeout(() => {
+              cur.firstInitPage.push(item);
+              if (i === this.currentComponent.TablePageLength - 1 || i > 20 || i > result.Rows.length - 2) {
+                cur.table.loadingStatus = true;
+              }
+            }, 120 * (i + 1));
+          }
+  ```
+
+  - hover太慢
+
+  ``` js
+
+   <div class=" btn-before option-data" 
+    (mouseenter)="storeMouseenter()"
+    (mouseleave)="storeLeave()"
+    id="p-store" >
+        <ul 
+        id="scrollid"
+        (mousewheel)="onScroll()"
+        class="option-list mallcss">
+            <ng-container 
+            *ngFor="let item of
+            (this.searchkey === ''?this.tempData:searchitemList);
+            let i = index">
+                <li class="checkbox-wrapper"
+                 {....当又2000+条的时候}
+                </li>
+            </ng-container>
+        </ul>
+
+  ```
+  point:清除的时候，用一个**数组**保存每个timer然后一一清除
+  ``` html
+
+  mainDiv = null;
+    tempData = [];
+    storeMouseenter() {
+  
+      this.mainDiv = document.getElementById('scrollid');
+      this.mainDiv.scrollTop = 0;
+      this.scollFlage = true;
+    }
+  
+    storeLeave() {
+      this.clearTimer();
+      this.tempData = this.siteConfig.storeList.slice(0, 13);
+  
+  
+    }
+    clearTimer() {
+      for (let i = 0; i < this.tuttimer.length; i++) {
+        clearTimeout(this.tuttimer[i]);
+      }
+      this.tuttimer = [];
+    }
+  
+    scollFlage = true;// only trigger once
+    tuttimer = [];
+    onScroll() {
+      if (this.scollFlage) {
+        this.scollFlage = false;
+        const cur = this;
+        for (let i = 0, j = 14; i < this.siteConfig.storeList.length / 10; i++, j = j + 10) {
+          const timer = setTimeout(() => {
+            cur.tempData.push(...this.siteConfig.storeList.slice(j, j + 10));
+          }, 100 * (i + 1));
+          this.tuttimer.push(timer);
+        }
+      }
+    }
+
+  ```

@@ -177,7 +177,8 @@ module.exports = {
               children: [
                 '',
                 'TheDefinitiveGuide',
-                'ProfessionalForJS'
+                'ProfessionalForJS',
+                'Interview'
               ]
             }
           ],

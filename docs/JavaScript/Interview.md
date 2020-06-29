@@ -173,3 +173,79 @@ socket.onopen/onerrror/onclose =  function(){
 }
 
 ```
+
+## 手撕深拷贝
+- JSON法  
+缺点：里面含函数的话会失效
+``` js
+    let newobj = JSON.parse(JSON.stringify(oldObject))
+
+    // 解决函数失效
+
+    function stringifyRep(key, value) {
+    if (typeof value === "function") {
+        return `${value}`;
+    }
+    return value;
+    }
+    function parseRep(key, value) {
+    return eval(value);
+    }
+    var a = {
+    b: () => 1 + 1
+    }
+    var aa = JSON.parse(JSON.stringify(a, stringifyRep), parseRep)
+
+```
+
+- 简单一层拷贝Object.assign()
+``` js
+    /**
+    * 对象合并深拷贝
+    * */
+    mergeDeep(target: any, source: any) {
+        if (this.isObject(target) && this.isObject(source)) {
+        for (const key in source) {
+            if (this.isObject(source[key])) {
+            if (!target[key]) {
+                Object.assign(target, { [key]: {} });
+            }
+            this.mergeDeep(target[key], source[key]);
+            } else {
+            Object.assign(target, { [key]: source[key] });
+            }
+        }
+        }
+        return target;
+    }
+
+    /**
+    * 对象合并含过滤浅拷贝
+    * */
+    merges(target: any, source: any) {
+
+        if (this.isObject(target) && this.isObject(source)) {
+        for (const key in target) {
+            if (source[key] && Object.prototype.toString.call(target[key]) !== '[object Array]') {
+            Object.assign(source[key], target[key]);
+            }
+        }
+        }
+        return source;
+    }
+```
+
+- HTTP和HTTPS的区别  
+超文本传输协议
+    - HTTP  
+    明文传输，易被抓包
+    - HTTPS
+    ```
+        基于HTTP协议，通过SSL或TLS提供加密处理数据、验证对方身份以及数据完整性保护.
+        HTTPS协议可以理解为HTTP协议的升级，就是在HTTP的基础上增加了数据加密。
+        在数据进行传输之前，对数据进行加密，然后再发送到服务器。
+        这样，就算数据被第三者所截获，但是由于数据是加密的，所以你的个人信息让然是安全的。
+    ```
+
+## 关于跨域  
+跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。

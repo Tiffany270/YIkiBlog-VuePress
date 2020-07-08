@@ -50,7 +50,7 @@ module.exports = {
                 },
                 {
                   text: 'LeetCode',
-                  link: '/guide/'
+                  link: '/Leetcode/'
                 }
                 ]
               },
@@ -100,7 +100,14 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
-                'selectSort',
+                'JZoffer'
+              ]
+            }
+          ], '/Leetcode/': [
+            {
+              collapsable: false,
+              children: [
+                '',
               ]
             }
           ],

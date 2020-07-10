@@ -373,8 +373,441 @@ public class _10_2_Frog_Steps {
 
 ```
 
+## 11_MinNumberOfRotateArr
+``` java
+package CodingInterviews;
 
 
+/*
+*
+* 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+* 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。
+* 例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  
+*
+        示例 1：
+        输入：[3,4,5,1,2]
+        输出：1
+
+        示例 2：
+        输入：[2,2,2,0,1]
+        输出：0
+
+* */
+
+public class _11_minNumberOfRotateArr {
+
+    public int minArray(int[] numbers) {
+        //见LeetCode 154
+        return 0;
+    }
+}
+
+```
+
+## 15_OnesInBinary
+``` java
+package CodingInterviews;
+
+/*
+* 请实现一个函数，输入一个整数，输出该数二进制表示中 1 的个数。
+* 例如，把 9 表示成二进制是 1001，有 2 位是 1。
+* 因此，如果输入 9，则该函数输出 2。
+
+    示例 1：
+    输入：00000000000000000000000000001011
+    输出：3
+    解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'
+*/
+public class _15_OnesInBinary {
+
+    /*
+     * NOTE:
+     * >> 右移 负数：左高位补1 正数：左高位补零 = X/2^n
+     * << 左移 右边低位补零                  = X*2^n
+     * >>> 无符号右移 高位只补零
+     *
+     * 补码 = 原码取反+1
+     * 补码->原码 = 先-1再取反
+     * */
+
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int res = 0;
+        while (n != 0) {
+            res += n & 1;
+            n = n >>> 1;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(3 & 1);
+    }
+}
+```
+
+## 21_OddBerforeEven
+``` java
+package CodingInterviews;
+
+import java.util.Arrays;
+
+/*
+*输入一个整数数组，实现一个函数来调整该数组中数字的顺序，
+* 使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
+
+
+        示例：
+        输入：nums = [1,2,3,4]
+        输出：[1,3,2,4]
+        注：[3,1,2,4] 也是正确的答案之一。
+
+* */
+public class _21_oddBerforeEven {
+    /*
+     * Solution:
+     * （顺序遍历-太慢了别用这个）
+     * 遍历+快慢指针
+     * 快指针j往下走，碰到奇数就和i交换，i++,j++
+     * j遇到偶数，i不变，j++
+     * */
+
+    public int[] exchange2(int[] nums) {
+
+
+        int slow = 0;
+        int fast = 1;
+        while (slow < nums.length) {// 先筛选一遍slow，skip掉奇数
+            if (nums[slow] % 2 != 0) {
+                slow++;
+                fast++;
+            } else {
+                break;
+            }
+        }
+        while (slow < fast && fast < nums.length) {
+            if (nums[fast] % 2 != 0) {
+                int temp = nums[slow];
+                nums[slow] = nums[fast];
+                nums[fast] = temp;
+                slow++;
+                fast++;
+            } else {
+                fast++;
+            }
+
+        }
+        return nums;
+
+    }
+
+    /*
+     * （正式）
+     * 应该用前后指针
+     *
+     * */
+
+    public int[] exchange(int[] nums) {
+        if (nums.length == 0) return nums;
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            while (nums[i] % 2 != 0 && i < j) {// 内部剔除
+                i++;
+            }
+            while (nums[j] % 2 == 0 && i < j) {// 内部剔除
+                j--;
+            }
+            if (nums[j] % 2 != 0) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
+                j--;
+            } else {
+                j--;
+            }
+        }
+        return nums;
+    }
+
+
+    public static void main(String[] args) {
+        _21_oddBerforeEven func = new _21_oddBerforeEven();
+        int[] arr = {2, 16, 3, 5, 13, 1, 16, 1, 12, 18, 11, 8, 11, 11, 5, 1};
+        System.out.println("res: " + Arrays.toString(func.exchange(arr)));
+    }
+}
+
+
+```
+
+## 22_LinkLastK
+``` java
+package CodingInterviews;
+
+
+/* 链表中倒数第k个节点
+* 输入一个链表，输出该链表中倒数第k个节点。
+* 为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
+* 例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。
+* 这个链表的倒数第3个节点是值为4的节点。
+*
+    示例：
+    给定一个链表: 1->2->3->4->5, 和 k = 2.
+    返回链表 4->5.
+
+*/
+
+/*Solution
+ *
+ * 双指针一起走
+ * 快指针先走K步，到K后慢指针开始动，快指针到结尾后慢指针在的地方就是结果。
+ *
+ * */
+
+public class _22_LinkLastK {
+
+
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode fast = head, slow = head;
+        int stop = 0;
+        while (fast!=null){
+            if(stop>=k){
+                slow=slow.next;
+            }
+            fast=fast.next;
+            stop++;
+        }
+        return slow;
+    }
+}
+
+```
+
+## 24_ReverseLinkList
+``` java
+package CodingInterviews;
+
+/*
+* 定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
+
+            示例:
+            输入: 1->2->3->4->5->NULL
+            输出: 5->4->3->2->1->NULL
+ 
+
+* */
+//反转链表
+public class _24_ReverseLinkList {
+
+    static public class ListNode {
+        int val;
+        ListNode next = null;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    /*递归思路
+    把当前节点的下一个节点的next指向自己
+
+    如4->5 变为4<->5互相指了呗
+    然后避免圈出现要把原方向断掉：把4->5变为4->null,这样不就剩下4<-5（就是指向空）
+    然后递归递归递归……*/
+    public ListNode ReverseListRecursive(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = ReverseListRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+
+    /*
+    非递归思路：
+    防止链表断裂，在转变指向（如 0 -> 1 -> 2转为 0 <- 1 2）的时候，临时保存2，
+    方便prev head next往下一个节点移动的时候找到2重新变为head（原head是1）
+        */
+    public ListNode ReverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode prev = null;    // 预设一个prev
+        ListNode pHead = head;   //循环用
+        ListNode newHead = null; //新的头
+
+        while(pHead!=null){
+            ListNode temp = pHead.next;
+
+            if(temp==null){
+                newHead = pHead;
+            }
+            pHead.next = prev; //反转指针
+            prev = pHead;   // 移动
+            pHead = temp;   // 移动
+
+        }
+
+        return newHead;
+
+    }
+
+}
+
+
+```
+
+## 29_SpiralOrder
+``` java
+package CodingInterviews;
+
+import java.util.Arrays;
+
+/*
+*
+* 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
+
+        示例 1：
+        输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+        输出：[1,2,3,6,9,8,7,4,5]
+        示例 2：
+        输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+        输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+
+* */
+public class _29_SpiralOrder {
+    /*
+    * Solution:
+    * 四个方向，打印外圈后依次内圈
+    * 开始的地方为对角线那个数字
+    * */
+
+    public int[] spiralOrder(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        }
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        int[] res = new int[rows * columns];
+        int index = 0;
+        int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+
+        while (left <= right && top <= bottom) {
+
+            for (int column = left; column <= right; column++) {
+                res[index++] = matrix[top][column];// left -> right
+            }
+            for (int row = top + 1; row <= bottom; row++) {
+                res[index++] = matrix[row][right];// top -> bottom
+            }
+
+            // 防止越界
+            if (left < right && top < bottom) {
+
+                for (int column = right - 1; column > left; column--) {//right-1为了避开已经打印的元素
+                    res[index++] = matrix[bottom][column];
+                }
+
+                for (int row = bottom; row > top; row--) {
+                    res[index++] = matrix[row][left];
+                }
+
+            }
+
+
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        _29_SpiralOrder func = new _29_SpiralOrder();
+        int[][] arr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+        System.out.println(Arrays.toString(func.spiralOrder(arr)));
+    }
+}
+
+```java
+
+## 39_MajorityElementOfArr
+
+``` java
+package CodingInterviews;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+
+/*
+* 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+
+    你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+
+            示例 1:
+            输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
+            输出: 2
+
+* */
+public class _39_MajorityElementOfArr {
+
+    /*
+     * Solution: - HashMap O(n)
+     *           - sort then find 众数
+     *           - Vote(best)
+     * */
+
+
+    //HashMap
+    public int majorityElement1(int[] nums) {
+
+        int len = nums.length / 2;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            } else {
+                map.put(nums[i], 1);
+            }
+
+            if (map.get(nums[i]) > len) {
+                return nums[i];
+            }
+        }
+
+        return 0;
+    }
+
+    public int majorityElement2(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length / 2];
+    }
+
+    public int majorityElement(int[] nums) {
+        int x = 0, vote = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (vote == 0) {
+                x = nums[i];
+            }
+            if (x == nums[i]) {
+                vote = vote + 1;
+            } else {
+                vote = vote - 1;
+            }
+        }
+
+        return x;
+    }
+}
+
+```
 
 
 

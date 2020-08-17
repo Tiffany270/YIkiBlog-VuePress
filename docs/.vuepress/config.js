@@ -68,13 +68,13 @@ module.exports = {
                 text: 'rear-end',
                 items: [
                   { text: 'SpringBoot', link: '/SpringBoot/' },
-                  { text: 'Mysql', link: '/Mysql/' },
+                  { text: 'Redis', link: '/Redis/' },
+                  { text: 'Mysql', link: '/Mysql/' }
                 ]
               },
               {
                 text: 'Linux',
                 items: [
-                  { text: 'Redis', link: '/Redis/' },
                   { text: 'Nginx', link: '/Nginx/' },
                 ]
 
@@ -122,7 +122,8 @@ module.exports = {
                 '04PublishSubscribe',
                 '05MasterSlave',
                 '06Springboot-redis',
-                '07Spring-Redis-Cache'
+                '07Spring-Redis-Cache',
+                '08Springboot-Jedis'
 
               ]
             }

@@ -232,7 +232,7 @@ let persion = {
 
     ```
 
-    - **组合构造函数模式和原型模式**
+    - **组合构造函数模式和原型模式**  
     每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存  
     次模式是ES里使用最广泛、认同度最高的一种创建自定义类型的方法
 
@@ -252,7 +252,7 @@ let persion = {
 
     ```
 
-    - **动态原型模式**
+    - **动态原型模式**  
     它把所有信息都封装在构造函数中，而通过在构造函数中初始化原型，保持了同事使用构造函数和原型的优点
     
     ``` js
@@ -271,7 +271,7 @@ let persion = {
 
     ```
 
-    - **寄生构造函数模式**
+    - **寄生构造函数模式**  
     创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后再返回新创建的对象，除了new 操作符，其实和工厂模式一样。
 
     ``` js
@@ -293,7 +293,7 @@ let persion = {
 
     ```
 
-    - **稳妥构造函数模式**
+    - **稳妥构造函数模式**  
     Durable objects 指的是没有公共属性，而且其方法不引用this的对象，稳妥构造函数模式新创建对象的实例方法不引用this,也不使用new操作符  
     此模式适合在一些安全环境或防止数据被其他应用程序改动时使用
     
@@ -372,15 +372,15 @@ sth still... about OO ... we call '继承'
  ```
 
  - **借用构造函数**  
- this can explain that what is `xx.call(this)` which u can find it in some situation  
+ this can explain that what is `xx.call(this)` which u can find it in some situations  
  在子类构造函数的内部调用超类型构造函数
  ``` js
- function SuperType(){
+ function Father(){
      this.colors = ['red', 'blue', 'black'];
 
  }
  
- function SubType(){
+ function Kid(){
      SuperType.call(this)
  }
 

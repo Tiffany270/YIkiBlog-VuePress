@@ -86,12 +86,12 @@ module.exports = {
             link: '/Diary/'
           },
           {
-            text: 'Project Demo',
-            link: '/PJwrapper/GuiderLink/'
+            text: 'Q&A',
+            link: '/Interviews/'
           },
           {
-            text: 'Friends',
-            link: '/x'
+            text: 'Project Demo',
+            link: '/PJwrapper/GuiderLink/'
           }
         ],
         sidebar: {
@@ -103,7 +103,8 @@ module.exports = {
                 'JZoffer'
               ]
             }
-          ], '/Leetcode/': [
+          ],
+          '/Leetcode/': [
             {
               collapsable: false,
               children: [
@@ -148,6 +149,14 @@ module.exports = {
               ]
             }
           ],
+          '/Interviews/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+              ]
+            }
+          ],
           '/React/': [
             {
               collapsable: false,
@@ -187,7 +196,6 @@ module.exports = {
                 '',
                 'TheDefinitiveGuide',
                 'ProfessionalForJS',
-                'Interview'
               ]
             }
           ],

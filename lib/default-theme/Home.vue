@@ -155,6 +155,17 @@ export default {
     // this.$http
     //   .get("https://api.coindesk.com/v1/bpi/currentprice.json")
     //   .then(response => console.log(response));
+    // const p = new Promise((resolve, reject) => {
+    //   // resolve('resolve')
+    //   reject('reject')
+
+    // });
+
+    // p.then((r) => {
+    //   console.log(r)// 打印出 resolve
+    // }, (j) => {
+    //   console.log(j) // 打印出 reject
+    // })
   },
 
   computed: {

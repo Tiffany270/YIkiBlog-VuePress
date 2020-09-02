@@ -1,4 +1,7 @@
 # Q&A
+::: tip :)
+Standing on shoulders of Giants 
+:::
 
 ## CSS类问题 
 - CSS3新特性
@@ -245,9 +248,9 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
 
 
 ## 一些JS题
-- 说一下你对原型与原型链的了解度
+- **说一下你对原型与原型链的了解度**  
 见JS高程第六章
-    - tag:`__proto__`/`prototype `
+    - `__proto__`/`prototype `
     - OO语言有接口继承和实现继承，但是ES只能支持`实现继承`，这个就是靠原型链来实现的。
     - 基本思想：利用`原型`让一个引用类型`继承`另一个引用类型的属性和方法
     - 基本模式
@@ -275,7 +278,7 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
     - 默认的原型
     所有引用类型都默认继承了`Object`,因此默认原型都会包含一个内部指针，指向`Objcet.prototype`
    
-- 有几种方式可以实现继承，用原型实现继承有什么缺点，怎么解决？
+- **有几种方式可以实现继承，用原型实现继承有什么缺点，怎么解决？**  
 见JS高程第六章
     - sumary
         - 组合继承
@@ -301,8 +304,26 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
             ```
         - 创建子类型的实例时不能向超类型的构造函数传递参数
 
-- 怎么判断两个对象是否相等代码
-- 从发送一个url地址到返回页面，中间发生了什么  
+- **判断两个对象是否相等相关**  
+见JS高程第三章  
+    - `==`先转换再比较
+        - 布尔 vs 数值 布尔值转数值
+        - 字符串 vs 数值 字符串转数值
+        - 对象 vs Any 对象.valueOf()
+        - 对象 vs 对象 是否指向同一个对象
+        - null==nudefined=>ture
+        - NaN == any -> false
+        - NaN == NaN -> false
+    - `===`仅比较而不转换
+        - null === undeifne => false
+        - 比较对象的时候仍然是检查引用
+    - `Object.is(a,b)` 仅能检测引用
+    - `JSON.stringify(obj)`转换字符串比较，但是key可能混乱
+    - 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
+
+
+
+- **从发送一个url地址到返回页面，中间发生了什么**  
 （没写全，还有HTTPS一类的）
     - 如果没有CDN
         - 浏览器要将域名解析为 IP 地址，所以需要向本地 DNS 发出请求。
@@ -310,6 +331,7 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
         - 本地 DNS 将 IP 地址发回给浏览器，浏览器向网站服务器 IP 地址发出请求并得到资源。
     - 有CDN  
     见性能优化-CDN相关
+
 ## 性能优化处理
 [原址-谭光志](https://zhuanlan.zhihu.com/p/121056616)
 - 减少HTTP请求
@@ -333,13 +355,116 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
 
 
 ## ES6问题
-- 箭头函数中的this指向谁？
-- 如何实现一个promise，promise的原理，以及它的两个参数是什么？
-- promise中第二个参数的reject中执行的方法和promise.catch()都是失败执行的，分别这么写有什么区别，什么情况下会两个都同时用到？
-- map和set有没有用过，如何实现一个数组去重，map数据结构有什么优点？
+
+- **箭头函数中的this指向谁？**  
+    - 是**定义/生效时**所在的对象，而**不是使用/运行时**所用的对象
+    - `箭头函数`让`this`指向**固化**,即它的this对象的指向是**不可变**的
+    - 根本原因是：箭头函数没有自己的this，所以只能从外层找。由于箭头函数不绑定this， 它会捕获其所在（即定义的位置）上下文的this值， 作为自己的this值。
+    - 所以对于箭头函数， call() / apply() / bind() 方法对于箭头函数来说只是传入参数，对它的 this 毫无影响。
+    - `普通函数`可以用bind()/call()改变this的指向。
+    - 普通函数的this指向**调用**对象，没有的或者全局就指向window（严格模式是undefined)
+
+- **如何实现一个promise？**  
+    - Base
+    ``` js
+    let promise = new Promise(function(resolve,reject){
+        // resolve和reject只会执行一个
+
+        if(...){
+            resolve(value)
+        }else{
+            reject(error)
+        }
+    })
+
+    //----- then 是 promise实例状态改变时的回调函数，返回的也是一个promise
+    promise.then(function(value){
+        // 携带的参数是从resolve里得到的
+    },
+    function(error){
+        // 携带的参数是从reject里得到的
+    }).catch(error=>{
+        // reject后的东西，一定会进入then中的第二个回调，
+        //如果then中没有写第二个回调，则进入catch
+        //如果没有then， 也可以直接进入catch
+        // resolve不会进入catch
+    })
+
+    ```
+
+- **promise的原理，以及它的两个参数是什么？**  
+    - 是一个容器，里面保存着某个**未来才会结束**的事件，一旦新建就会**立即执行**
+    - 两个参数是`resolve`和`reject`
+    - 三个状态是：`Peding`/`Fulfiled`/`Rejected`
+    - 原理
+        - 设计模式中的`观察者模式`
+        - 通过`Promise.prototype.then`和`Promise.prototype.catch`方法将观察者方法注册到被观察者Promise对象中，同时返回一个新的Promise对象，以便可以`链式调用`。
+        - 被观察者管理内部pending、fulfilled和rejected的状态转变，同时通过构造函数中传递的resolve和reject方法以主动触发状态转变和通知观察者。
+
+- **promise中第二个参数的reject中执行的方法和promise.catch()都是失败执行的，分别这么写有什么区别，什么情况下会两个都同时用到？**  
+``` js
+//----- then 是 promise实例状态改变时的回调函数，返回的也是一个promise
+    promise.then(function(value){
+        // 携带的参数是从resolve里得到的
+    },
+    function(error){
+        // 携带的参数是从reject里得到的
+    }).catch(error=>{
+        // reject后的东西，一定会进入then中的第二个回调，
+        //如果then中没有写第二个回调，则进入catch
+        //如果没有then， 也可以直接进入catch
+        // resolve不会进入catch
+    })
+```
+- map和set有没有用过?
+    - `SET` 
+        - 类似数组，但是成员的**值是唯一**的
+        - 内部不会发生类型转换，所以是`===`
+        - 内部NaN===NaN=> true
+        - 内部对象总是不相等的
+        - `WeakSet`的成员只能是对象
+    - `MAP`
+        - Hash键值k-v对集合
+        - **键**可以是各种类型（Object的key是只能用字符串）
+        - 只有对同一个对象的**引用**才是同一个键,因为绑定的是内存地址
+        - 内部NaN===NaN=> true
+        - 内部不会发生类型转换，所以是`===`，严格相等会视为同一个键
+        ``` js
+        map.set(['a'],a);
+        map.get(['a']);// undefined
+
+        const k1 = ['k'];
+        map.set(k1,'k');
+        map.get(k1); // k
+
+        // 转化为数组的方法
+        [...map] // [ [ ['a'],a ],[ ['k'],k ] ] 
+        ```
+        - `WeakMap`的**键名**只能是对象，键名是弱引用，不用手动删除对象，场景用于键所对应的对象可能再将来消失。
+
+- **map数据结构有什么优点？**  
+    -额，比较灵活吧
+
+- **如何实现一个数组去重？**  
+    - 用set
+    ``` js
+    [...new Set(array)]
+
+    ```
+    - filter+indexOf
+    ``` js
+    arr.filter((item, index)=> {
+        return arr.indexOf(item) === index
+    })
+    ``` 
+    - sort() + 比较相邻的数字
 
 ## HTML类的问题
 - iframe的缺点有哪些？
+    - 混乱的滚动条
+    - 不利于搜索引擎爬虫的优化
+    - 兼容很差，后退无效，增加http请求
+    - 不推荐用了除非单页吧
 
 - Html5新特性
     - **语义化标签**     

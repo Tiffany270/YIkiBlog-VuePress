@@ -1,7 +1,6 @@
 <template>
   <div>
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"></Navbar>
-
     <router-view></router-view>
   </div>
 </template>

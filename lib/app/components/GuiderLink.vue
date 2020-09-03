@@ -9,49 +9,26 @@
               <iframe src="/vuepress/FlexBox/index.html"></iframe>
             </div>
             <div class="meta">
-              FlexBoxDemo
-              <a href="/vuepress/FlexBox/index.html" target="blank">查看</a>
+              <a href="/vuepress/FlexBox/index.html" target="blank">CLICK IT</a>
             </div>
           </div>
           <div class="single-pen">
-            <span>Vuex</span>
+            <span>Vuex&Life Hooks</span>
             <div class="iframe-wrap">
-              <iframe src="/vuepress/Vuex"></iframe>
+              VUEX
             </div>
             <div class="meta">
-              vuex Demo
-              <a href="/vuepress/Vuex">查看</a>
+              <a href="/vuepress/PJwrapper/VuexDemo/">CLICK IT</a>
             </div>
           </div>
           <div class="single-pen">
-            <span>test</span>
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
+            <span>&nbsp;</span>
+            <div class="iframe-wrap">
+                <Rooling></Rooling>
+            </div>
+            <div class="meta">Rooling~</div>
           </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
-          <div class="single-pen">
-            <div class="iframe-wrap"></div>
-            <div class="meta">XXXXXXXX</div>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -59,6 +36,9 @@
 </template>
 
 <script>
+
+import Rooling from './../components/Rooling'
+
 export default {
   name: 'GuiderLink',
 
@@ -74,6 +54,8 @@ export default {
     //   .get(this.$servePath + 'security/name1')
     //   .then(response => console.log(response))
   },
+  components: { Rooling },
+
   methods: {
     checkForm: function (e) {
       if (this.name && this.age) {
@@ -140,7 +122,7 @@ export default {
     background: #32333b;
     position: relative;
     white-space: nowrap;
-    padding: 2rem 1rem 0.5rem;
+    padding: 1rem 1rem 0.5rem;
     color: white;
   }
 

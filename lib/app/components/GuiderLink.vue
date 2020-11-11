@@ -14,9 +14,7 @@
           </div>
           <div class="single-pen">
             <span>Vuex&Life Hooks</span>
-            <div class="iframe-wrap">
-              VUEX
-            </div>
+            <div class="iframe-wrap">VUEX</div>
             <div class="meta">
               <a href="/vuepress/PJwrapper/VuexDemo/">CLICK IT</a>
             </div>
@@ -24,11 +22,26 @@
           <div class="single-pen">
             <span>&nbsp;</span>
             <div class="iframe-wrap">
-                <Rooling></Rooling>
+              <Rooling></Rooling>
             </div>
             <div class="meta">Rooling~</div>
           </div>
-        
+          <div class="single-pen">
+            <span>ICON-FONT</span>
+            <div class="iframe-wrap">
+              unicode:
+              <i class="iconfont">&#xe614;</i>
+              class :
+              <span class="icon iconfont icon-shezhi"></span>
+              svg:
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-shezhi" />
+              </svg>
+            </div>
+            <div class="meta">
+              <a href="/vuepress/PJwrapper/iconfont/">CLICK IT</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,47 +49,50 @@
 </template>
 
 <script>
-
-import Rooling from './../components/Rooling'
+import Rooling from "./../components/Rooling";
 
 export default {
-  name: 'GuiderLink',
+  name: "GuiderLink",
 
   data: function () {
     return {
       errors: [],
       name: null,
-      age: null
-    }
+      age: null,
+    };
   },
-  mounted () {
+  mounted() {
     // this.$http
     //   .get(this.$servePath + 'security/name1')
     //   .then(response => console.log(response))
+    import("../../asset/iconfont/iconfont.js").then((icon) => {});
+
   },
   components: { Rooling },
 
   methods: {
     checkForm: function (e) {
       if (this.name && this.age) {
-        return true
+        return true;
       }
-      this.errors = []
+      this.errors = [];
 
       if (!this.name) {
-        this.errors.push('Name required.')
+        this.errors.push("Name required.");
       }
       if (!this.age) {
-        this.errors.push('Age required.')
+        this.errors.push("Age required.");
       }
 
-      e.preventDefault()
-    }
-  }
-}
+      e.preventDefault();
+    },
+  },
+};
 </script>
 
 <style lang="stylus">
+@import '../../asset/iconfont/iconfont.css';
+
 #guiderLink {
   .width-wrapper {
     /* width: 100%;
@@ -134,6 +150,14 @@ export default {
   iframe {
     position: absolute;
     height: 100%;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
   }
 }
 </style>

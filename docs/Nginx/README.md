@@ -117,4 +117,18 @@ cd /usr/local/nginx/sbin/
 用ifconfig查看ip直接打开即可，nginx默认的端口是80端口
 
 
+## Mongodb
+
+```
+默认路径：/var/lin（不记得了）
+库存放路径：/data/
+log存放路径 /log/
+
+永久运行命令 
+[root@vultr ~]# mongod --fork  --dbpath=/data/db --port=27117 -logpath=/data/db.log --logappend
+
+
+```
+
+
 

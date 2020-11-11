@@ -26,14 +26,14 @@ export default {
           this.toggleSidebar(false);
         }
       }
-    }
+    },
   },
   computed: {
     pageClasses() {
       return [
         {
-          "no-navbar": !this.shouldShowNavbar
-        }
+          "no-navbar": !this.shouldShowNavbar,
+        },
       ];
     },
     shouldShowNavbar() {
@@ -49,18 +49,17 @@ export default {
         themeConfig.nav ||
         this.$themeLocaleConfig.nav
       );
-    }
+    },
   },
   mounted() {},
   beforeDestroy() {
     // this.$router.push("/");
   },
-  destroyed(){
+  destroyed() {
     // this.$router.push("/");
   },
   created() {
     // this.$router.push("/");
-
     // const cur = this;
     // window.onbeforeunload = function(e) {
     //   let dialogText = "Dialog text here";
@@ -68,7 +67,7 @@ export default {
     //   return e.returnValue;
     //   cur.$router.push("/");
     // };
-  }
+  },
 };
 </script>
 

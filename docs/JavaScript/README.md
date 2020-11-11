@@ -1279,3 +1279,46 @@ public static ucfirst(initial) {
   }
 
   ```
+
+## 引入iconfont.ttf替代图标
+  - [阿里巴巴库](https://www.iconfont.cn/)
+  - 选中你要的图标放进篮子里
+  - 添加到项目，没有就新建
+  - `Unicode`类别下载到本地,把包解压放在对应的位置
+  ``` html
+      unicode: <i class="iconfont">&#xe614;</i>
+      class : <span class="icon iconfont icon-shezhi"></span>
+      svg:  <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-shezhi"></use>
+                </svg>
+  ```
+  ``` js
+    @import '../../asset/iconfont/iconfont.css'
+    @import '../../asset/iconfont/iconfont.js'
+  ```
+
+  ## 返回过去n天
+  ``` js
+
+  // use : getDay(0)当天，getDay(-7),过去七天
+   
+  getDay(day) {
+              var today = new Date();
+              var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+              today.setTime(targetday_milliseconds);
+              var tYear = today.getFullYear();
+              var tMonth = today.getMonth();
+              var tDate = today.getDate();
+              tMonth = this.doHandleMonth(tMonth + 1);
+              tDate = this.doHandleMonth(tDate);
+              return tYear + "-" + tMonth + "-" + tDate;
+          },
+  doHandleMonth(month) {
+              var m = month;
+              if (month.toString().length == 1) {
+                  m = "0" + month;
+              }
+              return m;
+
+          },
+  ```

@@ -34,14 +34,16 @@ import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 export default {
   props: ['sidebarItems'],
   data () {
-    return {}
+    return {
+      pro: {}
+    }
   },
   mounted () {
-    console.log(this.$page.title)
+    
   },
   watch: {
     currentPageTitle: function () {
-      console.log(this.$page.title)
+    console.log(this.$page.title)
     }
   },
 

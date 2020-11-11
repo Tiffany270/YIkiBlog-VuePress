@@ -1,0 +1,170 @@
+{
+  "id": "2046086",
+  "name": "项目一",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6425168",
+      "name": "邀请",
+      "font_class": "yaoqing",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "6425347",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "6425579",
+      "name": "反馈",
+      "font_class": "fankui",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "6425584",
+      "name": "切换公司",
+      "font_class": "qiehuangongsi",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "6425592",
+      "name": "修改密码",
+      "font_class": "xiugaimima",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "7872202",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "7872203",
+      "name": "综合查询",
+      "font_class": "zonghechaxun",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "7872204",
+      "name": "应用中心",
+      "font_class": "yingyongzhongxin",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "7872205",
+      "name": "综合管理",
+      "font_class": "zongheguanli",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "7872206",
+      "name": "组织机构",
+      "font_class": "zuzhijigou",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "7872212",
+      "name": "工作台",
+      "font_class": "gongzuotai",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "7872999",
+      "name": "出入境@2x",
+      "font_class": "churujingx",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "7873000",
+      "name": "个人信息修改@2x",
+      "font_class": "gerenxinxixiugaix",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "7873002",
+      "name": "请假@2x",
+      "font_class": "qingjiax",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "16614580",
+      "name": "帽子",
+      "font_class": "hat",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
+    {
+      "icon_id": "16614581",
+      "name": "字母书",
+      "font_class": "dictionary",
+      "unicode": "e6d5",
+      "unicode_decimal": 59093
+    },
+    {
+      "icon_id": "16614582",
+      "name": "锅盖",
+      "font_class": "food-cover",
+      "unicode": "e6d6",
+      "unicode_decimal": 59094
+    },
+    {
+      "icon_id": "16614583",
+      "name": "信用卡",
+      "font_class": "credit-card",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "16614589",
+      "name": "耳机",
+      "font_class": "headphones",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
+      "icon_id": "16614590",
+      "name": "书籍",
+      "font_class": "journal-book",
+      "unicode": "e6d9",
+      "unicode_decimal": 59097
+    },
+    {
+      "icon_id": "16614591",
+      "name": "电脑",
+      "font_class": "laptop",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "16614592",
+      "name": "地图",
+      "font_class": "map",
+      "unicode": "e6db",
+      "unicode_decimal": 59099
+    },
+    {
+      "icon_id": "16614594",
+      "name": "手机",
+      "font_class": "mobile-phone",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    }
+  ]
+}

@@ -1,6 +1,5 @@
 # 剑指offer
 
-
 ## 03_RepeatNumberInArray
 ``` java
 package CodingInterviews;
@@ -375,30 +374,86 @@ public class _10_2_Frog_Steps {
 
 ## 11_MinNumberOfRotateArr
 ``` java
+    package CodingInterviews;
+
+
+    /*
+    *
+    * 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
+    * 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。
+    * 例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  
+    *
+            示例 1：
+            输入：[3,4,5,1,2]
+            输出：1
+
+            示例 2：
+            输入：[2,2,2,0,1]
+            输出：0
+
+    * */
+
+    public class _11_minNumberOfRotateArr {
+
+        public int minArray(int[] numbers) {
+            //见LeetCode 154
+            return 0;
+        }
+    }
+
+```
+
+## 12_PathInMatrix
+
+``` java
 package CodingInterviews;
 
-
 /*
-*
-* 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
-* 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。
-* 例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  
-*
-        示例 1：
-        输入：[3,4,5,1,2]
-        输出：1
+* 请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。
+* 路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。
+* 如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。
+* 例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。
 
-        示例 2：
-        输入：[2,2,2,0,1]
-        输出：0
+[["a","b","c","e"],
+["s","f","c","s"],
+["a","d","e","e"]]
+
+但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。
+示例 1：
+输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+输出：true
 
 * */
 
-public class _11_minNumberOfRotateArr {
+public class _12_PathInMatrix {
+    public boolean exist(char[][] board, String word) {
 
-    public int minArray(int[] numbers) {
-        //见LeetCode 154
-        return 0;
+        char[] words = word.toCharArray();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (dfs(board, words, i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    boolean dfs(char[][] board,
+                char[] word,
+                int i, int j,
+                int k) {
+
+        if (i >= board.length || i < 0 ||
+                j >= board[0].length ||
+                j < 0 || board[i][j] != word[k]) {
+            return false;
+        }
+
+
+        return true;
+
     }
 }
 
@@ -660,6 +715,67 @@ public class _24_ReverseLinkList {
 
 ```
 
+## 27_MirrorTree
+
+``` java
+package CodingInterviews;
+
+/*                LeetCode 226 题相同
+
+   * 请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+                        例如输入：
+                             4
+                           /   \
+                          2     7
+                         / \   / \
+                        1   3 6   9
+                        镜像输出：
+
+                             4
+                           /   \
+                          7     2
+                         / \   / \
+                        9   6 3   1
+
+                输入：root = [4,2,7,1,3,6,9]
+                输出：[4,7,2,9,6,3,1]
+
+*/
+
+/*
+* NOTE:
+       先：根左右
+       中：左根右
+       后：左右根
+       二叉树：左子树 < 根 < 右子树
+* */
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+    }
+}
+
+public class _27_MirrorTree {
+
+    // 交换左右子树+递归即可
+    public TreeNode mirrorTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode treeRight = root.right;
+        root.right = mirrorTree(root.left);
+        root.left = mirrorTree(treeRight);
+        return root;
+
+    }
+}
+
+```
+
 ## 29_SpiralOrder
 ``` java
 package CodingInterviews;
@@ -734,8 +850,61 @@ public class _29_SpiralOrder {
         System.out.println(Arrays.toString(func.spiralOrder(arr)));
     }
 }
+```
 
-```java
+## 32_I_LevelOrder
+
+``` java
+package CodingInterviews;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class _32_I_LevelOrder {
+    /*
+    * 从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+                例如:
+                给定二叉树: [3,9,20,null,null,15,7],
+
+                    3
+                   / \
+                  9  20
+                    /  \
+                   15   7
+                返回：
+
+                [3,9,20,15,7]
+    * */
+
+    // 队列（先进先出） ->LOOP里：在队列里依次弹出左右节点加入队列，直到队列为空
+    public int[] levelOrder(TreeNode root) {
+        if (root == null)
+            return new int[0];
+
+        ArrayList<Integer> res = new ArrayList();
+        Queue<TreeNode> queue = new LinkedList();
+        queue.add(root);
+
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();//the head of this queue
+            res.add(node.val);
+            if(node.left!=null){
+                queue.add(node.left);
+            }
+            if(node.right!=null){
+                queue.add(node.right);
+            }
+        }
+        int[] resn = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            resn[i] = res.get(i);
+        }
+        return resn;
+    }
+}
+
+```
 
 ## 39_MajorityElementOfArr
 
@@ -808,6 +977,122 @@ public class _39_MajorityElementOfArr {
 }
 
 ```
+## 40_GetLeastNumbers
+``` java
+package CodingInterviews;
+
+import java.util.Arrays;
+
+/**
+ * 输入整数数组 arr ，找出其中最小的 k 个数。
+ * 例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
+ * <p>
+ * 示例 1：
+ * 输入：arr = [3,2,1], k = 2
+ * 输出：[1,2] 或者 [2,1]
+ */
+// sort it pls
+public class _40_GetLeastNumbers {
+    public int[] getLeastNumbers(int[] arr, int k) {
+
+        Arrays.sort(arr);
+        int[] res = new int[k];
+        for (int index = 0; index < k; index++) {
+            res[index] = arr[index];
+        }
 
 
+        return res;
+    }
+}
+
+```
+
+## 50_FirstUniqChar
+``` java
+    package CodingInterviews;
+
+    import java.util.LinkedHashMap;
+    import java.util.Map;
+
+    /*
+    * 在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+
+                示例:
+                s = "abaccdeff"
+                返回 "b"
+                
+                s = ""
+                返回 " "
+    */
+    public class _50_FirstUniqChar {
+        /*
+        * Solution: HashMap and LinkedHashMap
+        *
+        * NOTE: hashMap is non-order
+        *       linkedHashMap is order basic the order of your insert
+        *
+        *  save time : use linkedHashMap
+        *
+        * */
+
+
+        public char firstUniqChar(String s) {
+
+            LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
+            for (char item : s.toCharArray()) {
+                if (map.containsKey(item)) {
+                    map.put(item, map.get(item) + 1);
+                } else {
+                    map.put(item, 1);
+                }
+
+            }
+
+            for (Map.Entry<Character, Integer> d : map.entrySet()) {
+                if (d.getValue() == 1) return d.getKey();
+            }
+
+            return ' ';
+        }
+    }
+
+```
+## 52_GetIntersectionNode
+
+``` java
+    package CodingInterviews;
+
+    /*
+    * 输入两个链表，找出它们的第一个公共节点。
+            （例子写的什么乱七八糟的）
+
+    * */
+    public class _52_GetIntersectionNode {
+
+        /*
+        * Solution:
+        * 两个链表长度分别为L1+C、L2+C， C为公共部分的长度
+        * 第一个人走了L1+C步后，回到第二个人起点走L2步；
+        * 第2个人走了L2+C步后，回到第一个人起点走L1步。
+        * 当两个人走的步数都为L1+L2+C时就两个家伙就相爱了
+        *
+        * 双指针 A1 跑完跑去走A2 A2跑完跑去走A1 碰到一样的就意味着 conflict 了（太强了吧，why my math is that weak！！！！）
+        * */
+
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            if (headA == null || headB == null)
+                return null;
+            ListNode p1 = headA;
+            ListNode p2 = headB;
+            while (p1 != p2) {
+                p1 = p1 == null ? headB : p1.next;
+                p2 = p2 == null ? headA : p2.next;
+            }
+            return p1;
+
+        }
+    }
+
+```
 

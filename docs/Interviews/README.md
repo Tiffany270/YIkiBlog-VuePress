@@ -82,7 +82,7 @@ Standing on shoulders of Giants
 
         ```
 - 说下你常用的几种布局方式
-- 集中往盒模型、flex布局说(至于grid布局，这个我看过没有用到过)
+    盒模型、flex布局、grid布局
 - 实现水平居中的几种方法？
 - animate和translate有没有用过，一些常见的属性说下？
 - CSS实现宽度自适应100%，宽高16:9的比例的矩形。
@@ -321,7 +321,56 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
     - `JSON.stringify(obj)`转换字符串比较，但是key可能混乱
     - 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
 
+- **手撕原型链原理**  
+    - `prototype`**构造器**原型， 是函数才有的，有很多继承来的方法
+    - 所有的函数都同时拥有__proto__和prototype属性 函数的`__proto__`**指向**自己的函数实现 函数的prototype是一个对象
+    - 所以函数的prototype也有__proto__ 和 一个`constructor`属性
+    - `__proto__`**指向**Object.prototype
+    - 所有的对象都拥有__proto__属性，它指向Object.prototype(Object是一个原生函数，所有的对象都是Object的实例)
+    ```js
+      let obj = {};
+      console.log("obj:", obj);
+      console.log("obj.prototype:", obj.prototype);
+      console.log("obj.__proto__:", obj.__proto__);
+      console.log("====================================");
+      function myFunc() {}
+      console.log("myFunc.prototype:",myFunc.prototype);
+      console.log("myFunc.__proto__:",myFunc.__proto__);
+      myFunc.prototype.__proto__ === Object.prototype  //true
+    ```
+    - 你只要想一个对象调用一个东西，它自己没有，就会往上找，哪里找，从prototype里找
+    - OK之前
+    ``` 
+    arr.valueOf() 做了什么?
+    arr 自身没有 valueOf，于是去 arr.__proto__ 上找
+    arr.__proto__ 只有 pop、push 也没有 valueOf，
+    于是去 arr.__proto__.__proto__ 上找
+    arr.__proto__.__proto__ 就是 window.Object.prototype
+    所以 arr.valueOf 
+    其实就是 window.Object.prototype.valueOf
+    arr.valueOf() 
+    等价于 arr.valueOf.call(arr)arr.valueOf.call(arr)
+    等价于 window.Object.prototype.valueOf.call(arr)
 
+    ```
+    - OK
+    ``` js
+    function instance_of(L, R) { // L即stu ；  R即Person
+
+    var O = R.prototype; // O为Person.prototype     
+        L = L.__proto__;   //L为stu._proto_，现在指向的是per实例对象
+    
+        while (true) {   // 执行循环                   
+        if (L === null)   //不通过                            
+            return false;                    
+        if (O === L)    //判断：   Person.prototype === stu._proto_ ？      
+                return true;   //此时，stu._proto_ 指向per实例对象，并不满足
+            L = L.__proto__;  //令L=  stu._proto_._proto_，执行循环
+    
+    }                      //stu._proto_ ._proto_，看图示知：
+    
+    }                        //指的就是Person.prototype，所以也返回true
+    ```
 
 - **从发送一个url地址到返回页面，中间发生了什么**  
 （没写全，还有HTTPS一类的）
@@ -563,3 +612,65 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
     }
 
     ```
+
+## 网络相关
+ ### HTTP/HTTPS
+ - 超文本传输协议`HTTP`
+    - 明文传输
+    - 端口为80
+    - 是无状态的
+- HTTP+SSL = `HTTPS`
+    - 对传输数据加密
+    - 端口为443
+    - 证书、公钥、密钥
+    - 费时、证书要钱
+- 请求方式
+    - `head`：类似于get请求，只不过返回的响应中没有具体的内容，用户获取报头
+    - `options`：允许客户端查看服务器的性能，比如说服务器支持的请求方式等等。
+- 状态码
+    - `400` 请求无效
+     - `401` 需要认证
+    - `403` 服务端已收到但是拒绝执行
+    - `200` 成功
+    - `500` 服务器内部错误
+    - `404` not found
+    - `502` Bad Gateway无效的响应
+    - `505`  服务器不支持请求的HTTP协议的版本，无法完成处理
+- fetch
+    - 第一次是option 询问是否支持修改
+    - 第二次是真正的请求
+    
+### TCP/UDP
+- `TCP`
+    - 三次握手
+    - 供可靠的服务
+- `UDP`
+    - 尽最大努力交付
+### WebSocket
+
+### csrf和xss的网络攻击及防范
+
+## Diff算法相关
+
+### NervJS的diff
+[diff 算法原理概述](https://github.com/NervJS/nerv/issues/3)
+
+### react.js的diff
+- tree diff
+    - BFS
+    - 同一个父节点下的所有子节点,当发现节点已经不存在，则该节点及其子节点会被完全删除掉
+
+- component diff
+    - 如果是同一类型的组件，按照原策略继续比较 virtual DOM tree
+    - 如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点
+    - 对于同一类型的组件，有可能其 Virtual DOM 没有任何变化，如果能够确切的知道这点那可以节省大量的 diff 运算时间，因此 React 允许用户通过 shouldComponentUpdate() 来判断该组件是否需要进行 diff
+
+- element diff
+    - 仅move、remove、insert
+    - 设置唯一的key
+
+[React 源码剖析系列](https://zhuanlan.zhihu.com/p/20346379)
+
+
+
+### vue.js的diff

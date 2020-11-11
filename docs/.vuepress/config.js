@@ -90,6 +90,10 @@ module.exports = {
             link: '/Interviews/'
           },
           {
+            text: 'Language',
+            link: '/Language/'
+          },
+          {
             text: 'Project Demo',
             link: '/PJwrapper/GuiderLink/'
           }
@@ -147,6 +151,15 @@ module.exports = {
                 '2020-06',
                 '2019-11',
                 '2019-10',
+              ]
+            }
+          ],
+          '/Language/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                'English',
               ]
             }
           ],

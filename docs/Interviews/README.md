@@ -3,6 +3,77 @@
 Standing on shoulders of Giants 
 :::
 
+## Array
+```
+`toString()`and `toLocaleString()`  
+对数组来说没什么不同，对调用数组元素里各自的方法，tosring 就调用子的tostring
+`pop()` and `push` 
+`shift()` and `unshift()`从头部移除一项/从尾部移除一项
+`reverse()` and `sort()`  sort的复杂度是根据浏览器而言的，一般是快排
+`concat()` 创建副本 参数放入尾部
+`slice()` 起始-结束 副本 不影响原数组
+`splice()` 
+1. 2个参数=删除
+2. n个参数 = 删除后插入n
+3. 替换同上，改变parm1 and parm2  
+`indexOf()` `lastIndexOf()`
+`find()` `findIndex() ` es6的方法
+以下都要给定函数
+`some()` 任意true = true
+`map()` 
+`forEach()` 
+`filter()` 
+`every()` 每一项true = true
+reduce() reduceRight() 递归自动叠加
+
+```
+## js去重
+- es6 set
+- for for splice
+- indexOf
+- sort()
+- includes
+- hasOwnProperty
+- filter
+- new set
+
+## 模块化相关
+- ES6 Module
+    - ECMAScript Module
+    - import
+    - export
+    - 值的引用，编译时加载
+- CommonJS
+    - one file one module
+    - export.xx = {}
+    - require() 
+    - if multiple module, only get the last export
+    - NOT async
+    - 值的复制，运行时加载
+- AMD 
+    - Asynchronous module definition
+    - define(...)
+    - require(...)
+    - so requireJS is one of its complement
+    - all calling at the first time
+- CMD 
+    - Common Module Definition
+    - one file one module
+    - define(...)
+    - require(...)
+    - wait and if not dependent, it would not call
+- UMD
+    - is AMD?
+    - is CommJS?
+    - global value
+
+
+
+
+
+
+
+
 ## CSS类问题 
 - CSS3新特性
     - **选择器**
@@ -83,10 +154,15 @@ Standing on shoulders of Giants
         ```
 - 说下你常用的几种布局方式
     盒模型、flex布局、grid布局
+- 自然布局
+- postion属性
 - 实现水平居中的几种方法？
 - animate和translate有没有用过，一些常见的属性说下？
 - CSS实现宽度自适应100%，宽高16:9的比例的矩形。
 - 如何实现左边两栏一定比例，左栏高度随右栏高度自适应？
+- BFC
+- 九宫格
+- 三栏布局
 
 
 ## 手撕深拷贝
@@ -165,7 +241,65 @@ Standing on shoulders of Giants
 ## 关于跨域  
 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
 - 处理跨域的方式有哪几种方式去解决？
+    - 通过jsonp跨域（缺点：只能实现get一种请求）
+        - 利用了 `<script>` 标签的 src 属性没有跨域限制的漏洞
+        - 本质
+        ```  
+        <script src='https://xxx.xxx.xx?key=value&callback=xxx'><script>
+        ```
+    - 跨域资源共享（CORS）
+        - 额外的 HTTP 头来告诉浏览器，让运行在某一个 origin 上的 Web 应用允许访问来自不同源服务器上的指定的资源。
+        - 需要浏览器和服务器同时支持
+        - Access-Control-Allow-Origin
+        - will send `OPTION` first to ask server
+    - document.domain + iframe跨域（此方案仅限主域相同，子域不同的跨域应用场景）location.hash + iframe4
+    - window.name + iframe跨域5
+    - postMessage跨域
+        - window.postMessage(message, origin, [transfer])
+    - nginx代理跨域
+    - nodejs中间件代理跨域
+    - WebSocket协议跨域
+        - 建立连接之后，server 与 client 都能主动向对方发送或接收数据。
+    - document.domain + 通过 iframe 嵌入跨域的页面
+    ``` js
+    document.domain = 'test.com' // 设置 domain 相同
+    // 通过 iframe 嵌入跨域的页面
+    const iframe = document.createElement('iframe')
+    iframe.setAttribute('src', 'b.test.com/xxx.html')
+    iframe.onload = function() {
+    // 拿到 iframe 实例后就可以直接访问 iframe 中的数据
+    console.log(iframe.contentWindow.xxx)
+    }
+    document.appendChild(iframe)
+
+    ```
+- 什么是同源策略
+    - 同域名，同协议，同端口
 - Ajax的原生写法为什么会有同源策略？
+    - ajax原生写法
+    ``` js
+    var xhr = new XMLHttpRequest(); //1.创建 XHR 对象
+    xhr.onreadystatechange = handleResponse;
+    xhr.open("get", "example.txt", true);
+    xhr.send(null);
+
+    var handleResponse = function(){//2.写一个回调处理函数
+        if (xhr.readyState == 4){
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                alert(xhr.responseText);//当收到服务器的响应后，响应的数据会自动填充 XHR 对象的属性
+            } else {
+                alert("Request was unsuccessful: " + xhr.status);
+            }
+        }
+    };
+    ```
+    - xmlhttprequest就是浏览器的异步行为，浏览器不允许跨域
+- 前端安全 CSRF, XSS
+    - XSS（Cross-Site Scripting，跨站点脚本）
+        - XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript 的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。
+    - CSRF（Cross-Site Request Forgery，跨站点请求伪造）
+        - CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。我们知道，绝大多数网站是通过 cookie 等方式辨识用户身份（包括使用服务器端 Session 的网站，因为 Session ID 也是大多保存在 cookie 里面的），再予以授权的。所以要伪造用户的正常操作，最好的方法是通过 XSS 或链接欺骗等途径，让用户在本机（即拥有身份 cookie 的浏览器端）发起用户所不知道的请求。
+
 
 
 ## 闭包

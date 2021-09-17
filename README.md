@@ -13,4 +13,5 @@ tag: `vue` `vuepress` `spring` `算法` `redis` `linux`
 yarn
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
+yarn build
 ```

@@ -38,35 +38,51 @@ reduce() reduceRight() 递归自动叠加
 - new set
 
 ## 模块化相关
-- ES6 Module
-    - ECMAScript Module
-    - import
-    - export
-    - 值的引用，编译时加载
-- CommonJS
-    - one file one module
-    - export.xx = {}
-    - require() 
+- 对模块化的理解
+    - 解决全局变量污染，命名空间，数据保护，再利用函数作用域链和闭包解决模块名被任意修改(getxx())
+    - 解决模块之间的依赖关系
+- `CommonJS`
+    - one file one module，私有，别的文件不可见
+    - `require()` 加载模，会产生缓存，值的复制（拷贝），导出后模块内部的变化影响不到这个值
+    - `module.export.xx = {}`
     - if multiple module, only get the last export
-    - NOT async
-    - 值的复制，运行时加载
-- AMD 
-    - Asynchronous module definition
-    - define(...)
-    - require(...)
-    - so requireJS is one of its complement
+    - 运行时加载（只有运行时才能得到这个对象）
+    - 同步的，不适合浏览器，会阻塞
+- `AMD` 
+    - Asynchronous module definition/ so `requireJS` is one of its complement
+    - `define(...)`，定义为模块
+    - `require(...)`，开始加载以来，加载完成后返回该模块到处的值
+    - 适合浏览器，也是运行时加载
+    - 异步，不影响后面的执行，依赖都在回调函数里，加载完成后才运行
     - all calling at the first time
-- CMD 
-    - Common Module Definition
-    - one file one module
-    - define(...)
-    - require(...)
+- `CMD` 
+    - Common Module Definition，`sea.js` is one of its complement
+    - following `common.js`,one file one module
+    - 适合浏览器
+    - `define(...)`
+    - `require(...)`
     - wait and if not dependent, it would not call
-- UMD
+- `ES6 Module` （ECMAScript Module）
+    - 目前浏览器和服务器通用的模块解决方案，设计思想是尽量静态化，使得编译时就能确定模块的依赖关系以及输入和输出的变量
+    - `import(...)`静态加载的方法，值的引用，提升到头部，优先执行，会返回一个promise对象，有then
+    - `export(...) `动态绑定，通过该接口可以取模块内部实时的内容
+- `UMD`
     - is AMD?
     - is CommJS?
     - global value
 
+## 浏览器加载
+- 允许`<script>`异步加载
+    - `async`
+    - `defer`
+- es6 module
+    - `type = module`
+
+
+## babel相关
+ - what is babel?
+    - babel is a js compiler
+    - 将es6代码转化为浏览器或其他环境支持的代码
 
 
 

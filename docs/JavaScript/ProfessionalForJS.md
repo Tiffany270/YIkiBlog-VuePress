@@ -396,44 +396,25 @@ sth still... about OO ... we call '继承'
  this can explain that what is `xx.call(this)` which u can find it in some situations  
  在子类构造函数的内部调用超类型构造函数
  ``` js
- function Father(){
-     this.colors = ['red', 'blue', 'black'];
+function Father(){
+    this.colors = ['red', 'blue', 'black'];
+}
+function Kid(){
+    SuperType.call(this)
+}
 
- }
- 
- function Kid(){
-     SuperType.call(this)
- }
-
- function Father(){
-     this.colors = ['red','blue','black'];
- }
-
- function Kid(){}
-
- Kid.prototype = new Father();
-
- let child1 = new Kid();
- child1.colos.push('white');// colors.len = 4;
-
- let child2 = new Kid();
- // colors.len = 3
-
- // colors没有被共享
-
-
-
- // 传递参数的版本
-
- function SuperType(name){
-     this.name = name;
-
- }
- 
- function SubType(){
-     SuperType.call(this,'pram');//可以允许传递参数
- }
-
+let child1 = new Kid();
+child1.colors.push('white');// colors.len = 4;
+let child2 = new Kid();
+// child2.colors.len = 3
+    
+// 传递参数的版本
+function SuperType(name){
+    this.name = name;
+}
+function SubType(){
+    SuperType.call(this,'pram');//可以允许传递参数
+}
  ```
 
  - **组合继承**  

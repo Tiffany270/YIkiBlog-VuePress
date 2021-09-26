@@ -1,7 +1,10 @@
-# Q&A
+
+
+# js相关
 ::: tip :)
 Standing on shoulders of Giants 
 :::
+
 
 ## Array
 ```
@@ -27,6 +30,7 @@ Standing on shoulders of Giants
 reduce() reduceRight() 递归自动叠加
 
 ```
+
 ## js去重
 - es6 set
 - for for splice
@@ -36,150 +40,6 @@ reduce() reduceRight() 递归自动叠加
 - hasOwnProperty
 - filter
 - new set
-
-## 模块化相关
-- 对模块化的理解
-    - 解决全局变量污染，命名空间，数据保护，再利用函数作用域链和闭包解决模块名被任意修改(getxx())
-    - 解决模块之间的依赖关系
-- `CommonJS`
-    - one file one module，私有，别的文件不可见
-    - `require()` 加载模，会产生缓存，值的复制（拷贝），导出后模块内部的变化影响不到这个值
-    - `module.export.xx = {}`
-    - if multiple module, only get the last export
-    - 运行时加载（只有运行时才能得到这个对象）
-    - 同步的，不适合浏览器，会阻塞
-- `AMD` 
-    - Asynchronous module definition/ so `requireJS` is one of its complement
-    - `define(...)`，定义为模块
-    - `require(...)`，开始加载以来，加载完成后返回该模块到处的值
-    - 适合浏览器，也是运行时加载
-    - 异步，不影响后面的执行，依赖都在回调函数里，加载完成后才运行
-    - all calling at the first time
-- `CMD` 
-    - Common Module Definition，`sea.js` is one of its complement
-    - following `common.js`,one file one module
-    - 适合浏览器
-    - `define(...)`
-    - `require(...)`
-    - wait and if not dependent, it would not call
-- `ES6 Module` （ECMAScript Module）
-    - 目前浏览器和服务器通用的模块解决方案，设计思想是尽量静态化，使得编译时就能确定模块的依赖关系以及输入和输出的变量
-    - `import(...)`静态加载的方法，值的引用，提升到头部，优先执行，会返回一个promise对象，有then
-    - `export(...) `动态绑定，通过该接口可以取模块内部实时的内容
-- `UMD`
-    - is AMD?
-    - is CommJS?
-    - global value
-
-## 浏览器加载
-- 允许`<script>`异步加载
-    - `async`
-    - `defer`
-- es6 module
-    - `type = module`
-
-
-## babel相关
- - what is babel?
-    - babel is a js compiler
-    - 将es6代码转化为浏览器或其他环境支持的代码
-
-
-
-
-
-
-
-## CSS类问题 
-- CSS3新特性
-    - **选择器**
-        ``` html
-        div:last-child                  其父元素 匹配最后一个
-        div:nth-child(n)                其父元素 的第n个子元素
-        div:nth-last-child(n)           其父元素 的倒数第n个子元素
-        
-        ```
-
-    - **@Font-face**
-    可以用来加载字体样式，而且它还能够加载服务器端的字体文件
-        ``` 
-        @font-face
-        {
-        font-family: myFirstFont;
-        src: url('Sansation_Light.ttf')}
-        ```
-    - **圆角/阴影/渐变**
-        ```
-        border-radius: 15px;
-        box-shadow: 0rem 0rem 0.7rem #cfd8dc;
-        background-image: linear-gradient(#e66465, #9198e5);
-        ```
-    - **动画相关：Transition / Transforms / Animation**
-
-        ``` 
-        transition: all 0.3s ease;
-        |||
-        transition-property:border-color, background-color, color;
-        transition-duration:.5s, .5s, .5s;
-        transition-timing-function:ease-in, ease-in, ease-in;
-        transition-delay:.1s, .1s, .1s;
-
-        ----
-
-        transform: rotate(0deg);
-        
-        ----
-            @keyframes slide-top {
-        0% {
-            -webkit-transform: translateY(3vh) rotate(-2deg);
-            transform: translateY(3vh) rotate(-2deg);
-            opacity: 0;
-        }
-
-        100% {
-            -webkit-transform: translateY(0) rotate(-2deg);
-            transform: translateY(0) rotate(-2deg);
-            opacity: 1;
-            }
-        }
-
-
-        ```
-
-        - **文字**
-        ```
-        word-break: normal|break-all|keep-all;
-        word-wrap: normal|break-word;
-        text-overflow:clip|ellipsis|string 
-
-        ps:超出部分省略
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
-        ```
-        - **布局相关 Flex/ Grid/多列**  
-        见Demo
-        - **媒体查询**  
-        @media
-        ```
-        @media only screen and (max-width: 768px) {
-            //...
-        }
-
-        ```
-- 说下你常用的几种布局方式
-    盒模型、flex布局、grid布局
-- 自然布局
-- postion属性
-- 实现水平居中的几种方法？
-- animate和translate有没有用过，一些常见的属性说下？
-- CSS实现宽度自适应100%，宽高16:9的比例的矩形。
-- 如何实现左边两栏一定比例，左栏高度随右栏高度自适应？
-- BFC
-- 九宫格
-- 三栏布局
-
 
 ## 手撕深拷贝
 - JSON法  
@@ -241,82 +101,6 @@ reduce() reduceRight() 递归自动叠加
         return source;
     }
 ```
-
-- HTTP和HTTPS的区别  
-超文本传输协议
-    - HTTP  
-    明文传输，易被抓包
-    - HTTPS
-    ```
-        基于HTTP协议，通过SSL或TLS提供加密处理数据、验证对方身份以及数据完整性保护.
-        HTTPS协议可以理解为HTTP协议的升级，就是在HTTP的基础上增加了数据加密。
-        在数据进行传输之前，对数据进行加密，然后再发送到服务器。
-        这样，就算数据被第三者所截获，但是由于数据是加密的，所以你的个人信息让然是安全的。
-    ```
-
-## 关于跨域  
-跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
-- 处理跨域的方式有哪几种方式去解决？
-    - 通过jsonp跨域（缺点：只能实现get一种请求）
-        - 利用了 `<script>` 标签的 src 属性没有跨域限制的漏洞
-        - 本质
-        ```  
-        <script src='https://xxx.xxx.xx?key=value&callback=xxx'><script>
-        ```
-    - 跨域资源共享（CORS）
-        - 额外的 HTTP 头来告诉浏览器，让运行在某一个 origin 上的 Web 应用允许访问来自不同源服务器上的指定的资源。
-        - 需要浏览器和服务器同时支持
-        - Access-Control-Allow-Origin
-        - will send `OPTION` first to ask server
-    - document.domain + iframe跨域（此方案仅限主域相同，子域不同的跨域应用场景）location.hash + iframe4
-    - window.name + iframe跨域5
-    - postMessage跨域
-        - window.postMessage(message, origin, [transfer])
-    - nginx代理跨域
-    - nodejs中间件代理跨域
-    - WebSocket协议跨域
-        - 建立连接之后，server 与 client 都能主动向对方发送或接收数据。
-    - document.domain + 通过 iframe 嵌入跨域的页面
-    ``` js
-    document.domain = 'test.com' // 设置 domain 相同
-    // 通过 iframe 嵌入跨域的页面
-    const iframe = document.createElement('iframe')
-    iframe.setAttribute('src', 'b.test.com/xxx.html')
-    iframe.onload = function() {
-    // 拿到 iframe 实例后就可以直接访问 iframe 中的数据
-    console.log(iframe.contentWindow.xxx)
-    }
-    document.appendChild(iframe)
-
-    ```
-- 什么是同源策略
-    - 同域名，同协议，同端口
-- Ajax的原生写法为什么会有同源策略？
-    - ajax原生写法
-    ``` js
-    var xhr = new XMLHttpRequest(); //1.创建 XHR 对象
-    xhr.onreadystatechange = handleResponse;
-    xhr.open("get", "example.txt", true);
-    xhr.send(null);
-
-    var handleResponse = function(){//2.写一个回调处理函数
-        if (xhr.readyState == 4){
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-                alert(xhr.responseText);//当收到服务器的响应后，响应的数据会自动填充 XHR 对象的属性
-            } else {
-                alert("Request was unsuccessful: " + xhr.status);
-            }
-        }
-    };
-    ```
-    - xmlhttprequest就是浏览器的异步行为，浏览器不允许跨域
-- 前端安全 CSRF, XSS
-    - XSS（Cross-Site Scripting，跨站点脚本）
-        - XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript 的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。
-    - CSRF（Cross-Site Request Forgery，跨站点请求伪造）
-        - CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。我们知道，绝大多数网站是通过 cookie 等方式辨识用户身份（包括使用服务器端 Session 的网站，因为 Session ID 也是大多保存在 cookie 里面的），再予以授权的。所以要伪造用户的正常操作，最好的方法是通过 XSS 或链接欺骗等途径，让用户在本机（即拥有身份 cookie 的浏览器端）发起用户所不知道的请求。
-
-
 
 ## 闭包
 Q:闭包的理解，以及你在什么场景下会用到闭包？  
@@ -395,432 +179,193 @@ Q:闭包的理解，以及你在什么场景下会用到闭包？
 - Q:闭包的好处？
     - A:不会污染全局环境，方便进行模块化开发，减少形参个数，延长了形参的生命周期
 
-
-
-## 一些JS题
-- **说一下你对原型与原型链的了解度**  
-见JS高程第六章
+## 原型链
+- 默认的原型
+    - 其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法，层层递进，就构成了实例与原型的链条
+    - 所有引用类型都默认继承了`Object`,因此默认原型都会包含一个内部指针，指向`Objcet.prototype`
     - `__proto__`/`prototype `
     - OO语言有接口继承和实现继承，但是ES只能支持`实现继承`，这个就是靠原型链来实现的。
     - 基本思想：利用`原型`让一个引用类型`继承`另一个引用类型的属性和方法
-    - 基本模式
-        ``` js
-
-        function SuperType(){
-            this.property = true;
-        }
-
-        SuperType.prototype.getSuperValue = function(){
-            return this.property;
-        }
-
-        function SubType(){
-            this.subproperty = false;
-        } 
-
-        SubType.prototype = new SuperType();//extend
-
-        SubType.prototype.getSubValue = function(){
-            return this.subproperty;
-        }
-        ```
-
-    - 默认的原型
-    所有引用类型都默认继承了`Object`,因此默认原型都会包含一个内部指针，指向`Objcet.prototype`
-   
-- **有几种方式可以实现继承，用原型实现继承有什么缺点，怎么解决？**  
-见JS高程第六章
-    - sumary
-        - 组合继承
-        - 原型式继承
-        - 寄生式继承
-        - 寄生组合式继承  
-    - 缺点
-        - 引用类型值得原型属性会被所有实例共享
-            ``` js
-            function Father(){
-                this.colors = ['red','blue','black'];
-            }
-
-            function Kid(){}
-            Kid.prototype = new Father();
-            let child1 = new Kid();
-            child1.colos.push('white');// colors.len = 4;
-
-            let child2 = new Kid();
-            // colors.len = 4
-
-            //你可以看到共享了color属性
-            ```
-        - 创建子类型的实例时不能向超类型的构造函数传递参数
-
-- **判断两个对象是否相等相关**  
-见JS高程第三章  
-    - `==`先转换再比较
-        - 布尔 vs 数值 布尔值转数值
-        - 字符串 vs 数值 字符串转数值
-        - 对象 vs Any 对象.valueOf()
-        - 对象 vs 对象 是否指向同一个对象
-        - null==nudefined=>ture
-        - NaN == any -> false
-        - NaN == NaN -> false
-    - `===`仅比较而不转换
-        - null === undeifne => false
-        - 比较对象的时候仍然是检查引用
-    - `Object.is(a,b)` 仅能检测引用
-    - `JSON.stringify(obj)`转换字符串比较，但是key可能混乱
-    - 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
-
-- **手撕原型链原理**  
-    - `prototype`**构造器**原型， 是函数才有的，有很多继承来的方法
-    - 所有的函数都同时拥有__proto__和prototype属性 函数的`__proto__`**指向**自己的函数实现 函数的prototype是一个对象
-    - 所以函数的prototype也有__proto__ 和 一个`constructor`属性
-    - `__proto__`**指向**Object.prototype
-    - 所有的对象都拥有__proto__属性，它指向Object.prototype(Object是一个原生函数，所有的对象都是Object的实例)
-    ```js
-      let obj = {};
-      console.log("obj:", obj);
-      console.log("obj.prototype:", obj.prototype);
-      console.log("obj.__proto__:", obj.__proto__);
-      console.log("====================================");
-      function myFunc() {}
-      console.log("myFunc.prototype:",myFunc.prototype);
-      console.log("myFunc.__proto__:",myFunc.__proto__);
-      myFunc.prototype.__proto__ === Object.prototype  //true
-    ```
-    - 你只要想一个对象调用一个东西，它自己没有，就会往上找，哪里找，从prototype里找
-    - OK之前
-    ``` 
-    arr.valueOf() 做了什么?
-    arr 自身没有 valueOf，于是去 arr.__proto__ 上找
-    arr.__proto__ 只有 pop、push 也没有 valueOf，
-    于是去 arr.__proto__.__proto__ 上找
-    arr.__proto__.__proto__ 就是 window.Object.prototype
-    所以 arr.valueOf 
-    其实就是 window.Object.prototype.valueOf
-    arr.valueOf() 
-    等价于 arr.valueOf.call(arr)arr.valueOf.call(arr)
-    等价于 window.Object.prototype.valueOf.call(arr)
-
-    ```
-    - OK
-    ``` js
-    function instance_of(L, R) { // L即stu ；  R即Person
-
-    var O = R.prototype; // O为Person.prototype     
-        L = L.__proto__;   //L为stu._proto_，现在指向的是per实例对象
-    
-        while (true) {   // 执行循环                   
-        if (L === null)   //不通过                            
-            return false;                    
-        if (O === L)    //判断：   Person.prototype === stu._proto_ ？      
-                return true;   //此时，stu._proto_ 指向per实例对象，并不满足
-            L = L.__proto__;  //令L=  stu._proto_._proto_，执行循环
-    
-    }                      //stu._proto_ ._proto_，看图示知：
-    
-    }                        //指的就是Person.prototype，所以也返回true
-    ```
-
-- **从发送一个url地址到返回页面，中间发生了什么**  
-（没写全，还有HTTPS一类的）
-    - 如果没有CDN
-        - 浏览器要将域名解析为 IP 地址，所以需要向本地 DNS 发出请求。
-        - 本地 DNS 依次向根服务器、顶级域名服务器、权限服务器发出请求，得到网站服务器的 IP 地址。
-        - 本地 DNS 将 IP 地址发回给浏览器，浏览器向网站服务器 IP 地址发出请求并得到资源。
-    - 有CDN  
-    见性能优化-CDN相关
-
-## 性能优化处理
-[原址-谭光志](https://zhuanlan.zhihu.com/p/121056616)
-- 减少HTTP请求
-- CDN
-    - 内容分发网络（CDN）是一组分布在多个不同地理位置的 Web 服务器。
-    - 当服务器离用户越远时，延迟越高。
-    - CDN 就是为了解决这一问题，在多个位置部署服务器，让用户离服务器更近，从而缩短请求时间
-- 将 CSS 放在文件头部（防止页面空白），JavaScript 文件放在底部（防止堵塞）
-- 使用字体图标 iconfont 代替图片图标
-- 压缩文件
-     - webpack 可以使用如下插件进行压缩：
-        - JavaScript：UglifyPlugin
-        - CSS ：MiniCssExtractPlugin
-        - HTML：HtmlWebpackPlugin
-- 图片优化
-    - 延迟加载/懒加载
-    - 响应式（浏览器能够根据屏幕大小自动加载合适的图片）
-- 多用CSS3代替图片
-- 减少DOM操作（事件委托）
-- switch代替if-else
-
-
-## ES6问题
-
-- **箭头函数中的this指向谁？**  
-    - 是**定义/生效时**所在的对象，而**不是使用/运行时**所用的对象
-    - `箭头函数`让`this`指向**固化**,即它的this对象的指向是**不可变**的
-    - 根本原因是：箭头函数没有自己的this，所以只能从外层找。由于箭头函数不绑定this， 它会捕获其所在（即定义的位置）上下文的this值， 作为自己的this值。
-    - 所以对于箭头函数， call() / apply() / bind() 方法对于箭头函数来说只是传入参数，对它的 this 毫无影响。
-    - `普通函数`可以用bind()/call()改变this的指向。
-    - 普通函数的this指向**调用**对象，没有的或者全局就指向window（严格模式是undefined)
-
-- **如何实现一个promise？**  
-    - Base
-    ``` js
-    let promise = new Promise(function(resolve,reject){
-        // resolve和reject只会执行一个
-
-        if(...){
-            resolve(value)
-        }else{
-            reject(error)
-        }
-    })
-
-    //----- then 是 promise实例状态改变时的回调函数，返回的也是一个promise
-    promise.then(function(value){
-        // 携带的参数是从resolve里得到的
-    },
-    function(error){
-        // 携带的参数是从reject里得到的
-    }).catch(error=>{
-        // reject后的东西，一定会进入then中的第二个回调，
-        //如果then中没有写第二个回调，则进入catch
-        //如果没有then， 也可以直接进入catch
-        // resolve不会进入catch
-    })
-
-    ```
-
-- **promise的原理，以及它的两个参数是什么？**  
-    - 是一个容器，里面保存着某个**未来才会结束**的事件，一旦新建就会**立即执行**
-    - 两个参数是`resolve`和`reject`
-    - 三个状态是：`Peding`/`Fulfiled`/`Rejected`
-    - 原理
-        - 设计模式中的`观察者模式`
-        - 通过`Promise.prototype.then`和`Promise.prototype.catch`方法将观察者方法注册到被观察者Promise对象中，同时返回一个新的Promise对象，以便可以`链式调用`。
-        - 被观察者管理内部pending、fulfilled和rejected的状态转变，同时通过构造函数中传递的resolve和reject方法以主动触发状态转变和通知观察者。
-
-- **promise中第二个参数的reject中执行的方法和promise.catch()都是失败执行的，分别这么写有什么区别，什么情况下会两个都同时用到？**  
+ ``` js
+ function SuperType(){
+     this.property = true;
+ }
+ SuperType.prototype.getSuperValue = function(){
+     return this.property;
+ }
+ function SubType(){
+     this.subproperty = false;
+ } 
+ SubType.prototype = new SuperType();//extend
+ SubType.prototype.getSubValue = function(){
+     return this.subproperty;
+ }
+ // here are some problems such as ...
+ function Father(){
+     this.colors = ['red','blue','black'];
+ }
+ function Kid(){}
+ Kid.prototype = new Father();
+ let child1 = new Kid();
+ child1.colos.push('white');// colors.len = 4;
+ let child2 = new Kid();
+ // colors.len = 4
+ //你可以看到共享了color属性
+ ```
+ - **构造函数继承** 
+    - `call`或者`apply`
+    - this can explain that what is `xx.call(this)` which u can find it in some situations    
+    - 将父类的构造函数指向子类构造函数的`this`
 ``` js
-//----- then 是 promise实例状态改变时的回调函数，返回的也是一个promise
-    promise.then(function(value){
-        // 携带的参数是从resolve里得到的
-    },
-    function(error){
-        // 携带的参数是从reject里得到的
-    }).catch(error=>{
-        // reject后的东西，一定会进入then中的第二个回调，
-        //如果then中没有写第二个回调，则进入catch
-        //如果没有then， 也可以直接进入catch
-        // resolve不会进入catch
-    })
-```
-- map和set有没有用过?
-    - `SET` 
-        - 类似数组，但是成员的**值是唯一**的
-        - 内部不会发生类型转换，所以是`===`
-        - 内部NaN===NaN=> true
-        - 内部对象总是不相等的
-        - `WeakSet`的成员只能是对象
-    - `MAP`
-        - Hash键值k-v对集合
-        - **键**可以是各种类型（Object的key是只能用字符串）
-        - 只有对同一个对象的**引用**才是同一个键,因为绑定的是内存地址
-        - 内部NaN===NaN=> true
-        - 内部不会发生类型转换，所以是`===`，严格相等会视为同一个键
-        ``` js
-        map.set(['a'],a);
-        map.get(['a']);// undefined
+function Father(){
+    this.colors = ['red', 'blue', 'black'];
+}
+function Kid(){
+    SuperType.call(this)
+}
 
-        const k1 = ['k'];
-        map.set(k1,'k');
-        map.get(k1); // k
-
-        // 转化为数组的方法
-        [...map] // [ [ ['a'],a ],[ ['k'],k ] ] 
-        ```
-        - `WeakMap`的**键名**只能是对象，键名是弱引用，不用手动删除对象，场景用于键所对应的对象可能再将来消失。
-
-- **map数据结构有什么优点？**  
-    -额，比较灵活吧
-
-- **如何实现一个数组去重？**  
-    - 用set
-    ``` js
-    [...new Set(array)]
-
-    ```
-    - filter+indexOf
-    ``` js
-    arr.filter((item, index)=> {
-        return arr.indexOf(item) === index
-    })
-    ``` 
-    - sort() + 比较相邻的数字
-
-## HTML类的问题
-- iframe的缺点有哪些？
-    - 混乱的滚动条
-    - 不利于搜索引擎爬虫的优化
-    - 兼容很差，后退无效，增加http请求
-    - 不推荐用了除非单页吧
-
-- Html5新特性
-    - **语义化标签**     
-        header/dialog/footer/nav/section等
-        ``` html
-        <footer></footer>
-        ```
-    - **表单增强**
-        - input**类型**增多  
-        color/date/email/number/range/tel等
-        ``` html
-            <input type="color"
-            placeholder="请输入站点全局标题"
-        ```
-        - 表单**属性**增多  
-        placeholder/required/pattern/min/max/aotofocus/multiple等
-    - **Canvas**
-        ``` html
-        <canvas width=100px; height=100px; id="canvas"></canvas>
-
-        ```
-        - SVG 与 Canvas两者间的**区别**
-        ```
-        　　SVG 是一种使用 XML 描述 2D 图形的语言。
-        　　Canvas 通过 JavaScript 来绘制 2D 图形。
-        　　SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。
-            您可以为某个元素附加 JavaScript 事件处理器。
-        　　在 SVG 中，每个被绘制的图形均被视为对象。
-            如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
-        　　Canvas 是逐像素进行渲染的。
-            在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。
-            如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
-        ```
-    - **定位geolocation**
-        ``` js
-        navigator.geolocation.getCurrentPosition(
-            function(pos){
-            console.log('定位时间：',pos.timestamp)      　　　　
-            console.log('经度：',pos.coords.longitude)      　　　　
-            console.log('纬度：',pos.coords.latitude)      　　　　
-            console.log('海拔：',pos.coords.altitude)      　　　　
-            console.log('速度：',pos.coords.speed)
-        },    //定位成功的回调
-        function(err){ 
-        　　　　console.log('用户定位数据获取失败')      　　　　
-        }        //定位失败的回调
-        )
-        ```
-
-    - **拖放**  
-        dragenter/dragstart/drag/dragover/dragend/dragleave/drop
-
-    - **Web Worker**  
-    web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。  
-    您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
-
-    - **Web Storage**
-        - localStorage
-        - sessionStorage
-        都是类似的API
-        ```js
-        localStorage.setItem(key,value);
-        localStorage.getItem(key);
-        localStorage.removeItem(key);
-        localStorage.clear();
-        localStorage.key(index);
-        ```
-        - 区别
-        ```
-            localStorage生命周期是永久。
-            这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，
-            否则这些信息将永远存在。
-            sessionStorage生命周期为当前窗口或标签页，
-            一旦窗口或标签页被永久关闭了，
-            那么所有通过sessionStorage存储的数据也就被清空了。
-        ```
-        
-    - **WEB Sockets**  
-    目标在一个单独的持久连接上提供全双工、双向通信。在JS创建websocket后会有一个HTTP请求发送到浏览器以发起连接，获得响应后的连接会从HTTP协议交换为WEBsoket协议
-        - 加密的连接url开头为`wss://`
-        - 未加密的连接为`ws://`
-        - 适合移动端应用
-        - 制定协议的事件比制定JS API的时间还长
-    ``` js
-    let socket = new WebSocket('ws://www.exmple.com/server.jsp');
-    socket.send();
-    socket.send(JSONobj);
-
-    socket.onmessage = function(event){
-        let data =  event.data;
-        // ....
-    }
-
-    socket.onopen/onerrror/onclose =  function(){
-        //....
-    }
-
-    ```
-
-## 网络相关
- ### HTTP/HTTPS
- - 超文本传输协议`HTTP`
-    - 明文传输
-    - 端口为80
-    - 是无状态的
-- HTTP+SSL = `HTTPS`
-    - 对传输数据加密
-    - 端口为443
-    - 证书、公钥、密钥
-    - 费时、证书要钱
-- 请求方式
-    - `head`：类似于get请求，只不过返回的响应中没有具体的内容，用户获取报头
-    - `options`：允许客户端查看服务器的性能，比如说服务器支持的请求方式等等。
-- 状态码
-    - `400` 请求无效
-     - `401` 需要认证
-    - `403` 服务端已收到但是拒绝执行
-    - `200` 成功
-    - `500` 服务器内部错误
-    - `404` not found
-    - `502` Bad Gateway无效的响应
-    - `505`  服务器不支持请求的HTTP协议的版本，无法完成处理
-- fetch
-    - 第一次是option 询问是否支持修改
-    - 第二次是真正的请求
+let child1 = new Kid();
+child1.colors.push('white');// colors.len = 4;
+let child2 = new Kid();
+// child2.colors.len = 3
     
-### TCP/UDP
-- `TCP`
-    - 三次握手
-    - 供可靠的服务
-- `UDP`
-    - 尽最大努力交付
-### WebSocket
+// 传递参数的版本
+function SuperType(name){
+    this.name = name;
+}
+function SubType(){
+    SuperType.call(this,'pram');//可以允许传递参数
+}
+```
 
-### csrf和xss的网络攻击及防范
+ - **原型式继承**
+ ``` js
+ function object(o){ // 传入一个对象 浅复制
+     function F(){}; // 创建一个临时性的构造函数
+     F.prototype = o; // 将传入的对象作为这个构造函数原型
+     return new F(); // 返回这个临时类型的新实例
+ }
+ ```
+ - ES5新增`Object.creatre()`方法规范这个原型式继承，
+ ``` js
+ let person = Object.create(person,{ // 如果只有一个参数===object()
+     name:{
+         value: 'yiki'
+     }
+ })
+ ```
+ - **组合继承**  
+ 又叫伪经典继承，指的是将原型链和借用构造函数组合一起，既通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性  
+ 缺点：无论在什么情况下，都会调用两次超类型构造函数
+ ``` js
+ function Father(name){
+     this.name = name;
+ }
+ Father.prototype.sayName = function(){
+     console.log(this.name);
+ }
+ function Kid(name, age){
+     Father.call(this, name); // 缺点：第二次调用
+ }
+ //use it
+ Kid.prototype = new Father();// 缺点：第一次调用
+ Kid.prototype.constructor = Kid;
+ Kid.prototype.sayAge = function()
+{
+    // ..
+}
+ ```
+`
+- es6 class 见es6部分
+``` js
+class person{
+    ...
+}
+class father extends person {
+    ...
+}
+let kid = new father();
+```
+- **手撕原型链原理**  
+- `prototype`**构造器**原型， 是函数才有的，有很多继承来的方法
+- 所有的函数都同时拥有__proto__和prototype属性 函数的`__proto__`**指向**自己的函数实现 函数的prototype是一个对象
+- 所以函数的prototype也有__proto__ 和 一个`constructor`属性
+- `__proto__`**指向**Object.prototype
+- 所有的对象都拥有__proto__属性，它指向Object.prototype(Object是一个原生函数，所有的对象都是Object的实例)
+```js
+    let obj = {};
+    console.log("obj:", obj);
+    console.log("obj.prototype:", obj.prototype);
+    console.log("obj.__proto__:", obj.__proto__);
+    console.log("====================================");
+    function myFunc() {}
+    console.log("myFunc.prototype:",myFunc.prototype);
+    console.log("myFunc.__proto__:",myFunc.__proto__);
+    myFunc.prototype.__proto__ === Object.prototype  //true
+```
+- 你只要想一个对象调用一个东西，它自己没有，就会往上找，哪里找，从prototype里找
+- OK之前
+``` 
+arr.valueOf() 做了什么?
+arr 自身没有 valueOf，于是去 arr.__proto__ 上找
+arr.__proto__ 只有 pop、push 也没有 valueOf，
+于是去 arr.__proto__.__proto__ 上找
+arr.__proto__.__proto__ 就是 window.Object.prototype
+所以 arr.valueOf 
+其实就是 window.Object.prototype.valueOf
+arr.valueOf() 
+等价于 arr.valueOf.call(arr)arr.valueOf.call(arr)
+等价于 window.Object.prototype.valueOf.call(arr)
 
-## Diff算法相关
+```
+- OK
+``` js
+function instance_of(L, R) { // L即stu ；  R即Person
 
-### NervJS的diff
-[diff 算法原理概述](https://github.com/NervJS/nerv/issues/3)
+var O = R.prototype; // O为Person.prototype     
+    L = L.__proto__;   //L为stu._proto_，现在指向的是per实例对象
 
-### react.js的diff
-- tree diff
-    - BFS
-    - 同一个父节点下的所有子节点,当发现节点已经不存在，则该节点及其子节点会被完全删除掉
+    while (true) {   // 执行循环                   
+    if (L === null)   //不通过                            
+        return false;                    
+    if (O === L)    //判断：   Person.prototype === stu._proto_ ？      
+            return true;   //此时，stu._proto_ 指向per实例对象，并不满足
+        L = L.__proto__;  //令L=  stu._proto_._proto_，执行循环
 
-- component diff
-    - 如果是同一类型的组件，按照原策略继续比较 virtual DOM tree
-    - 如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点
-    - 对于同一类型的组件，有可能其 Virtual DOM 没有任何变化，如果能够确切的知道这点那可以节省大量的 diff 运算时间，因此 React 允许用户通过 shouldComponentUpdate() 来判断该组件是否需要进行 diff
+}                      //stu._proto_ ._proto_，看图示知：
 
-- element diff
-    - 仅move、remove、insert
-    - 设置唯一的key
+}                        //指的就是Person.prototype，所以也返回true
+```
 
-[React 源码剖析系列](https://zhuanlan.zhihu.com/p/20346379)
+## 执行环境和作用域
+- 每个函数都有自己的执行环境。执行流进入函数->函数环境推入栈->栈将其弹出->控制权返回
+- 代码在一个环境重执行会创建变量对象的`作用域链`
+- 作用域链保证执行环境有权访问所有变量和函数的有序访问
+- 全局变量始终是作用域链中**最后**一个对象
+- 内部环境能通过作用域链访问所有外部环境，反之不行。(任何环境可以**向下** 搜索作用域而进入另一个执行环境)
+- JS**不存在**块级作用域
+- Q:怎么延长作用域链?
+A：在作用域前端临时增加一个变量对象
+- Q:怎么让页面获得更好的性能？
+A：解除引用——将不再用到的数据（大部分全局变量和对象的属性）设置为`null`
+
+
+## 两个对象是否相等
+见JS高程第三章  
+- `==`先转换再比较
+    - 布尔 vs 数值 布尔值转数值
+    - 字符串 vs 数值 字符串转数值
+    - 对象 vs Any 对象.valueOf()
+    - 对象 vs 对象 是否指向同一个对象
+    - null==nudefined=>ture
+    - NaN == any -> false
+    - NaN == NaN -> false
+- `===`仅比较而不转换
+    - null === undeifne => false
+    - 比较对象的时候仍然是检查引用
+- `Object.is(a,b)` 仅能检测引用
+- `JSON.stringify(obj)`转换字符串比较，但是key可能混乱
+- 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
 
 
 
-### vue.js的diff

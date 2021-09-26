@@ -5,49 +5,58 @@
 Do u wanna know how it works?
 :::
 
-- Webpack
-    - webpack是一个`模块打包器`bundler
-    - 前端所有资源文件都会做`模块module`处理
-    - webpack会根据模块的依赖关系进行静态分析，`生成`对应的静态资源
-    - webpack**只能**加载JS/JSON文件
-- Loader
-    - loader是本身运行在node环境中的`js模块`
-    - 对于`其他类型`模块/文件，需要用对应的loader进行转换和加载
-    - loader是一个`函数`，接受源文件做参数，返回转换后的结果
-    - xxx-loader命名格式
+## Webpack是什么
+- `webpack`是一个`模块打包器`bundler
+- 通过`loader`帮助转换浏览器无法识别的格式和文件
+- 通过`plugin`机制能在模块化打包的基础上进一步实现别的功能
 
-- webpack.config.js
-    - 配置文件，joson格式的配置对象
-- plugin
-    - 完成一些loader完成不了的功能
-
-- 入门实质
-
+## 入门实质
 ``` js
-
 webpack src/入口文件.js dist/出口文件.js
-
-
 ```
 
+## 大致流程
+- 初始化参数，合并参数
+- 编译：参数初始化进入`compiler`对象，加载配置插件后执行`run`
+- 确定入口，导入依赖，形成关系树
+- 编译模块：通过compilation来调用配置的`loader`和`plugin`，模版合并和转换
+- 生成最终内容和依赖关系
+- 输入，组装成`chunk`，`chunk`会转换成单独的文件输出到`dist`
+- 期间会有一些`hooks`让插件通过监听来执行任务或者干预输出的结果
+
+## plugin 和 loader
+### plugin
+- 可以在任何流程节点出现
+- 可以做很多和源码无关的事情和辅助
+## loader
+- 只是解析源码变成标准模块
+- 有特定的活动范围
+
+## sourcemap
+- 是一项奖编译、打包、压缩后代码映射回源的技术
+- 混淆压缩后的代码难懂啊，用这个快速定位源代码的位置
+
+## 打包优化
+- 解决的问题
+  - 减少首屏加载的事件
+  - 提升交互和页面切换的流畅度
+  - 减少构建耗时
+- weppack要做什么
+  - 提取公共代码
+  - 按需加载
 
 ## 关于package.json
-
-
+- 通常我们使用`npm init`命令来创建一个npm程序时，会自动生成一个`package.json`文件。
+- `package.json`文件会描述这个NPM包的所有相关信息，包括作者、简介、包依赖、构建等信息，格式是严格的JSON格式。
 
 ``` bash
-
 npm init                        //执行这个命令会自动生成这个文件，也可以手动
 npm install                     //当前目录中安装所需要的模块
 npm install express --save      //可以单独安装这个模块,--save参数表示将该模块写入dependencies属性
 npm install express --save-dev  //--save-dev表示将该模块写入devDependencies属性
-
-
-
 ```
 
 ``` json
-
 {
   "name": "vuepress",
   "version": "0.13.1",
@@ -57,7 +66,8 @@ npm install express --save-dev  //--save-dev表示将该模块写入devDependenc
     "vuepress": "bin/vuepress.js"
   },
 
-  // scripts指定了运行脚本命令的npm命令行缩写，比如start指定了运行npm/yarn run start时，所要执行的命令。
+  // scripts指定了运行脚本命令的npm命令行缩写，
+  //比如start指定了运行npm/yarn run start时，所要执行的命令。
   "scripts": {
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
@@ -91,7 +101,10 @@ npm install express --save-dev  //--save-dev表示将该模块写入devDependenc
     ]
   },
 
-  // dependencies字段指定了项目运行所依赖的模块，devDependencies指定项目开发所需要的模块。它们都指向一个对象。该对象的各个成员，分别由模块名和对应的版本要求组成，表示依赖的模块及其版本范围。
+  // dependencies字段指定了项目运行所依赖的模块，
+  //devDependencies指定项目开发所需要的模块。
+  //它们都指向一个对象。
+  //该对象的各个成员，分别由模块名和对应的版本要求组成，表示依赖的模块及其版本范围。
   "dependencies": {
     "@babel/core": "7.0.0-beta.47",
    // ...

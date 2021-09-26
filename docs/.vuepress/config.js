@@ -57,11 +57,9 @@ module.exports = {
               {
                 text: 'front-end',
                 items: [
-                  { text: 'vue', link: '/Vue/' },
                   { text: 'react', link: '/React/' },
                   { text: 'angular2', link: '/angular2/' },
                   { text: 'JavaScript', link: '/JavaScript/' },
-                  { text: 'webpack', link: '/Webpack/' }
                 ]
               },
               {
@@ -81,22 +79,27 @@ module.exports = {
               },
             ]
           },
-          {
-            text: 'Diary',
-            link: '/Diary/'
-          },
+          
           {
             text: 'Q&A',
             link: '/Interviews/'
           },
           {
-            text: 'Language',
-            link: '/Language/'
+            text: 'Vue',
+            link: '/Vue/'
+          },
+          {
+            text:'Webpack',
+            link: '/Webpack/'
           },
           {
             text: 'Project Demo',
             link: '/PJwrapper/GuiderLink/'
-          }
+          },
+          {
+            text: 'Diary',
+            link: '/Diary/'
+          },
         ],
         sidebar: {
           '/Algorithms/': [
@@ -168,6 +171,12 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
+                'es6',
+                'http',
+                'CORS',
+                'css',
+                'html',
+                'luan',
               ]
             }
           ],
@@ -219,6 +228,16 @@ module.exports = {
               children: [
                 '',
                 '01',
+                '02',
+                '03',
+                '10_compiler',
+                '11_compilation',
+                '04_loader',
+                '06_plugin',
+                '07_tapable',
+                '05_bundle',
+                '09_tree_shaking',
+                '08_plugin'
               ]
             }
           ],
@@ -228,6 +247,7 @@ module.exports = {
               children: [
                 '',
                 '01',
+                '12',
                 '02',
                 '04',
                 '05',
@@ -237,7 +257,7 @@ module.exports = {
                 '06',
                 '07',
                 '08',
-                '09'
+                '09',
               ]
             }
           ],

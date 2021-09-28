@@ -28,18 +28,69 @@ Standing on shoulders of Giants
 `filter()` 
 `every()` 每一项true = true
 reduce() reduceRight() 递归自动叠加
-
+Array.from() 将一个类数组对象或者可遍历对象转换成一个真正的数组。
 ```
 
 ## js去重
 - es6 set
-- for for splice
-- indexOf
-- sort()
-- includes
-- hasOwnProperty
-- filter
+``` js
+function func(arr){
+    return Array.from(new Set(arr))
+}
+```
 - new set
+``` js
+[...new Set(arr)]
+```
+- for for splice
+``` js
+func(arr){
+for(i=0;..){
+    for(j=i+1;..){
+        if(arr[i]==arr[j]){
+            arr.splice(j,1);
+            j--;
+        }
+
+    }
+}
+}
+```
+- 新建一个数组push + indexOf
+``` js
+func(arr){
+    const res = [];
+    for(i=0;..){
+    if(arr.indexof(arr[i])){
+        res.push(arr[i])
+    }
+
+    }
+    return res;
+}
+```
+- includes 同理 
+- sort() + 相邻对比
+```js
+func(arr){
+    arr = arr.sort();
+    const res = [];
+    for(i=0;..){
+        if(arr[i]!==arr[i-1]){
+            res.push(arr[i]);
+        }
+    }
+    return res;
+
+}
+```
+- filter
+``` js
+return arr.filter((item,index,arr)=>{
+return arr.indexof(item,0)===index;
+})
+```
+
 
 ## 手撕深拷贝
 - JSON法  
@@ -101,6 +152,17 @@ reduce() reduceRight() 递归自动叠加
         return source;
     }
 ```
+## 执行环境和作用域
+- 每个函数都有自己的执行环境。执行流进入函数->函数环境推入栈->栈将其弹出->控制权返回
+- 代码在一个环境重执行会创建变量对象的`作用域链`
+- 作用域链保证执行环境有权访问所有变量和函数的有序访问
+- 全局变量始终是作用域链中**最后**一个对象
+- 内部环境能通过作用域链访问所有外部环境，反之不行。(任何环境可以**向下** 搜索作用域而进入另一个执行环境)
+- JS**不存在**块级作用域
+- Q:怎么延长作用域链?
+A：在作用域前端临时增加一个变量对象
+- Q:怎么让页面获得更好的性能？
+A：解除引用——将不再用到的数据（大部分全局变量和对象的属性）设置为`null`
 
 ## 闭包
 Q:闭包的理解，以及你在什么场景下会用到闭包？  
@@ -337,17 +399,6 @@ var O = R.prototype; // O为Person.prototype
 }                        //指的就是Person.prototype，所以也返回true
 ```
 
-## 执行环境和作用域
-- 每个函数都有自己的执行环境。执行流进入函数->函数环境推入栈->栈将其弹出->控制权返回
-- 代码在一个环境重执行会创建变量对象的`作用域链`
-- 作用域链保证执行环境有权访问所有变量和函数的有序访问
-- 全局变量始终是作用域链中**最后**一个对象
-- 内部环境能通过作用域链访问所有外部环境，反之不行。(任何环境可以**向下** 搜索作用域而进入另一个执行环境)
-- JS**不存在**块级作用域
-- Q:怎么延长作用域链?
-A：在作用域前端临时增加一个变量对象
-- Q:怎么让页面获得更好的性能？
-A：解除引用——将不再用到的数据（大部分全局变量和对象的属性）设置为`null`
 
 
 ## 两个对象是否相等

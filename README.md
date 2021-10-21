@@ -1,16 +1,16 @@
 <p align="center">
 
- :cherry_blossom: 这是一个集成vuepress和spring作为前后端的Blog
+ :cherry_blossom: Just a blog for information review
  
 </p>
 
-tag: `vue` `vuepress` `spring` `算法` `redis` `linux`
+tag: `vue` `js` `spring` `algorithm` `redis` `linux`
 
-- [Demo效果](http://yiki.site/vuepress)
+- [view here](http://yiki.site/vuepress)
 
 
 ``` bash
-yarn
+yarn i
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 yarn build

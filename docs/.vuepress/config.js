@@ -39,67 +39,40 @@ module.exports = {
         },
         nav: [
           {
-
-            text: 'Blog',
+            text: 'Algorithms',
             items: [
               {
-                text: 'Algorithms',
-                items: [{
-                  text: 'Algorithm',
-                  link: '/Algorithms/'
-                },
-                {
-                  text: 'LeetCode',
-                  link: '/Leetcode/'
-                }
-                ]
+                text: 'Algorithm',
+                link: '/Algorithms/'
               },
               {
-                text: 'front-end',
-                items: [
-                  { text: 'react', link: '/React/' },
-                  { text: 'angular2', link: '/angular2/' },
-                  { text: 'JavaScript', link: '/JavaScript/' },
-                ]
-              },
-              {
-                text: 'rear-end',
-                items: [
-                  { text: 'SpringBoot', link: '/SpringBoot/' },
-                  { text: 'Redis', link: '/Redis/' },
-                  { text: 'Mysql', link: '/Mysql/' }
-                ]
-              },
-              {
-                text: 'Linux',
-                items: [
-                  { text: 'Nginx', link: '/Nginx/' },
-                ]
-
-              },
+                text: 'LeetCode',
+                link: '/Leetcode/'
+              }
             ]
           },
-          
           {
-            text: 'Q&A',
-            link: '/Interviews/'
+            text: 'Front-End',
+            items: [
+              { text: 'vue2.0', link: '/Vue/' },
+              { text: 'vue3.0', link: '/Vue3/' },
+              { text: 'react', link: '/React/' },
+              { text: 'JavaScript', link: '/JavaScript/' },
+              { text: 'Webpack',link: '/Webpack/'},
+            ]
           },
           {
-            text: 'Vue',
-            link: '/Vue/'
+            text: 'Rear-End',
+            items: [
+              { text: 'SpringBoot', link: '/SpringBoot/' },
+              { text: 'Redis', link: '/Redis/' },
+              { text: 'Mysql', link: '/Mysql/' },
+              { text: 'Nginx', link: '/Nginx/' },
+            ]
           },
-          {
-            text:'Webpack',
-            link: '/Webpack/'
-          },
-          {
-            text: 'Project Demo',
-            link: '/PJwrapper/GuiderLink/'
-          },
-          {
-            text: 'Diary',
-            link: '/Diary/'
-          },
+          {text: 'Q&A',link: '/Interviews/'},
+          {text: 'BLOG',link: '/Diary/'},
+          {text: 'Project Demo',link: '/PJwrapper/GuiderLink/'},
         ],
         sidebar: {
           '/Algorithms/': [
@@ -263,6 +236,15 @@ module.exports = {
               ]
             }
           ],
+          '/Vue3/':[
+            {
+              collapsable:false,
+              children:[
+                '',
+                '01'
+              ]
+            }
+          ]
 
         }
       }

@@ -68,6 +68,7 @@ module.exports = {
               { text: 'Redis', link: '/Redis/' },
               { text: 'Mysql', link: '/Mysql/' },
               { text: 'Nginx', link: '/Nginx/' },
+              { text: 'Git', link: '/Git/' },
             ]
           },
           {text: 'CSAPP',link: '/csapp/'},
@@ -116,6 +117,16 @@ module.exports = {
               children: [
                 '',
                 '01Orders',
+              ]
+            }
+          ],
+          '/Git/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+                '02',
               ]
             }
           ],

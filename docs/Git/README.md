@@ -8,7 +8,7 @@ There are a lot of posts out there about learning the basic commands of git, thi
 
 ![git](./imgs/00.png)
 - `工作区（WORKING DIRECTORY）`: 直接编辑文件的地方，肉眼可见直接操作；
-- `暂存区（STAGIN AREA）`：数据（快照）暂时存放的地方；
+- `暂存区（STAGING AREA）`：数据（快照）暂时存放的地方；
 - `版本库（GIT DIRECTORT(RESPOSITORY)）`：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程git仓库了。
 - `git add`就是将工作区的修改缓存在`暂存区`
 - `git commit`就是将暂存区的数据快照提交到`本地库`
@@ -22,6 +22,7 @@ There are a lot of posts out there about learning the basic commands of git, thi
 - [daolf-git-series](https://www.daolf.com/tags/git/)
 - [git-with-d3](http://onlywei.github.io/explain-git-with-d3/#commit%E3%80%82)
 - [lzane-git](https://www.lzane.com/tech/git-internal/)
+- [git-Internals](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain)
 - [git-doc](https://git-scm.com/doc)
 - [图解git](https://tonybai.com/2020/04/07/illustrated-tale-of-git-internal-key-concepts/)
 - [git基本介绍](https://www.cnblogs.com/kisun168/p/11408346.html)

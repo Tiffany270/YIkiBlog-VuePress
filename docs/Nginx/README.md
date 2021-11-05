@@ -130,5 +130,10 @@ log存放路径 /log/
 
 ```
 
+## 其他
+``` bash
+ /usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
+```
+
 
 

@@ -1,7 +1,7 @@
 
 # 关于我的碎碎念 :taxi:
 
-### base
+### The Basics
 
 - To ：`Welcome to my blog, hope u can enjoy here`
 - Type :loop:： `Web Front-End Engineer`

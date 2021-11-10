@@ -10,7 +10,7 @@
     - `普通函数`的`this`指向调用对象，没有的或者全局就指向`window`（严格模式是undefined)
 
 ## 如何实现一个promise  
-- Base
+- The Basics
 ``` js
 let promise = new Promise(function(resolve,reject){
     // resolve和reject只会执行一个

@@ -57,8 +57,9 @@ module.exports = {
               { text: 'vue2.0', link: '/Vue/' },
               { text: 'vue3.0', link: '/Vue3/' },
               { text: 'react', link: '/React/' },
-              { text: 'JavaScript', link: '/JavaScript/' },
               { text: 'Webpack',link: '/Webpack/'},
+              { text: 'JavaScript', link: '/JavaScript/' },
+              { text: 'TypeScript', link: '/TypeScript/' },
             ]
           },
           {
@@ -250,6 +251,15 @@ module.exports = {
             }
           ],
           '/Vue3/':[
+            {
+              collapsable:false,
+              children:[
+                '',
+                '01'
+              ]
+            }
+          ],
+          '/TypeScript/':[
             {
               collapsable:false,
               children:[

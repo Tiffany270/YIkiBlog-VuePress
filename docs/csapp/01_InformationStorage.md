@@ -8,7 +8,7 @@
 - 区别整型和浮点数的表达机制
 - 简单理解溢出
 
-## Base
+## The Basics
 - x^2 ≥0 but what happen about this in gdb(32)
   - Integer NO
   - Float YES

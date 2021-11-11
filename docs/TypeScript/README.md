@@ -1,7 +1,7 @@
 # TypeScript
 :pig:
 ::: tip 
-TypeScript is a language that is a superset of JavaScript
+TypeScript is a language that as a superset of JavaScript
 :::
 `boolean` `bigint`  `null`  `number`  `string`  `symbol`  `undefined`  
 `unknown` ensure someone using this type declares what the type is  

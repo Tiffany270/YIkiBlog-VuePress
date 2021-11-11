@@ -1,13 +1,29 @@
 ﻿<template>
   <div>
     <div class="Flex-home-wrapper">
-      <div class="flex-item-home">yiki</div>
+      <div class="flex-item-home lastUpdated">
+        <div class="latest-wrapper">
+          <div class="latest">LATEST :</div>
+          <ul>
+            <li v-for="item in lastTenPages" v-bind:key="item.key">
+              <a :href="item.path">{{ item.title }}</a>
+              <span class="last-text">{{
+                new Date(item.lastUpdated).toLocaleString($lang)
+              }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="flex-item-home">
         <div class="main-about-wrapper">
           <div class="flip-container" @click="flipItem(0)">
-            <div class="flipper" :class="{ 'flip-ani' :flipBlocks[0].isFlip }">
+            <div class="flipper" :class="{ 'flip-ani': flipBlocks[0].isFlip }">
               <div class="front">
-                <img v-if="data.heroImage" :src="$withBase('/me.png')" alt="hero" />
+                <img
+                  v-if="data.heroImage"
+                  :src="$withBase('/me.png')"
+                  alt="hero"
+                />
               </div>
               <div class="back ani-1">
                 <div class="container-clud">
@@ -22,14 +38,18 @@
                     <div class="part three"></div>
                   </div>
                   <p class="data">
-                    <span v-for="(item,index) in rainData" v-bind:key="index">{{item}}</span>
+                    <span
+                      v-for="(item, index) in rainData"
+                      v-bind:key="index"
+                      >{{ item }}</span
+                    >
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div class="flip-container" @click="flipItem(1)">
-            <div class="flipper" :class="{ 'flip-ani' :flipBlocks[1].isFlip }">
+            <div class="flipper" :class="{ 'flip-ani': flipBlocks[1].isFlip }">
               <div class="front ki">KI</div>
               <div class="back back-long">
                 <div class="about">
@@ -50,7 +70,7 @@
             </div>
           </div>
           <div class="flip-container" @click="flipItem(2)">
-            <div class="flipper" :class="{ 'flip-ani' :flipBlocks[2].isFlip }">
+            <div class="flipper" :class="{ 'flip-ani': flipBlocks[2].isFlip }">
               <div class="front yi">YI</div>
               <div class="back ani-4">
                 <Rooling></Rooling>
@@ -58,7 +78,7 @@
             </div>
           </div>
           <div class="flip-container" @click="flipItem(3)">
-            <div class="flipper" :class="{ 'flip-ani' :flipBlocks[3].isFlip }">
+            <div class="flipper" :class="{ 'flip-ani': flipBlocks[3].isFlip }">
               <div class="front ani-3">
                 <pre>
 ┏┓
@@ -70,26 +90,47 @@
  srping vue react angular
 ╱╱┏┳┓╭╮┏┳┓ ╲╲
 ▔▏┗┻┛┃┃┗┻┛▕▔
-              </pre>
+              </pre
+                >
               </div>
               <div class="back">
-                <div class="text">" 这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活. "</div>
+                <div class="text">
+                  "
+                  这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活.
+                  "
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="main-info-icon">
-          <a id="github" title="github" target="_blank" href="https://github.com/Tiffany270"></a>
-          <a id="csdn" title="csdn" target="_blank" href="http://blog.csdn.net/qq_38277033"></a>
-          <a id="ins" title="INS"  target="_blank" href="https://instagram.com/yiki270"></a>
-
+          <a
+            id="github"
+            title="github"
+            target="_blank"
+            href="https://github.com/Tiffany270"
+          ></a>
+          <a
+            id="csdn"
+            title="csdn"
+            target="_blank"
+            href="http://blog.csdn.net/qq_38277033"
+          ></a>
+          <a
+            id="ins"
+            title="INS"
+            target="_blank"
+            href="https://instagram.com/yiki270"
+          ></a>
         </div>
       </div>
       <div class="flex-item-home">yiki</div>
     </div>
 
     <div class="home">
-      <div class="footer" v-if="data.footer">MIT Licensed | Copyright © 2018-present Yiki Lee</div>
+      <div class="footer" v-if="data.footer">
+        MIT Licensed | Copyright © 2018-present Yiki Lee
+      </div>
     </div>
   </div>
 </template>
@@ -120,7 +161,8 @@ export default {
           isFlip: false
         }
       ],
-      rainData: ['0', '1', '0', '1', '0', '1', '0']
+      rainData: ['0', '1', '0', '1', '0', '1', '0'],
+      lastTenPages: []
     }
   },
   methods: {
@@ -152,20 +194,17 @@ export default {
   },
   components: { NavLink, Rooling },
   mounted () {
-    // this.$http
-    //   .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-    //   .then(response => console.log(response));
-    // const p = new Promise((resolve, reject) => {
-    //   // resolve('resolve')
-    //   reject('reject')
+    // lastUpdated: 1605062924000
+    // path: "/Algorithms/JZoffer.html"
+    // title: "剑指offer"
+    const sources = JSON.parse(JSON.stringify(this.$site.pages))
 
-    // });
-
-    // p.then((r) => {
-    //   console.log(r)// 打印出 resolve
-    // }, (j) => {
-    //   console.log(j) // 打印出 reject
-    // })
+    this.lastTenPages = sources.sort(function (a, b) {
+      return b.lastUpdated - a.lastUpdated
+    })
+    // return new Date(this.$page.lastUpdated)
+    // 最新更新
+    this.lastTenPages.length = 10
   },
 
   computed: {
@@ -282,6 +321,10 @@ export default {
 }
 
 @media (max-width: $MQMobileNarrow) {
+  .Flex-home-wrapper .flex-item-home .latest {
+    margin-top: 25%;
+  }
+
   .home {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -322,11 +365,35 @@ export default {
   display: flex;
   flex-wrap: wrap;
   min-height: 600px;
+  position: relative;
+  top: 75px;
 
   .flex-item-home {
-    height: 450px;
+    flex: 1;
+    text-align: center;
+    padding: 1%;
+  }
+
+  .latest {
+    margin-top: 20px;
+  }
+
+  .latest-wrapper {
+    width: 50%;
     position: relative;
     margin: auto;
+    left: 0;
+    right: 0;
+  }
+
+  .lastUpdated {
+    text-align: left;
+  }
+
+  .last-text {
+    font-size: 12px;
+    margin-left: 10px;
+    color: gray;
   }
 }
 

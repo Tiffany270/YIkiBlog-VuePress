@@ -264,7 +264,8 @@ module.exports = {
               collapsable:false,
               children:[
                 '',
-                '01'
+                '01',
+                '02'
               ]
             }
           ],

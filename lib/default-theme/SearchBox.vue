@@ -28,7 +28,7 @@
         <a :href="s.path" @click.prevent>
           <span class="page-title">
             {{ s.title || s.path }}</span>
-          <span v-if="s.header" 
+          <span v-if="s.header"
           class="header">&gt; {{ s.header.title }}</span>
         </a>
       </li>

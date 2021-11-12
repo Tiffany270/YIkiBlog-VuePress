@@ -6,7 +6,7 @@
           <div class="latest">LATEST :</div>
           <ul>
             <li v-for="item in lastTenPages" v-bind:key="item.key">
-              <a :href="item.path">{{ item.title }}</a>
+              <a :href="`/vuepress`+ item.path">{{  item.title }}</a>
               <span class="last-text">{{
                 new Date(item.lastUpdated).toLocaleString($lang)
               }}</span>
@@ -138,6 +138,7 @@
 <script>
 import NavLink from './NavLink.vue'
 import Rooling from './../app/components/Rooling'
+import { ensureExt } from './util'
 
 export default {
   data () {
@@ -216,6 +217,18 @@ export default {
         link: this.data.actionLink,
         text: this.data.actionText
       }
+    },
+    link (item) {
+      return ensureExt(item.path)
+    },
+
+    exact () {
+      if (this.$site.locales) {
+        return Object.keys(this.$site.locales).some(
+          (rootLink) => rootLink === this.link
+        )
+      }
+      return this.link === '/'
     }
   }
 }

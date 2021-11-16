@@ -67,3 +67,37 @@ TypeScript has several `type-checking strictness flags` that can be turned on or
 
 ## Support
 - [typescriptlang-docs](https://www.typescriptlang.org/docs/)
+
+## Some confusion
+- what's mean `(...args: never[]) => ...` 
+  - first, u can treat it as `(...args: never[]) => any` would mean `a function that accept no parameters`
+  ``` ts
+  type NeverArgs = (...args: never[]) => number;
+  declare const fnNeverArgs: NeverArgs;
+  fnNeverArgs("test") // TS ERROR
+  fnNeverArgs() // OK
+  ```
+  - second, back to `extends` , here we should not forget that extends `doesn't` means `equals`. 
+  - so now we can `accept` function that both
+    - has `multiple` arguments, include `nerver`
+    - no argument
+  ``` ts
+  type Check<T> = T extends (...args:never[]) => number ? 'OK' : 'NOT OK';
+  type Test1 = Check<() => number>; //type Test1 = OK
+  type Test2 = Check<(x: string) => number>; //type Test2 = OK
+  type Test3 = Check<(x: never) => number>; //type Test3 = OK
+  ```
+  - contrast codes
+  ``` ts
+  // remove 
+  type Check<T> = T extends () => number ? 'OK' : 'NOT OK';
+  type Test1 = Check<() => number>; // type Test1 = OK
+  type Test2 = Check<(x: string) => number>; // type Test2 = NOT OK
+  type Test3 = Check<(x: never) => number>; // type Test3 = NOT OK
+  
+  // with "any" type :
+  type Check<T> = T extends (...args: any[]) => number ? 'OK' : 'NOT OK';
+  type Test1 = Check<() => number>; // type Test1 = OK
+  type Test2 = Check<(x: string) => number>; // type Test2 = OK
+  type Test3 = Check<(x: never) => number>; // type Test3 = NOT OK
+  ```

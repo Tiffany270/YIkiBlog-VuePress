@@ -1,45 +1,29 @@
 <template>
-  <div class="theme-container" id="guiderLink">
-    <div class="content">
-      <div class="width-wrapper">
-        <div class="popular-grid">
-          <div class="single-pen">
-            <span>FlexBoxDemo</span>
-            <div class="iframe-wrap">
-              <iframe src="/vuepress/FlexBox/index.html"></iframe>
+  <div class='theme-container' id='guiderLink'>
+    <div class='content'>
+      <div class='width-wrapper'>
+        <div class='popular-grid'>
+
+         <div
+         v-for="item in demoArrays"
+        :key="item.title"
+         class='single-pen'>
+            <span>{{item.title}}</span>
+            <div class='iframe-wrap'>
+              <iframe :src='item.frame_path'
+              v-if="item.type==='link'"
+           scrolling="no"
+              ></iframe>
+              <div v-else-if="item.type==='component'">
+                  <component :is="item.component_"></component>
+                </div>
+                <div v-else-if="item.type==='template'">
+                  <div v-html="item.template"></div>
+                </div>
+              <div v-else>{{item.frame_path}}</div>
             </div>
-            <div class="meta">
-              <a href="/vuepress/FlexBox/index.html" target="blank">CLICK IT</a>
-            </div>
-          </div>
-          <div class="single-pen">
-            <span>Vuex&Life Hooks</span>
-            <div class="iframe-wrap">VUEX</div>
-            <div class="meta">
-              <a href="/vuepress/PJwrapper/VuexDemo/">CLICK IT</a>
-            </div>
-          </div>
-          <div class="single-pen">
-            <span>&nbsp;</span>
-            <div class="iframe-wrap">
-              <Rooling></Rooling>
-            </div>
-            <div class="meta">Rooling~</div>
-          </div>
-          <div class="single-pen">
-            <span>ICON-FONT</span>
-            <div class="iframe-wrap">
-              unicode:
-              <i class="iconfont">&#xe614;</i>
-              class :
-              <span class="icon iconfont icon-shezhi"></span>
-              svg:
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-shezhi" />
-              </svg>
-            </div>
-            <div class="meta">
-              <a href="/vuepress/PJwrapper/iconfont/">CLICK IT</a>
+            <div class='meta'>
+              <a :href='item.href_path' target='blank'>CLICK IT</a>
             </div>
           </div>
         </div>
@@ -49,53 +33,72 @@
 </template>
 
 <script>
-import Rooling from "./../components/Rooling";
+import Rooling from '@app/components/Rooling'
 
 export default {
-  name: "GuiderLink",
+  name: 'GuiderLink',
 
   data: function () {
     return {
-      errors: [],
-      name: null,
-      age: null,
-    };
+      demoArrays: [
+        {
+          title: 'FlexBoxDemo',
+          frame_path: '/vuepress/FlexBox/index.html',
+          href_path: '/vuepress/FlexBox/index.html',
+          component_: ``,
+          type: 'link'
+        }, {
+          title: 'Vuex & Life Hooks',
+          frame_path: 'Vuex',
+          href_path: '/vuepress/PJwrapper/VuexDemo/',
+          component_: ``,
+          type: 'html'
+
+        }, {
+          title: `Rooling`,
+          frame_path: '/vuepress/FlexBox/index.html',
+          href_path: '#',
+          component_: `Rooling`,
+          type: 'component'
+        }, {
+          title: 'ICON-FONT',
+          frame_path: '',
+          href_path: '/vuepress/PJwrapper/iconfont/',
+          template: `
+                  unicode:
+                  <i class='iconfont'>&#xe614;</i>
+                  class :
+                  <span class='icon iconfont icon-shezhi'></span>
+                  svg:
+                  <svg class='icon' aria-hidden='true'>
+                    <use xlink:href='#icon-shezhi' />
+                  </svg>`,
+          type: 'template'
+        },
+        {
+          title: `hree-svg-3Dmap`,
+          frame_path: 'http://www.yiki.site/three-svg-3Dmap/index.html',
+          href_path: 'http://www.yiki.site/three-svg-3Dmap/index.html',
+          type: 'link'
+        },
+        {
+          title: `CSS`,
+          frame_path: 'http://www.yiki.site/CatWalking/',
+          href_path: 'http://www.yiki.site/CatWalking/',
+          type: 'link'
+        }
+
+      ]
+    }
   },
-  mounted() {
-  
-
-
-
-
-    // this.$http
-    //   .get(this.$servePath + 'security/name1')
-    //   .then(response => console.log(response))
-    import("../../asset/iconfont/iconfont.js").then((icon) => {});
-
+  mounted () {
+    import('@asset/iconfont/iconfont.js').then((icon) => {})
   },
-  components: { Rooling },
-
-  methods: {
-    checkForm: function (e) {
-      if (this.name && this.age) {
-        return true;
-      }
-      this.errors = [];
-
-      if (!this.name) {
-        this.errors.push("Name required.");
-      }
-      if (!this.age) {
-        this.errors.push("Age required.");
-      }
-
-      e.preventDefault();
-    },
-  },
-};
+  components: { Rooling }
+}
 </script>
 
-<style lang="stylus">
+<style lang='stylus'>
 @import '../../asset/iconfont/iconfont.css';
 
 #guiderLink {
@@ -134,6 +137,10 @@ export default {
   }
 
   iframe {
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
     html {
       display: none;
     }

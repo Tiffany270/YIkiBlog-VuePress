@@ -37,7 +37,6 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import SWUpdatePopup from './SWUpdatePopup.vue'
-// import text from '../component/ProjectWrapper'
 
 import { resolveSidebarItems } from './util'
 

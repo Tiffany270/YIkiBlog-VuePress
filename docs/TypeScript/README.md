@@ -68,7 +68,7 @@ TypeScript has several `type-checking strictness flags` that can be turned on or
 ## Support
 - [typescriptlang-docs](https://www.typescriptlang.org/docs/)
 
-## Some confusion
+## Some confusions
 - what's mean `(...args: never[]) => ...` 
   - first, u can treat it as `(...args: never[]) => any` would mean `a function that accept no parameters`
   ``` ts
@@ -77,7 +77,7 @@ TypeScript has several `type-checking strictness flags` that can be turned on or
   fnNeverArgs("test") // TS ERROR
   fnNeverArgs() // OK
   ```
-  - second, back to `extends` , here we should not forget that extends `doesn't` means `equals`. 
+  - second, back to `extends` , here we should not forget that extends `doesn't` mean `equals`. 
   - so now we can `accept` function that both
     - has `multiple` arguments, include `nerver`
     - no argument

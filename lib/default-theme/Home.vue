@@ -124,7 +124,9 @@
           ></a>
         </div>
       </div>
-      <div class="flex-item-home">yiki</div>
+      <div class="flex-item-home">
+        <Tags></Tags>
+      </div>
     </div>
 
     <div class="home">
@@ -137,6 +139,7 @@
 
 <script>
 import NavLink from './NavLink.vue'
+import Tags from './Tags.vue'
 import Rooling from './../app/components/Rooling'
 import { ensureExt } from './util'
 
@@ -193,7 +196,7 @@ export default {
       }, 300)
     }
   },
-  components: { NavLink, Rooling },
+  components: { NavLink, Rooling, Tags },
   mounted () {
     // lastUpdated: 1605062924000
     // path: "/Algorithms/JZoffer.html"

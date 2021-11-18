@@ -101,3 +101,7 @@ TypeScript has several `type-checking strictness flags` that can be turned on or
   type Test2 = Check<(x: string) => number>; // type Test2 = OK
   type Test3 = Check<(x: never) => number>; // type Test3 = NOT OK
   ```
+- `static` method/property and `non-static` 
+  - at the `memory` level, a portion of the memory will be created for the `static` fields, which will be `shared` across `all` objects in the class
+  - if `non-static`,  when a call have done, its memory would totally end until u new one again
+  - if `static`, it would still exist there until the program finished

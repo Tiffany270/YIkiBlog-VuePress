@@ -418,5 +418,36 @@ var O = R.prototype; // O为Person.prototype
 - `JSON.stringify(obj)`转换字符串比较，但是key可能混乱
 - 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
 
+# about function
+- chinese key words: `状态提升` `函数声明` `函数表达式`
+- [参考](https://www.zhihu.com/question/47629500)
+what's different below :
+``` js
+function fn(){ ... }// 1 Function Declaration 
 
+var fn = function(){ ... };// 2 "Anonymous" function Expression
+```
+- `Function Declaration`
+  - A function declaration is a `declaration`; it's not a `statement` or `expression`. As such, you don't follow it with a ; (although doing so is harmless)
+  - A function declaration is processed when execution `enters` the context in which it appears, before any `step-by-step` code is executed
+  - it's tricky to know what to do `when` they're in a control structure
+``` js
+x(); // Works even though it's above the declaration
+function x() {
+    console.log('x');
+}
+```
+- `"Anonymous" function Expression`
+  - the function is `assigned` a `name` if possible by inferring it from context
+``` js
+var y = function () {
+    console.log('y');
+};
+```
+- `Named function Expression`
+``` js
+var z = function w() {
+    console.log('zw')
+};
+```
 

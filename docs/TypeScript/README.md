@@ -45,17 +45,17 @@ const user: User = new UserAccount("Murphy", 1);
 - A Static Type `Checker` : TypeScript checks a program for errors before execution
 ## with JavaScipt
 - TypeScript `doesn’t` provide any `additional` runtime libraries. Your programs will use the `same` standard library (or external libraries) as JavaScript programs
-- If you move code from JavaScript to TypeScript, it is `guaranteed` to run the same way, even if TypeScript thinks that the code has type errors.
+- If you move code from JavaScript to TypeScript, it is `guaranteed` to run the same way, even if TypeScript thinks that the code has type errors
 ## with Java/C#
 - Don’t limit yourself to TypeScript-specific resources!
-  - not every domain needs to be represented in `class` Union.
+  - not every domain needs to be represented in `class` union
   - `functions` can live anywhere, and `data` can be passed around freely without being inside a pre-defined `class` or `struct`
   - `singletons` and `static classes` are `unnecessary` in TypeScript.
 - TypeScript’s understanding of a `type` is actually quite `different` from C# or Java’s
   - `types` are related via their `declarations`, not their `structures`.
   - it’s better to think of a` type as a set of values` that share something in common
   - objects are `not` of a single exact type
-- `typeof (new Car())` will be `"object"`, not Car or "Car".
+- `typeof (new Car())` will be `"object"`, not Car or "Car"
 
 ## wiht Functional 
 - view [Haskell in TS](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html)

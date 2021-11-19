@@ -24,7 +24,7 @@
       </p>
     </div>
 
-    <slot name="bottom" />
+    <!-- <slot name="bottom" /> -->
   </div>
 </template>
 
@@ -39,11 +39,11 @@ export default {
     }
   },
   mounted () {
-    
+
   },
   watch: {
     currentPageTitle: function () {
-    console.log(this.$page.title)
+      console.log(this.$page.title)
     }
   },
 

@@ -52,12 +52,18 @@ module.exports = {
             ]
           },
           {
-            text: 'Front-End',
+            text: 'Front-End-Framework',
             items: [
               { text: 'vue2.0', link: '/Vue/' },
               { text: 'vue3.0', link: '/Vue3/' },
               { text: 'react', link: '/React/' },
               { text: 'Webpack',link: '/Webpack/'},
+            ]
+          },
+          {
+            text: 'Front-End-language',
+            items: [
+              { text: 'ECMAScript',link: '/ECMAScript/'},
               { text: 'JavaScript', link: '/JavaScript/' },
               { text: 'TypeScript', link: '/TypeScript/' },
             ]
@@ -206,6 +212,16 @@ module.exports = {
                 '',
                 'TheDefinitiveGuide',
                 'ProfessionalForJS',
+              ]
+            }
+          ],
+          '/ECMAScript/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+                '02'
               ]
             }
           ],

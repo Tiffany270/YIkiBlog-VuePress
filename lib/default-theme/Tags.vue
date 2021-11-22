@@ -75,6 +75,10 @@ export default {
         }, {
           title: 'Vue3',
           path: 'Vue3/'
+        },
+        {
+          title: 'ECMAScript',
+          path: 'ECMAScript/'
         }
       ]
     }

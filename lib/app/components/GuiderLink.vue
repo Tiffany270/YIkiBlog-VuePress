@@ -141,6 +141,7 @@ export default {
     left:0;
     width:100%;
     height:100%;
+    border: 0;
     html {
       display: none;
     }

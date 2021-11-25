@@ -27,13 +27,23 @@ module.exports = {
     docsDir: 'docs',
     locales: {
       '/': {
+        label: 'English',
+        selectText: 'Languages',
+        editLinkText: 'Edit this page on GitHub',
+        lastUpdated: 'Last Updated',
+        serviceWorker: {
+          updatePopup: {
+            message: "New content is available.",
+            buttonText: "Refresh"
+          }
+        },
         nav: [
           {
             text: 'Front-End-Framework',
             items: [
               { text: 'vue2.0', link: '/Vue/' },
               { text: 'vue3.0', link: '/Vue3/' },
-              { text: 'Vue-extra-library', link: '/Vue-extra-library/' },
+              { text: 'vue-extra-library', link: '/Vue-extra-library/' },
               { text: 'react', link: '/React/' },
               { text: 'Webpack', link: '/Webpack/' },
             ]

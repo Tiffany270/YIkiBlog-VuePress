@@ -3,6 +3,10 @@
 Standing on shoulders of Giants 
 :::
 
+## Object.create(null)和{}
+- 前者没有原型链，后者有
+- `Object.create(null).__proto__`是 `undefined` 
+- `({}).__proto__ `是 `Object.prototype`
 
 ## Array
 ```

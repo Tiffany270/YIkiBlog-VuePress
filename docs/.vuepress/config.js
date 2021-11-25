@@ -27,43 +27,21 @@ module.exports = {
     docsDir: 'docs',
     locales: {
       '/': {
-        label: 'English',
-        selectText: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
-        lastUpdated: 'Last Updated',
-        serviceWorker: {
-          updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
-          }
-        },
         nav: [
-          {
-            text: 'Algorithms',
-            items: [
-              {
-                text: 'Algorithm',
-                link: '/Algorithms/'
-              },
-              {
-                text: 'LeetCode',
-                link: '/Leetcode/'
-              }
-            ]
-          },
           {
             text: 'Front-End-Framework',
             items: [
               { text: 'vue2.0', link: '/Vue/' },
               { text: 'vue3.0', link: '/Vue3/' },
+              { text: 'Vue-extra-library', link: '/Vue-extra-library/' },
               { text: 'react', link: '/React/' },
-              { text: 'Webpack',link: '/Webpack/'},
+              { text: 'Webpack', link: '/Webpack/' },
             ]
           },
           {
-            text: 'Front-End-language',
+            text: 'Front-End-lang',
             items: [
-              { text: 'ECMAScript',link: '/ECMAScript/'},
+              { text: 'ECMAScript', link: '/ECMAScript/' },
               { text: 'JavaScript', link: '/JavaScript/' },
               { text: 'TypeScript', link: '/TypeScript/' },
             ]
@@ -78,10 +56,23 @@ module.exports = {
               { text: 'Git', link: '/Git/' },
             ]
           },
-          {text: 'CSAPP',link: '/csapp/'},
-          {text: 'Q&A',link: '/Interviews/'},
-          {text: 'BLOG',link: '/Diary/'},
-          {text: 'Project Demo',link: '/PJwrapper/GuiderLink/'},
+          {
+            text: 'CS',
+            items: [
+              {
+                text: 'Algorithm',
+                link: '/Algorithms/'
+              },
+              {
+                text: 'LeetCode',
+                link: '/Leetcode/'
+              },
+              { text: 'CSAPP', link: '/csapp/' },
+            ]
+          },
+          { text: 'Q&A', link: '/Interviews/' },
+          { text: 'BLOG', link: '/Diary/' },
+          { text: 'Project Demo', link: '/PJwrapper/GuiderLink/' },
         ],
         sidebar: {
           '/Algorithms/': [
@@ -246,13 +237,22 @@ module.exports = {
               ]
             }
           ],
-          '/Vue/': [
+          '/Vue-extra-library/': [
             {
               collapsable: false,
               children: [
                 '',
                 '01',
-                '12',
+                '02',
+                '12'
+              ]
+            }
+          ],
+          '/Vue/': [
+            {
+              collapsable: false,
+              children: [
+                '',
                 '02',
                 '02_1',
                 '02_2',
@@ -268,20 +268,20 @@ module.exports = {
               ]
             }
           ],
-          '/Vue3/':[
+          '/Vue3/': [
             {
-              collapsable:false,
-              children:[
+              collapsable: false,
+              children: [
                 '',
                 '01',
                 '02'
               ]
             }
           ],
-          '/TypeScript/':[
+          '/TypeScript/': [
             {
-              collapsable:false,
-              children:[
+              collapsable: false,
+              children: [
                 '',
                 '01',
                 '02',
@@ -292,10 +292,10 @@ module.exports = {
               ]
             }
           ],
-          '/csapp/':[
+          '/csapp/': [
             {
-              collapsable:false,
-              children:[
+              collapsable: false,
+              children: [
                 '',
                 '01_InformationStorage'
               ]

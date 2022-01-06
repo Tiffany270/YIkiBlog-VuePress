@@ -10,6 +10,7 @@
 - GirlsGeneration： `GG forever!`
 - Nation：`China`
 - Quote：`这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活`
+- `There is only one heroism in the world: to see the world as it is and to love it`
 - anyQ?:
   - [INS](https://instagram.com/yiki270)
   - [GITHUB](https://github.com/Tiffany270)

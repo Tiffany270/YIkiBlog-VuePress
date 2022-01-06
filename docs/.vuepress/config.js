@@ -59,6 +59,7 @@ module.exports = {
           {
             text: 'Rear-End',
             items: [
+              { text: 'RegExp', link: '/RegExp/' },
               { text: 'SpringBoot', link: '/SpringBoot/' },
               { text: 'Redis', link: '/Redis/' },
               { text: 'Mysql', link: '/Mysql/' },
@@ -311,8 +312,17 @@ module.exports = {
                 '01_InformationStorage'
               ]
             }
+          ],
+          '/RegExp/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01',
+                '02'
+              ]
+            }
           ]
-
         }
       }
     }

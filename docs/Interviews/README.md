@@ -421,7 +421,7 @@ var O = R.prototype; // O为Person.prototype
 - 递归`Object.keys(obj)`&&`getOwnPropertyNames()`
 
 ## about function
-- chinese key words: `状态提升` `函数声明` `函数表达式`
+- chinese keywords: `状态提升` `函数声明` `函数表达式`
 - [参考](https://www.zhihu.com/question/47629500)  
 what's different below :
 ``` js

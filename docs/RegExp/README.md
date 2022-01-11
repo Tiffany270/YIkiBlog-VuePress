@@ -7,6 +7,7 @@
 - [regex-test](https://regex101.com)
 - [learn-regex](https://github.com/zeeshanu/learn-regex)
 - [regexlearn](https://regexlearn.com/learn)
+- [es6-regexp](https://www.tutorialspoint.com/es6/es6_regexp.htm)
 ## The Basic
 - `left` to `right`
 - `case-sensitive`

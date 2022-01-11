@@ -33,7 +33,7 @@ Here in the `expression`, `2` and `3` are `operands` and the symbol `+` (plus) i
 - Spread `...` converts an array into individual array elements
 
 ## about loop
-- `for...in` loop through an `object`'s properties
+- `for...in` loop through an `object`'s `properties`
 ``` js
 var obj = {a:1, b:2, c:3};
 
@@ -41,7 +41,7 @@ for (var prop in obj) {
    console.log(obj[prop]); // 1 2 3
 }
 ```
-- `for…of` `iterate` `iterables` instead of object literals
+- `for…of` iterate `iterables` instead of object literals
 ``` js
 for (let val of[12 , 13 , 123]){
    console.log(val) // 12 13 123

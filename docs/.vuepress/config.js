@@ -284,6 +284,7 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
+                'learn04',
                 '01',
                 '02',
                 '03'

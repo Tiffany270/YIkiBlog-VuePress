@@ -1,5 +1,5 @@
 
-# 关于我的碎碎念 :taxi:
+# ALL About :taxi:
 
 ### The Basics
 
@@ -12,12 +12,13 @@
 - Quote：`这个世界上只有一种英雄主义，就是看清生活的真相之后，依然热爱生活`
 - `There is only one heroism in the world: to see the world as it is and to love it`
 - anyQ?:
+  - [Lang8](https://lang-8.com/1589676/journals)
   - [INS](https://instagram.com/yiki270)
   - [GITHUB](https://github.com/Tiffany270)
   - [CSDN](https://blog.csdn.net/qq_38277033)
-  - [Lang8](https://lang-8.com/1589676/journals)
   - Email：yiki270@foxmail.com
 - NOTE：`一是技术；二是自信。技术是核心，自信是你的薪资放大器`
+- wish: `宇日俱曾要永远在一起hhhh`
 
 **其他**
 

@@ -7,6 +7,7 @@ And it also called as vue-next
 :::
 - [vue-next-github](https://github.com/vuejs/vue-next)
 - [vue3源码学习](https://vue3js.cn/global/)
+- [vue3-guide-docs](https://v3.vuejs.org/guide/migration/introduction.html#overview)
 ## My quirks
 - `#number` means `reference` tag for a `function` or `class` or `option`
 - `p` means `package`

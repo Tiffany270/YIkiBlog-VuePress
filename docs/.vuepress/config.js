@@ -285,6 +285,7 @@ module.exports = {
               children: [
                 '',
                 'learn04',
+                'learn05',
                 '01',
                 '02',
                 '03'

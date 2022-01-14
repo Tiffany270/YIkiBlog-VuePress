@@ -15,6 +15,17 @@ Do u wanna know how it works?
 - `beforeDestroy` 销毁之前调用，所有东西正常可用
 - `destroyed` 解绑和移除监听以及销毁实例 所有东西都不可用了
 
+## about @click
+``` js
+@click = "handle"
+handle(data){
+  console.log(data) // data is a click event
+}
+@click = "handle2()"
+handle2(data){
+  console.log(data) // undefined
+}
+```
 
 ## 嵌套的生命周期
 ``` 

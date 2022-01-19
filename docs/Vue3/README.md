@@ -19,4 +19,6 @@ And it also called as vue-next
 
 ## New Feature 
 - `setup` 
-- `teleport` 
+- `teleport`
+- `Fragments`
+- `Emits Component Option`

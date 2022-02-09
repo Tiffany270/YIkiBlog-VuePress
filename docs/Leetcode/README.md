@@ -2,8 +2,8 @@
 
 ## About
 
-- If you want learn basic algorithms, view [Alorithms-Java-GitHub](https://github.com/Tiffany270) to get all source codes :)
-- Check LeetCode github, view [YikiLeetCode-GitHub](https://github.com/Tiffany270/YikiLeetCode)
+- If you want to learn the basic algorithms, view [Alorithms-Java-GitHub](https://github.com/Tiffany270) to get all source codes :)
+- View LeetCode github, see [YikiLeetCode-GitHub](https://github.com/Tiffany270/YikiLeetCode)
 
 
 ## 01_TwoSum

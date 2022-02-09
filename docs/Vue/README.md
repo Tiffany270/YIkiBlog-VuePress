@@ -28,7 +28,7 @@ handle2(data){
 ```
 
 ## 嵌套的生命周期
-``` 
+``` bash
 fa_beforeCreate
 fa_created
 fa_beforeMount
@@ -40,9 +40,44 @@ son_mounted
 
 fa_mounted
 
-````
+```
 
-## 如何实现一个自定义组件
+## watch 和 computed 和 methods
+### computed
+  - `func`
+  - They `don’t` accept `arguments`
+  - They are `cached`, that’s mean that the function will run only `once` until the values `don’t` change again also if it’s `called many times` in the same template
+  - knows if the values used in the function `changed` so they `don’t` need to run everytime to check, only once
+  - Handy for composing new data from `existing` sources and get `dynamic` values based on `other` properties
+### when computed
+- You need to compose `new` data from `existing data` sources
+- You need to `reference` a value directly in your template
+- You call the same function `more than once` in your template
+- You need to `sort` or `manipulate` a large group of data
+---
+### watch
+- `val` `oldval` and pls to avoid use `()=>` inside `handler`
+  ``` js
+  obj:{
+      handler: function (val, oldVal) { 
+      console.log("obj 变了")
+      ...
+    },
+  ```
+- Watchers allow you to listen to the data object and run whenever `a specific property changes`
+- This is most useful when you want to perform `asynchronous` or expensive `operations` in response to `changing` data
+### when watch
+- You want to `listen` when a data property changes
+- You want to watch a data property `until` it reaches some specific value and then do sth
+---
+### methods
+  - don’t know if the values used in the function changed so they need to run `everytime` to check
+### when methods
+- To call a function when an event happen in the DOM `methods`
+- To call a function from the `computed` or `watchers` when something happens in your component `methods`
+- You need to pass parameters `methods`
+---
+
 ## 同组件/父子组件如何通信的？
 - `props`/`$emit` 父子
 - 父`$refs`/`$children`/`$parent` 从`dom`属性里获取

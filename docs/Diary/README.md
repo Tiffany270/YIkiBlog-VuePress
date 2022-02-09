@@ -1,6 +1,12 @@
 
 # ALL About :taxi:
-
+::: tip
+"Dance as though no one is watching;  
+love as though you've never been hurt'  
+Sing as though no one is listening;  
+live as though heaven is on the earth."   
+-Mark Twain
+:::
 ### The Basics
 
 - To ：`Welcome to my blog, hope u can enjoy here`
@@ -18,7 +24,6 @@
   - [CSDN](https://blog.csdn.net/qq_38277033)
   - Email：yiki270@foxmail.com
 - NOTE：`一是技术；二是自信。技术是核心，自信是你的薪资放大器`
-- wish: `宇日俱曾要永远在一起hhhh`
 
 **其他**
 

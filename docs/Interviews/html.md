@@ -8,7 +8,7 @@
 ## Html5新特性
 - **语义化标签**     
     header/dialog/footer/nav/section等
-    ``` html
+    ``` js
     <footer></footer>
     ```
 - **表单增强**
@@ -21,12 +21,12 @@
     - 表单**属性**增多  
     placeholder/required/pattern/min/max/aotofocus/multiple等
 ## Canvas
-``` html
+``` js
 <canvas width=100px; height=100px; id="canvas"></canvas>
 
 ```
 ## SVG 与 Canvas区别
-```
+``` js
 　　SVG 是一种使用 XML 描述 2D 图形的语言。
 　　Canvas 通过 JavaScript 来绘制 2D 图形。
 　　SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。

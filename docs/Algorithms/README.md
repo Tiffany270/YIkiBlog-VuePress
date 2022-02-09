@@ -1,7 +1,7 @@
 # About&Basic
 
-- If you want learn basic algorithms, view [Alorithms-Java-GitHub](https://github.com/Tiffany270) to get all source codes :)
-- Check LeetCode online page, view [yiki's blog](http://yiki.site/vuepress/Leetcode/)
+- If you want to learn the basic algorithms, pls view [Alorithms-Java-GitHub](https://github.com/Tiffany270) to get all source codes :)
+- View LeetCode online page, see [yiki's blog](http://yiki.site/vuepress/Leetcode/)
 
 
 ## SelectSort/选择排序

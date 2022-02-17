@@ -8,6 +8,9 @@ live as though heaven is on the earth."
 -Mark Twain
 :::
 ### The Basics
+::: tip
+Full-stack developer focused on Logical architecture of maintainable projects and the development user interfaces
+::: 
 
 - To ：`Welcome to my blog, hope u can enjoy here`
 - Type :loop:： `Web Front-End Engineer`
@@ -25,6 +28,6 @@ live as though heaven is on the earth."
   - Email：yiki270@foxmail.com
 - NOTE：`一是技术；二是自信。技术是核心，自信是你的薪资放大器`
 
-**其他**
+**ohters**
 
 - [MD对应的emoji表情](https://www.webfx.com/tools/emoji-cheat-sheet/)

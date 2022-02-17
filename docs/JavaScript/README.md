@@ -1,5 +1,24 @@
 #  Js的奇淫技巧
 
+## promise with a map
+- pre-condition : 
+  - you need to restruct ur arrs
+  - map inside return a promise, you're wait for a res
+- solution with `Promise.all`
+``` js
+   const list = await Promise.all(data.map(async item => {
+        return {
+          title: item.name,
+          url: item.filePath,
+          isPic: await isImage(item.filePath) // is promise
+        }
+      }))
+    console.log(list) // [{ispic:true},{...}] 
+    // otherwise : [{ispic: promise{<fulfilled>}}]
+export function isImage(url) {
+  return new Promise(resolve => {...})}
+```
+
 ## 位图式检查数组重复元素
 
 ``` js

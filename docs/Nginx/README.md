@@ -131,8 +131,15 @@ log存放路径 /log/
 ```
 
 ## 其他
+- 开小飞机
 ``` bash
  /usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
+```
+
+- 开sshd
+不记得放哪里的连不上的时候看这个
+```
+/usr/sbin/sshd 后回车
 ```
 
 

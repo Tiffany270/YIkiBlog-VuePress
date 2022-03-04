@@ -4,6 +4,22 @@
 ::: tip :)
 Do u wanna know how it works?
 :::
+## component 标签
+- is 是导入的组件！
+``` 
+        <component
+         :is="currentTab">
+         </component>
+
+import ManuaBill from './manualBill'
+ ....
+  data() {
+    return {
+      currentTab: ManuaBill,
+    }
+  }
+```
+
 
 ## vue的生命周期 
 - `beforeCreate` 组件的data和DOM都没有初始化，你啥都不做就行

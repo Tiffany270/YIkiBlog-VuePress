@@ -134,6 +134,7 @@ log存放路径 /log/
 - 开小飞机
 ``` bash
  /usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u
+ nohup /usr/bin/ss-server -c /etc/shadowsocks-libev/config.json -u &
 ```
 
 - 开sshd

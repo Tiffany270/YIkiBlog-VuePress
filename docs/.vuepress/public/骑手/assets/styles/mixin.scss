@@ -1,0 +1,34 @@
+
+// 文本超出行省略
+@mixin no-wrap() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 清除浮动
+@mixin clear-fix() {
+  zoom: 1;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+// 鼠标悬浮不同颜色状态
+@mixin link-colors($normal,$hover: $normal,$visited: $normal){
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+
+// 隐藏滚动条
+@mixin hide-scrollbar(){
+  &::-webkit-scrollbar{
+    width: 0;
+    height: 0
+  }
+}

@@ -1,0 +1,10 @@
+/**
+* 在项目组使用scss,官方推荐配置:https://element.eleme.cn/2.3/#/zh-CN/component/custom-theme#zai-xiang-mu-zhong-gai-bian-scss-bian-liang
+*/
+/* 改变主题色变量 */
+$--color-primary: #d9534f;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";
+

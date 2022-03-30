@@ -41,7 +41,7 @@ class UserAccount {
 const user: User = new UserAccount("Murphy", 1);
 ```
 
-## The Basics
+## Basics
 - A Static Type `Checker` : TypeScript checks a program for errors before execution
 ## with JavaScipt
 - TypeScript `doesn’t` provide any `additional` runtime libraries. Your programs will use the `same` standard library (or external libraries) as JavaScript programs

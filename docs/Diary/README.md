@@ -7,7 +7,7 @@ Sing as though no one is listening;
 live as though heaven is on the earth."   
 -Mark Twain
 :::
-### The Basics
+### Basics
 ::: tip
 Full-stack developer focused on Logical architecture of maintainable projects and the development user interfaces
 ::: 

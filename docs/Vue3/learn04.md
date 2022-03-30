@@ -7,7 +7,8 @@ It would be much nicer if we could collocate code related to the same logical co
 ## setup
 Well, we first need a place where we can actually use it  
 keywords: component option
-### The Basics
+
+### Basics
 - it's executed `before` the component is `created`
 - called `before` the `data`, `computed`,`methods` are `resolved`
 - called `once` the `props` are `resolved`

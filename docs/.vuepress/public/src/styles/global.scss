@@ -1,0 +1,62 @@
+/* 小屏不收缩*/
+@media screen and (max-width: 1366px) {
+    html {
+        width   : 1366px;
+        overflow: auto
+    }
+}
+/*
+* 自定义全局样式.......
+*/
+// 通用滚动条样式
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #D7D8DC;
+}
+// 大尺寸滚动条样式
+.scrollbar-l::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+.scrollbar-l::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #D7D8DC;
+}
+// 中等尺寸滚动条样式
+.scrollbar-m::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.scrollbar-m::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: #D7D8DC;
+}
+// 小尺寸尺寸滚动条样式
+.scrollbar-s::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.scrollbar-s::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #D7D8DC;
+}
+
+// 正方形
+@mixin square($l, $ratio: 1) {
+    height: $l * $ratio;
+    width: $l * $ratio;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

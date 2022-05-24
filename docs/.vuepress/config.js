@@ -46,14 +46,16 @@ module.exports = {
               { text: 'vue-extra-library', link: '/Vue-extra-library/' },
               { text: 'react', link: '/React/' },
               { text: 'Webpack', link: '/Webpack/' },
+              { text: 'Angular', link: '/Angular/' },
+              { text: 'Rxjs', link: '/Rxjs/' },
             ]
           },
           {
             text: 'Front-End-lang',
             items: [
+              { text: 'TypeScript', link: '/TypeScript/' },
               { text: 'ECMAScript', link: '/ECMAScript/' },
               { text: 'JavaScript', link: '/JavaScript/' },
-              { text: 'TypeScript', link: '/TypeScript/' },
             ]
           },
           {
@@ -166,12 +168,14 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
+                'js',
                 'es6',
                 'http',
                 'CORS',
                 'css',
                 'html',
                 'luan',
+                'broswer'
               ]
             }
           ],
@@ -245,6 +249,22 @@ module.exports = {
                 '05_bundle',
                 '09_tree_shaking',
                 '08_plugin'
+              ]
+            }
+          ],
+          '/Angular/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+              ]
+            }
+          ],
+          '/Rxjs/': [
+            {
+              collapsable: false,
+              children: [
+                '',
               ]
             }
           ],

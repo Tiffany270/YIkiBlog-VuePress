@@ -169,3 +169,12 @@ async function run(time){
     let res = await sleep(time);
 }
 ```
+
+## await和async原理
+- 用于异步 async 返回一个promise
+- 常用try/catch捕捉异常
+- await等待右边promise返回
+
+## obj.seal和freeze
+- seal不能添加新属性和方法
+- freeze对象变不可写

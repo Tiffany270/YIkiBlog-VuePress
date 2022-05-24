@@ -34,14 +34,6 @@
     - is CommJS?
     - global value
 
-## 浏览器加载
-- 允许`<script>`异步加载
-    - `async`
-    - `defer`
-- es6 module
-    - `type = module`
-
-
 ## babel相关
  - what is babel?
     - babel is a js compiler

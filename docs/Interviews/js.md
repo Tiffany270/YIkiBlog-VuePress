@@ -3,6 +3,72 @@
 Standing on shoulders of Giants 
 :::
 
+## null和undefined区别
+- null就是null，指向内存，不过内存里面没值而已
+- undefined 指向都不存在，你未定义就用可不就是undefined咯
+
+## 防抖和节流
+函数防抖一定连续触发的事件，只在最后执行一次，而函数节流一段时间内只执行
+一次
+### 防抖
+- 单位时间内频繁点击重复查询
+- 停顿n秒后才会触发，持续触发是重新计时，仅触发一次
+- resize scroll事件 防抖只会触发最后一次
+``` js
+/**
+ * 防抖
+ * @param {Function} fn 执行函数
+ * @param {number} wait 防抖时间,毫秒
+ */
+export const debounce = (fn, wait) => {
+  let timeout = null
+  return function() {
+    if (timeout !== null) clearTimeout(timeout) // 如果多次触发将上次记录延迟清除掉
+    timeout = setTimeout(() => {
+      fn.apply(this, arguments)
+      // 或者直接 fn()
+      timeout = null
+    }, wait)
+  }
+}
+```
+### 节流
+- 在一个时间范围内只有一次处罚，这个时间内多次触发也只有一次生效
+- 鼠标连续点击、滑到底是否加载更多
+``` js
+/**
+ * 节流函数
+ * @param {Function} func 执行函数
+ * @param {number} delay 控制时间,毫秒
+ * @returns
+ */
+export const throttle = (func, delay) => {
+  let timer = null
+  // eslint-disable-next-line prettier/prettier
+  return function() {
+    if (!timer) {//如果没有timer才给 没有就跳过
+      timer = setTimeout(() => {
+        func.apply(this, arguments)
+        // 或者直接 func()
+        timer = null
+      }, delay)
+    }
+  }
+}
+```
+
+## js内置七种数据类型
+```
+null undefine string boolean array object symbol（唯一的不可变）
+```
+## 类型判断
+```
+instanceof 判断是不是另一个对象的实例，原型链往上找
+typeof 
+object.prototype.tostring.call 
+constructor
+```
+
 ## Object.create(null)和{}
 - 前者没有原型链，后者有
 - `Object.create(null).__proto__`是 `undefined` 
@@ -16,11 +82,14 @@ Standing on shoulders of Giants
 `shift()` and `unshift()`从头部移除一项/从尾部移除一项
 `reverse()` and `sort()`  sort的复杂度是根据浏览器而言的，一般是快排
 `concat()` 创建副本 参数放入尾部
-`slice()` 起始-结束 副本 不影响原数组
+`slice()` 
+1. 一个参数 从这个地方开始前面的都不要了
+2. 两个参数 起始-结束 副本 不影响原数组
 `splice()` 
-1. 2个参数=删除
-2. n个参数 = 删除后插入n
-3. 替换同上，改变parm1 and parm2  
+1. 1个参数 从这个地方开始把后面的都删了
+2. 2个参数=删除 从这个地方删 删几个
+3. n个参数 = 从这个地方删 删几个 删除后插入n
+4. 替换同上，改变parm1 and parm2  
 `indexOf()` `lastIndexOf()`
 `find()` `findIndex() ` es6的方法
 以下都要给定函数
@@ -94,8 +163,8 @@ return arr.indexof(item,0)===index;
 ```
 
 
-## 手撕深拷贝
-- JSON法  
+## 手撕拷贝
+- JSON法深拷贝  
 缺点：里面含函数的话会失效
 ``` js
     let newobj = JSON.parse(JSON.stringify(oldObject))
@@ -118,7 +187,7 @@ return arr.indexof(item,0)===index;
 
 ```
 
-- 简单一层拷贝Object.assign()
+- 递归法深拷贝
 ``` js
     /**
     * 对象合并深拷贝
@@ -453,18 +522,11 @@ var z = function w() {
 };
 ```
 
-## 事件循环机制
-event-loop
-- 先同步，再异步，异步里先`微任务`再`宏任务`, js单线程！所谓的多线程异步巴拉巴拉都是单线程模拟出来的
-- 有一个执行栈、主线程去处理同步任务、异步是一个队列，当主线程空闲回去异步队列里取东西处理
-- 以上是一个循环
-- `宏任务` macro-task
-  - `setTimeout`
-  - `setInterval`
-- `微任务` micro-task
-  - `Promise.then/catch`
-  - `process.nextTick`
 
 ## js编译原理 ast 
 - 抽象语法树 Abstract Syntax Tree
+
+## prettier和eslint
+- 格式化规则
+- 代码质量规则
 

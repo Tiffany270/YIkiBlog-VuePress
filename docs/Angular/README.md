@@ -1,6 +1,6 @@
 # Angular Learnning
 
-::: stressed!!
+::: tip stressed!!
 Angular is a development platform, built on TypeScript
 :::
 

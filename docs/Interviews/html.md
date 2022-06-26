@@ -1,4 +1,11 @@
 # HTML相关
+
+## mate标签的作用
+- <meta> 标签提供关于 HTML 文档的元数据
+- 它不会显示在页面上，但是对于机器是可读的
+- 可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务
+- viewport/charset/name
+
 ## iframe的缺点有哪些？
     - 混乱的滚动条
     - 不利于搜索引擎爬虫的优化
@@ -20,11 +27,15 @@
     ```
     - 表单**属性**增多  
     placeholder/required/pattern/min/max/aotofocus/multiple等
+
+## href和src区别
+
 ## Canvas
 ``` js
 <canvas width=100px; height=100px; id="canvas"></canvas>
-
 ```
+- canvas渲染大画布的时候性能低
+## svg和canvas优缺点
 ## SVG 与 Canvas区别
 ``` js
 　　SVG 是一种使用 XML 描述 2D 图形的语言。
@@ -37,6 +48,7 @@
     在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。
     如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
 ```
+
 ## 定位geolocation
 ``` js
 navigator.geolocation.getCurrentPosition(

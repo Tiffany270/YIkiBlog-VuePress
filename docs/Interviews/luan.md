@@ -1,75 +1,5 @@
 # 杂七杂八
 
-## 模块化相关
-- 对模块化的理解
-    - 解决全局变量污染，命名空间，数据保护，再利用函数作用域链和闭包解决模块名被任意修改(getxx())
-    - 解决模块之间的依赖关系
-- `CommonJS`
-    - one file one module，私有，别的文件不可见
-    - `require()` 加载模，会产生缓存，值的复制（拷贝），导出后模块内部的变化影响不到这个值
-    - `module.export.xx = {}`
-    - if multiple module, only get the last export
-    - 运行时加载（只有运行时才能得到这个对象）
-    - 同步的，不适合浏览器，会阻塞
-- `AMD` 
-    - Asynchronous module definition/ so `requireJS` is one of its complement
-    - `define(...)`，定义为模块
-    - `require(...)`，开始加载以来，加载完成后返回该模块到处的值
-    - 适合浏览器，也是运行时加载
-    - 异步，不影响后面的执行，依赖都在回调函数里，加载完成后才运行
-    - all calling at the first time
-- `CMD` 
-    - Common Module Definition，`sea.js` is one of its complement
-    - following `common.js`,one file one module
-    - 适合浏览器
-    - `define(...)`
-    - `require(...)`
-    - wait and if not dependent, it would not call
-- `ES6 Module` （ECMAScript Module）
-    - 目前浏览器和服务器通用的模块解决方案，设计思想是尽量静态化，使得编译时就能确定模块的依赖关系以及输入和输出的变量
-    - `import(...)`静态加载的方法，值的引用，提升到头部，优先执行，会返回一个promise对象，有then
-    - `export(...) `动态绑定，通过该接口可以取模块内部实时的内容
-- `UMD`
-    - is AMD?
-    - is CommJS?
-    - global value
-
-## babel相关
- - what is babel?
-    - babel is a js compiler
-    - 将es6代码转化为浏览器或其他环境支持的代码
-
-## 性能优化处理
-[原址-谭光志](https://zhuanlan.zhihu.com/p/121056616)
-- 首屏加载
-- 图片优化
-    - 延迟加载/懒加载，比如在可视区域里面加载图片，根据滚动条加载剩下的内容
-    - 响应式（浏览器能够根据屏幕大小自动加载合适的图片
-    - 多用CSS3代替图片
-    - base64/webp格式/使用字体图标 `iconfont` 代替图片图标
-- 减少HTTP请求
-    - 利用`http`强缓存的相关，第三方资源打包成多个块
-- 减少DOM操作（事件委托）
-- CDN 静态资源加载
-    - 内容分发网络（CDN）是一组分布在多个不同地理位置的 Web 服务器。
-    - 当服务器离用户越远时，延迟越高。
-    - `CDN` 就是为了解决这一问题，在多个位置部署服务器，让用户离服务器更近，从而缩短请求时间
-- 将 CSS 放在文件头部（防止页面空白），JavaScript 文件放在底部（防止堵塞）
-- webpack打包策略
-    - 公共/非公共的
-    - `splichunks` + `dynamic import`
-- 优化长列表
-    - 懒加载
-    - 虚拟节点
-    - `requestanimationframe`
-- 压缩文件/webpack 可以使用如下插件进行压缩：
-    - JavaScript：`UglifyPlugin`
-    - CSS ：`MiniCssExtractPlugin`
-    - HTML：`HtmlWebpackPlugin`
-
-- `switch`代替`if-else`
-
-
 
 ## Diff算法相关
 
@@ -113,4 +43,37 @@ POST /createUser
 PUT /updateUser/1
 DELETE /deleteUser/1
 ```
+## hybrid app相关
+- web和native之间的交互
+- h5内嵌native
+- [如何实现一个优雅的jsBridge](https://zhuanlan.zhihu.com/p/139510850)
+- [深入浅出JSBridge：从原理到使用](https://zhuanlan.zhihu.com/p/438763800)
+
+### js操作native
+- 拦截url scheme 通过url参数进行native的操作
+- 注入api 不知道什么鬼
+- 客户端可以通过webview里面注入一些javascript的上下文，可以理解为`在window对象上挂载了一些原生的方法`，然后H5通过特定的对象可以获取到这个方法
+- 如果是混用的会在h5里写对平台的判断
+### native操作内嵌的js
+- 就是直接执行拼接的js字符串/js必须写在全局上
+
+
+## 虚拟列表
+- 一定要具体实现啊
+- [虚拟列表](https://www.zhihu.com/column/p/34585166)
+
+## 网站优化用户体验
+
+
+## 场景题
+- 做过的这些项目有什么亮点
+- 身份证等信息上传用什么请求，场景题，为什么？
+- 一个页面不断下拉要渲染大量数据，有什么好的解决方法【我答了react-virtualized】
+- react-virtualized是怎么实现的？有看过源码吗
+- 单页面应用怎么让首页的loading快速展示(我一直不懂这个问题要问什么)
+- 平时怎么调试的(怪自己多嘴说了个devtools,然后被问devtools是怎么实现的)
+- 平时怎么调试的(怪自己多嘴说了个devtools,然后被问devtools是怎么实现的)
+- mysql了解吗？mysql和mongodb分别在什么场景使用
+- 开发者工具和性能分析
+
 

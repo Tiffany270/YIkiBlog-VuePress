@@ -2,7 +2,7 @@
   <div>
     <div class="Flex-home-wrapper">
       <div class="flex-item-home lastUpdated">
-        <div class="latest-wrapper">
+        <!-- <div class="latest-wrapper">
           <div class="latest">LATEST :</div>
           <ul>
             <li v-for="item in lastTenPages" v-bind:key="item.key">
@@ -12,7 +12,7 @@
               }}</span>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
       <div class="flex-item-home">
         <div class="main-about-wrapper">

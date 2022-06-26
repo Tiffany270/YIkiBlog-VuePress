@@ -131,7 +131,7 @@ uyKOk73Z1XaegKmU6qRLf4962ZrtI6h6HPkT95UXhjY//签证
 
 - maven引入
 
-``` xml
+``` bash
 
         <!-- token相关 -->
         <dependency>
@@ -188,7 +188,7 @@ java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter at io.jsonwebto
 
   手动引入jar
 
-  ``` xml
+  ``` bash
     <groupId>javax.xml.bind</groupId>
           <artifactId>jaxb-api</artifactId>
           <version>2.3.0</version>

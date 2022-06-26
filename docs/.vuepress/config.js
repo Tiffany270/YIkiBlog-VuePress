@@ -47,7 +47,7 @@ module.exports = {
               { text: 'react', link: '/React/' },
               { text: 'Webpack', link: '/Webpack/' },
               { text: 'Angular', link: '/Angular/' },
-              { text: 'Rxjs', link: '/Rxjs/' },
+              { text: '小程序', link: '/mini-program/' },
             ]
           },
           {
@@ -56,6 +56,8 @@ module.exports = {
               { text: 'TypeScript', link: '/TypeScript/' },
               { text: 'ECMAScript', link: '/ECMAScript/' },
               { text: 'JavaScript', link: '/JavaScript/' },
+              { text: 'Nodejs', link: '/Node/' },
+              { text: 'Rxjs', link: '/Rxjs/' },
             ]
           },
           {
@@ -93,7 +95,7 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
-                'JZoffer'
+                'JZoffer',
               ]
             }
           ],
@@ -142,11 +144,21 @@ module.exports = {
               ]
             }
           ],
+          '/Node/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                '01'
+              ]
+            }
+          ],
           '/Diary/': [
             {
               collapsable: false,
               children: [
                 '',
+                '2022-06',
                 '2020-08',
                 '2020-06',
                 '2019-11',
@@ -170,12 +182,19 @@ module.exports = {
                 '',
                 'js',
                 'es6',
+                'eventloop',
                 'http',
                 'CORS',
                 'css',
                 'html',
                 'luan',
-                'broswer'
+                'broswer',
+                'file',
+                'module',
+                'testment',
+                'vue',
+                'webpack',
+                'hide'
               ]
             }
           ],
@@ -184,7 +203,20 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
-                'redux'
+                'redux',
+                'yiki',
+                'diff'
+              ]
+            }
+          ],
+          '/mini-program/': [
+            {
+              collapsable: false,
+              children: [
+                '',
+                'base',
+                'advance',
+                'yiki'
               ]
             }
           ],
@@ -229,7 +261,9 @@ module.exports = {
                 '01',
                 '02',
                 '03',
-                '04'
+                '04',
+                '06',
+                '05'
               ]
             }
           ],
@@ -248,7 +282,6 @@ module.exports = {
                 '07_tapable',
                 '05_bundle',
                 '09_tree_shaking',
-                '08_plugin'
               ]
             }
           ],
@@ -287,18 +320,23 @@ module.exports = {
               collapsable: false,
               children: [
                 '',
-                '02',
-                '02_1',
-                '02_2',
+                'start',
+                'new-vue',
+                'merge',
+                '03',
+                '06',
+                '06-async-update',
+                'patch',
+                'diff',
                 '04',
+                '04-compiler-ast',
                 '05',
                 '10',
                 '11',
-                '03',
-                '06',
                 '07',
                 '08',
                 '09',
+                '12',
               ]
             }
           ],
@@ -311,7 +349,9 @@ module.exports = {
                 'learn05',
                 '01',
                 '02',
-                '03'
+                '02-1',
+                '03',
+                'diff'
               ]
             }
           ],

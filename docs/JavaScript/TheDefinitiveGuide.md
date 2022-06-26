@@ -72,7 +72,7 @@ window.onload = function(){
 这些事件会在window对象上注册  
 注意：此处理程序是个例外，它们被转换为存取全局变量的顶级函数而非任何本地变量，它们运行在一个修改后的作用域链中，这就是为什么在H5标签内，tagName可以替代this.tagName,而它想要调用window对象需要显式地调用window.open
 
-``` html
+``` 
 <button onclick="alert('yiki')">clcik here </button>
 ```
 ⬇⬇⬇⬇浏览器自动转换

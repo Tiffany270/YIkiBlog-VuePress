@@ -1,4 +1,4 @@
-# ES6问题
+# es6相关
 
 ## 箭头函数中的this 
 - 根本原因是：箭头函数没有自己的 `this` ，所以只能从外层找。
@@ -89,6 +89,23 @@ let p = Promise.race([p1,p2,p3])
 ```
 - p1 p2 p3 哪个变 p会跟着变
 
+
+## await和async原理
+- generator的语法糖
+- 用于异步 async 返回一个可以由`多个`异步操作返回的promise对象, 这个对象也可以用then做下一步
+  - 内部return会进去外部的then哦
+  ``` js
+  async function f(){
+    return 'yiki'
+  }
+  f().then(i =>{
+    console.log(i) // yiki
+  })
+  ```
+- await等待右边promise返回，内部是then命令的语法糖
+  - 右边一般是个promise对象，不然会立即变成resolve的promise对象（已成功）
+- 常用try/catch捕捉异常
+
 ## map和set?
 - `SET` 
     - 类似数组，但是成员的**值是唯一**的
@@ -170,10 +187,6 @@ async function run(time){
 }
 ```
 
-## await和async原理
-- 用于异步 async 返回一个promise
-- 常用try/catch捕捉异常
-- await等待右边promise返回
 
 ## obj.seal和freeze
 - seal不能添加新属性和方法

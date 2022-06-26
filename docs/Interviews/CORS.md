@@ -1,28 +1,33 @@
 # 跨域相关  
-- 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
+- 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了
+- 主进程检查跨域，如果没有cors响应头，就将响应题全部丢掉，并不会给渲染进程
 
+
+## oringin
+- 请求时：浏览器自动在请求头当中添加`origin`字段，标明源
+- 响应时：服务器添加 `Access-Control-Allow-Origin` 告诉浏览器该不该拦截
 
 ## 什么是同源策略
     - 同域名，同协议，同端口
 
 ## 处理跨域的方式
 - 通过jsonp跨域（缺点：只能实现get一种请求）
-    - 利用了 `<script>` 标签的 src 属性没有跨域限制的漏洞
-    - 本质
-    ```  
-    <script src='https://xxx.xxx.xx?key=value&callback=xxx'><script>
-    ```
+  - 利用了 `<script>` 标签的 src 属性没有跨域限制的漏洞
+  - 本质
+  ```  
+  <script src='https://xxx.xxx.xx?key=value&callback=xxx'><script>
+  ```
 - 跨域资源共享（CORS）
-    - 额外的 HTTP 头来告诉浏览器，让运行在某一个 origin 上的 Web 应用允许访问来自不同源服务器上的指定的资源。
-    - 需要浏览器和服务器同时支持
-    - Access-Control-Allow-Origin
-    - will send `OPTION` first to ask server
+  - 额外的 HTTP 头来告诉浏览器，让运行在某一个 origin 上的 Web 应用允许访问来自不同源服务器上的指定的资源。
+  - 需要浏览器和服务器同时支持
+  - `Access-Control-Allow-Origin`
+  - will send `OPTION` first to ask server
 - `vue proxy`代理
-    - 模拟一个虚拟服务器代发请求
+  - 模拟一个虚拟服务器代发请求
 - document.domain + 通过 iframe 嵌入跨域的页面
-    - document.domain + iframe跨域（此方案仅限主域相同，子域不同的跨域应用场景）
-    - location.hash + iframe
-    - window.name + iframe跨域
+  - document.domain + iframe跨域（此方案仅限主域相同，子域不同的跨域应用场景）
+  - location.hash + iframe
+  - window.name + iframe跨域
 ``` js
 document.domain = 'test.com' // 设置 domain 相同
 // 通过 iframe 嵌入跨域的页面

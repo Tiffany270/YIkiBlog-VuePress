@@ -54,6 +54,14 @@ $  git cat-file -p master^{tree}  //master 分支上最新的提交所指向的�
 - graph list `git log --graph --abbrev-commit --decorate --all --oneline`
 - 抹除commit黑历史 `git reset --soft ur_commit` 保留修改的同时，ur_commit之后的历史抹掉
 - 回滚 `git reset --hard [_commit_]`
+- 排除某个文件提交
+  - 用.gitignoreb不管是全局还是本地都会变成delete mode xxx ，问题是我不想删啊
+  ```
+  git add .
+  git reset -- .vscode\settings.json
+  or
+  git add  .  :^.vscode\settings.json
+  ```
 
 ## 参考
 - [daolf-git-series](https://www.daolf.com/tags/git/)

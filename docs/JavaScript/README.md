@@ -1,11 +1,47 @@
-#  Js的奇淫技巧
+# Js 的奇淫技巧
+
+## 关于文件下载
+
+```js
+if (res) {
+  let typeCount = {
+    type: "text/plain",
+  };
+  let blob = new Blob([res], typeCount); // 当你拿不到报错信息的时候~
+  if (res.type === typeCount.type) {
+    blob.text().then((text) => {
+      if (typeof text == "string") {
+      }
+      console.log("yiki", text);
+    });
+
+    // const fileReader = new FileReader();
+    // fileReader.readAsText(blob, 'utf-8');
+    // fileReader.onload = function () {
+    //   console.log(fileReader.result);
+    //   // let msg = JSON.parse(fileReader.result).errors.message;
+    //   this.$message.error(`$JSON.stringify(fileReader.result)`);
+    // };
+  } else {
+    const { data } = res;
+    const blob = new Blob([data], { type: "application/vnd.ms-excel" });
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = objectUrl;
+    a.download = "抖音核销记录.xlsx";
+    a.click();
+  }
+}
+```
 
 ## promise with a map
-- pre-condition : 
+
+- pre-condition :
   - you need to restruct ur arrs
   - map inside return a promise, you're wait for a res
 - solution with `Promise.all`
-``` js
+
+```js
    const list = await Promise.all(data.map(async item => {
         return {
           title: item.name,
@@ -13,7 +49,7 @@
           isPic: await isImage(item.filePath) // is promise
         }
       }))
-    console.log(list) // [{ispic:true},{...}] 
+    console.log(list) // [{ispic:true},{...}]
     // otherwise : [{ispic: promise{<fulfilled>}}]
 export function isImage(url) {
   return new Promise(resolve => {...})}
@@ -21,40 +57,38 @@ export function isImage(url) {
 
 ## 位图式检查数组重复元素
 
-``` js
-
-     const repeatArry = [];
-     const tempObj = [2,2,3,5,6]; // tempObj可以是string为元素
-      tempObj.forEach(element => {
-        repeatArry.push(element.url);
-        element.subMenu.forEach(e => {
-          repeatArry.push(e.url);
-        });
-      });
-      const flagArray = new Object(); // 纯数组可以用new Array();
-      for (let i = 0; i < repeatArry.length; i++) {
-        if (flagArray[repeatArry[i]]) { // JS允许string做数组的下标，相当于一个对象添加属性
-          console.log('repeat');
-          return;
-        }
-        flagArray[repeatArry[i]] = true;
-      }
-
-
+```js
+const repeatArry = [];
+const tempObj = [2, 2, 3, 5, 6]; // tempObj可以是string为元素
+tempObj.forEach((element) => {
+  repeatArry.push(element.url);
+  element.subMenu.forEach((e) => {
+    repeatArry.push(e.url);
+  });
+});
+const flagArray = new Object(); // 纯数组可以用new Array();
+for (let i = 0; i < repeatArry.length; i++) {
+  if (flagArray[repeatArry[i]]) {
+    // JS允许string做数组的下标，相当于一个对象添加属性
+    console.log("repeat");
+    return;
+  }
+  flagArray[repeatArry[i]] = true;
+}
 ```
 
-## 对Dom距离高度改变div位置
+## 对 Dom 距离高度改变 div 位置
 
-``` js
+```js
 
   selectIcon(event: any) {
 
     // 只计算一次距离高度
-    
+
      if (this.buttomTop === 0) {
       this.buttomTop = this.bottomDom.nativeElement.offsetTop;
     }
-    
+
     // 获取当前点击的节点(可选)
     const targetNode = event.path.find((x: { nodeName: string; }) => x.nodeName === 'TD');
     const rect = targetNode.getBoundingClientRect();
@@ -93,9 +127,9 @@ export function isImage(url) {
 
 ```
 
-## scroll和touch事件的冲突
+## scroll 和 touch 事件的冲突
 
-``` js
+```js
 
 preventTouch() {
     let flag = false; // 是否滚动
@@ -103,11 +137,11 @@ preventTouch() {
     const cur = this;
     let dur = 0; // 触摸时间，太短不触发
     let date_start, date_end;
- 
+
     main.addEventListener('touchstart', handler, { passive: false });
     main.addEventListener('touchmove', handler, { passive: false });
     main.addEventListener('scroll', handler, { passive: false });
- 
+
     function handler(e) {
       switch (e.type) {
         case 'touchstart':
@@ -127,31 +161,28 @@ preventTouch() {
           }
           break;
       }
- 
+
     }
- 
+
   }
 
 
 ```
 
-
 ## 检测滚动条最右/左
 
-``` js
-         if (Math.round(main.scrollLeft) + main.clientWidth === main.scrollWidth) {
-            cur.btn_right = true;
-          }
-          if (Math.round(main.scrollLeft) === 0) {
-            cur.btn_right = false;
-          }
-
+```js
+if (Math.round(main.scrollLeft) + main.clientWidth === main.scrollWidth) {
+  cur.btn_right = true;
+}
+if (Math.round(main.scrollLeft) === 0) {
+  cur.btn_right = false;
+}
 ```
-
 
 ## 数组对象的删除和增加
 
-``` js
+```js
 
  /**
    * @param action 行为
@@ -173,10 +204,9 @@ preventTouch() {
 
 ```
 
-
 ## 数组升序和降序
 
-``` js
+```js
  SortTableData(key, type: string, origin) {
 
 
@@ -239,22 +269,22 @@ preventTouch() {
 ```
 
 ## 前端分页
+
 - point：前端分页要保存原数组而不能使用引用，所以原数组保存请使用深拷贝
-``` js
+
+```js
 //ES6拷贝技巧
 
- this.tableOrigin.Rows = [...this.table.Rows]; // 深拷贝
+this.tableOrigin.Rows = [...this.table.Rows]; // 深拷贝
 
- 
-  //num = 生成的分页条数目 = (原数组长度+一页显示的条数-1)/一页显示的条数
-  const num = Math.floor((this.tableOrigin.Rows.length + 8 - 1) / 8);
-  //其他 填充数据，可忽略，
-  const newArr = new Array(num).fill('').map((item, index) => index + 1);
+//num = 生成的分页条数目 = (原数组长度+一页显示的条数-1)/一页显示的条数
+const num = Math.floor((this.tableOrigin.Rows.length + 8 - 1) / 8);
+//其他 填充数据，可忽略，
+const newArr = new Array(num).fill("").map((item, index) => index + 1);
 
+//分页
 
- //分页
-
-  /**
+/**
  * @desc  纯JS前端分页方法
  * @param age 当前页码，默认1
  * @param  pageSize 每页最多显示条数，默认10
@@ -266,100 +296,109 @@ preventTouch() {
     length, //总的数据条数
   }
 **/
-  getTableData = (page = 1, pageSize = 10, totalData = []) => {
-    const { length } = totalData;
-    const tableData = {
-      data: [],
-      page,
-      pageSize,
-      length,
-    };
-    if (pageSize >= length) { // pageSize大于等于总数据长度，说明只有1页数据或没有数据
-      tableData.data = totalData;
-      tableData.page = 1; // 直接取第一页
-    } else { // pageSize小于总数据长度，数据多余1页
-      const num = pageSize * (page - 1); // 计算当前页（不含）之前的所有数据总条数
-      if (num < length) { // 如果当前页之前所有数据总条数小于（不能等于）总的数据集长度，则说明当前页码没有超出最大页码
-        const startIndex = num; // 当前页第一条数据在总数据集中的索引
-        const endIndex = num + pageSize - 1; // 当前页最后一条数据索引
-        tableData.data = totalData.filter((_, index) => index >= startIndex && index <= endIndex);//当前页数据条数小于每页最大条数时，也按最大条数范围筛取数据
-      } else { // 当前页码超出最大页码，则计算实际最后一页的page，自动返回最后一页数据
-        const size = Number(length / pageSize); // 取商
-        const rest = length % pageSize; // 取余数
-        if (rest > 0) { // 余数大于0，说明实际最后一页数据不足pageSize，应该取size+1为最后一条的页码
-          tableData.page = size + 1; // 当前页码重置，取size+1
-          tableData.data = totalData.filter((_, index) => index >= (pageSize * size) && index <= length);
-        } else if (rest === 0) { // 余数等于0，最后一页数据条数正好是pageSize
-          tableData.page = size; // 当前页码重置，取size
-          tableData.data = totalData.filter((_, index) => index >= (pageSize * (size - 1)) && index <= length);
-        } // 注：余数不可能小于0
-      }
+getTableData = (page = 1, pageSize = 10, totalData = []) => {
+  const { length } = totalData;
+  const tableData = {
+    data: [],
+    page,
+    pageSize,
+    length,
+  };
+  if (pageSize >= length) {
+    // pageSize大于等于总数据长度，说明只有1页数据或没有数据
+    tableData.data = totalData;
+    tableData.page = 1; // 直接取第一页
+  } else {
+    // pageSize小于总数据长度，数据多余1页
+    const num = pageSize * (page - 1); // 计算当前页（不含）之前的所有数据总条数
+    if (num < length) {
+      // 如果当前页之前所有数据总条数小于（不能等于）总的数据集长度，则说明当前页码没有超出最大页码
+      const startIndex = num; // 当前页第一条数据在总数据集中的索引
+      const endIndex = num + pageSize - 1; // 当前页最后一条数据索引
+      tableData.data = totalData.filter(
+        (_, index) => index >= startIndex && index <= endIndex
+      ); //当前页数据条数小于每页最大条数时，也按最大条数范围筛取数据
+    } else {
+      // 当前页码超出最大页码，则计算实际最后一页的page，自动返回最后一页数据
+      const size = Number(length / pageSize); // 取商
+      const rest = length % pageSize; // 取余数
+      if (rest > 0) {
+        // 余数大于0，说明实际最后一页数据不足pageSize，应该取size+1为最后一条的页码
+        tableData.page = size + 1; // 当前页码重置，取size+1
+        tableData.data = totalData.filter(
+          (_, index) => index >= pageSize * size && index <= length
+        );
+      } else if (rest === 0) {
+        // 余数等于0，最后一页数据条数正好是pageSize
+        tableData.page = size; // 当前页码重置，取size
+        tableData.data = totalData.filter(
+          (_, index) => index >= pageSize * (size - 1) && index <= length
+        );
+      } // 注：余数不可能小于0
     }
-    return tableData;
   }
-
-
-
-
+  return tableData;
+};
 ```
 
-## debug移动端软键盘出现使CSS错位
- - **前提**
-  - 关闭触屏伸缩功能（其实我也不知道有没有影响）
-  - 如果你的高度使以vh来定位的话适用
+## debug 移动端软键盘出现使 CSS 错位
+
+- **前提**
+- 关闭触屏伸缩功能（其实我也不知道有没有影响）
+- 如果你的高度使以 vh 来定位的话适用
 
 - **尝试却无效的方法**
-  - 软键盘出现改变body和html的高度无效
-  - 设置input的focus时改变某个父div的高度无效（因为有时候软键盘又不挤压视窗了）
-  - z-index下沉无效
+
+  - 软键盘出现改变 body 和 html 的高度无效
+  - 设置 input 的 focus 时改变某个父 div 的高度无效（因为有时候软键盘又不挤压视窗了）
+  - z-index 下沉无效
 
 - **解决思路**
-  - 用resize，如果你是框架运用就更好办了，并且找准在软键盘出现（即视窗=1/2原来的时候哪个CSS定位属性能够影响定位，你可以自己找到那个属性，我实测我vh改变无效，需要用到transform的translateY
-  - 双向绑定或者JS在视窗改变的时候动态添加和移除该属性
-  - 软键盘的实质（只适用移动端）：软键盘出现，是改变视窗大小，非html和body，但是你又无法检测这个高度的变化，可以用resize的handler去监听，反正一来一回只触发两次
-  - resize去监听初始化的innerHeight高度，当软键盘出现，继续监听最后的innerHeight高度，当两个相减小遇innerHeight的三分之一时，你就默认软键盘出现，你就改变CSS即可
+
+  - 用 resize，如果你是框架运用就更好办了，并且找准在软键盘出现（即视窗=1/2 原来的时候哪个 CSS 定位属性能够影响定位，你可以自己找到那个属性，我实测我 vh 改变无效，需要用到 transform 的 translateY
+  - 双向绑定或者 JS 在视窗改变的时候动态添加和移除该属性
+  - 软键盘的实质（只适用移动端）：软键盘出现，是改变视窗大小，非 html 和 body，但是你又无法检测这个高度的变化，可以用 resize 的 handler 去监听，反正一来一回只触发两次
+  - resize 去监听初始化的 innerHeight 高度，当软键盘出现，继续监听最后的 innerHeight 高度，当两个相减小遇 innerHeight 的三分之一时，你就默认软键盘出现，你就改变 CSS 即可
 
 - **代码**
-``` js
+
+```js
 if (window.screen.width < 768) {
-      const windowViewWeight = window.innerHeight;
-      let afterResizt = 0;
-      const thirdWeight = window.innerHeight / 3;
-      // 视窗改变代表软键盘出现
-      const cur = this;
-      window.onresize = function () {
-        afterResizt = window.innerHeight;
-        if ((windowViewWeight - afterResizt) > thirdWeight) {
-          cur.blurKeybordformobile = true;
-        } else {
-          cur.blurKeybordformobile = false;
-        }
-
-      };
-
+  const windowViewWeight = window.innerHeight;
+  let afterResizt = 0;
+  const thirdWeight = window.innerHeight / 3;
+  // 视窗改变代表软键盘出现
+  const cur = this;
+  window.onresize = function() {
+    afterResizt = window.innerHeight;
+    if (windowViewWeight - afterResizt > thirdWeight) {
+      cur.blurKeybordformobile = true;
+    } else {
+      cur.blurKeybordformobile = false;
     }
+  };
+}
 
 // blurKeybordformobile 是 控制CSS样式的，你要找到这个动态修改你错位DIV的样式CSS代码
+```
 
-``` 
+## 上传图片为 base64 并压缩(canvas)图片
 
+首先你要有个 canvas 容器，设置画布大小，默认的尺寸一般不会符合的，会造成画布太大的问题
 
-## 上传图片为base64并压缩(canvas)图片
-
-首先你要有个canvas容器，设置画布大小，默认的尺寸一般不会符合的，会造成画布太大的问题
-``` html
-<canvas width=100px; height=100px; id="canvas"></canvas>
+```html
+<canvas width="100px;" height="100px;" id="canvas"></canvas>
 
 //button 可以用labal隐藏input
- <div class="template-api">
-            <input type="text" spellcheck="false">
-            <div class="btn-before template-button" (click)="request()">请求</div>
-  </div>
-
+<div class="template-api">
+  <input type="text" spellcheck="false" />
+  <div class="btn-before template-button" (click)="request()">请求</div>
+</div>
 ```
 
 然后开始写代码
-``` js
+
+```js
  handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
     const reader = new FileReader();
@@ -389,23 +428,24 @@ if (window.screen.width < 768) {
 
 ```
 
-## checkbox全选/取消的基本逻辑
+## checkbox 全选/取消的基本逻辑
 
 [点此查看](https://blog.csdn.net/qq_38277033/article/details/88951209)
 
-这里只写JS
-``` js
+这里只写 JS
+
+```js
 export class PermissionComponent implements OnInit {
- 
+
   constructor() { }
- 
- 
+
+
   // 用户组已选
   selectedUser = [];
   selectedUserCount = 0;
   // 用户btn状态
   btnUserAllow = false;
- 
+
   userList = [{
     uid: '000',
     username: 'yiki',
@@ -418,9 +458,9 @@ export class PermissionComponent implements OnInit {
     status: 'available',
   }
   ];
- 
- 
- 
+
+
+
   /**
    * 点击用户全选
    */
@@ -436,13 +476,13 @@ export class PermissionComponent implements OnInit {
       const entity = elt.uid;
       this.updateSelected(action, entity, this.selectedUser);
     });
- 
- 
+
+
     this.isUserBtnAllow();
   }
- 
+
   isUserBtnAllow() {
- 
+
     if (this.selectedUserCount !== 0) {
       this.btnUserAllow = true;
     } else {
@@ -467,7 +507,7 @@ export class PermissionComponent implements OnInit {
     this.updateSelected(action, item, this.selectedUser);
     this.isUserBtnAllow();
   }
- 
+
   /**
    * @param action 行为
    * @param item item
@@ -481,24 +521,29 @@ export class PermissionComponent implements OnInit {
     if (action === 'remove' && selectedList.findIndex(value => value === item) !== -1) {
       console.log('执行删除');
       selectedList.splice(selectedList.findIndex(value => value === item), 1);
- 
+
     }
     console.log(this.selectedUser);
   }
- 
- 
+
+
 }
 ```
+
 ## String->Function
+
 用字符串变成可运行的代码。
-- 可以用eval
-- 用Function
-``` js
-const option = 
-(new Function('return ' + json))(); // +{ }
+
+- 可以用 eval
+- 用 Function
+
+```js
+const option = new Function("return " + json)(); // +{ }
 ```
+
 ## 字符串去除首位{}
-``` js
+
+```js
 removeBlock(str) {
     if (str) {
       str = str.replace('option = ', '');
@@ -514,38 +559,50 @@ removeBlock(str) {
 ```
 
 ## 搜索框中文/英文/拼音匹配过滤逻辑
+
 思路：
-- 要监控input的输入，根据框架自己选择绑定事件
-- 要有focus和blur的方法，input的focus和下拉框的click冲突的话应该用**mousedown**
+
+- 要监控 input 的输入，根据框架自己选择绑定事件
+- 要有 focus 和 blur 的方法，input 的 focus 和下拉框的 click 冲突的话应该用**mousedown**
 - 英文和中文：直接**indexof**匹配
-- 拼音：把源数据列表转为拼音，格式必须是保留大小写，匹配关键字的时候转化key的首字母大写
-- 展开下拉框并点击下拉框的条目后，会发现已经是focus状态，再点击无法响应展开下拉框，这时候需要特殊处理（用**tabindex**)
+- 拼音：把源数据列表转为拼音，格式必须是保留大小写，匹配关键字的时候转化 key 的首字母大写
+- 展开下拉框并点击下拉框的条目后，会发现已经是 focus 状态，再点击无法响应展开下拉框，这时候需要特殊处理（用**tabindex**)
 
-``` html
- <div class="inputcss" 
- *ngIf="this.currentComponent.SearchStore" [ngClass]="{'searchStoreFocus': focused}">
-        <span class="searchicon">
-            <i class="fas fa-search"></i>
-        </span>
+```html
+<div
+  class="inputcss"
+  *ngIf="this.currentComponent.SearchStore"
+  [ngClass]="{'searchStoreFocus': focused}"
+>
+  <span class="searchicon">
+    <i class="fas fa-search"></i>
+  </span>
 
-        <input tabindex="{{focused?0:-1}}" type="text" 
-        placeholder="店铺搜索" 
-        (mousedown)="onfocus()"
-        (blur)="onblur()" 
-        [(ngModel)]="searchkey" 
-        (input)="onSearchChange($event.target.value)" />
+  <input
+    tabindex="{{focused?0:-1}}"
+    type="text"
+    placeholder="店铺搜索"
+    (mousedown)="onfocus()"
+    (blur)="onblur()"
+    [(ngModel)]="searchkey"
+    (input)="onSearchChange($event.target.value)"
+  />
 
-        <ul *ngIf="showSearchitem()" class="search-ul">
-            <li *ngIf="nodata">暂无数据</li>
-            <li (mousedown)="selectSearchitem(item)" 
-            *ngFor="let item of searchitemList">
-                {{item.title}}
-            </li>
-        </ul>
-    </div>
+  <ul *ngIf="showSearchitem()" class="search-ul">
+    <li *ngIf="nodata">暂无数据</li>
+    <li
+      (mousedown)="selectSearchitem(item)"
+      *ngFor="let item of searchitemList"
+    >
+      {{item.title}}
+    </li>
+  </ul>
+</div>
 ```
+
 Tool
-``` js
+
+```js
   // 汉字转拼音
   public static ConvertPinyin(ChineseCharacter) {
     const phoneticTranscriptionObj = {
@@ -994,8 +1051,10 @@ public static ucfirst(initial) {
   }
 }
 ```
+
 核心逻辑
-``` js
+
+```js
  // 组件搜索框
   searchkey = '';
   searchStoreIsFocus = false;
@@ -1085,13 +1144,13 @@ public static ucfirst(initial) {
 
 ```
 
-## arr.reduce实现多条件筛选（并集）
+## arr.reduce 实现多条件筛选（并集）
 
-``` js
+```js
 
   keyList = new Map(); // 保存你的关键字，别的数据结构也可以
   handelColumKeyFilter(key, index) {
- 
+
     if (key === '') {
       this.keyList.delete(index);
     } else {
@@ -1102,7 +1161,7 @@ public static ucfirst(initial) {
     } else {
       // arr.reduce-> get an union set but not a intersection.
       this.firstInitPage = this.arr.reduce((ary, item, curindex) => {
- 
+
         this.keyList.forEach((v, i) => {// 循环你的keylist
           if (item[i].indexOf(v) !== -1) {
             if (!ary.find(k => k === item)) {
@@ -1116,228 +1175,216 @@ public static ucfirst(initial) {
   }
 ```
 
-## 延迟settimeout去push数组
+## 延迟 settimeout 去 push 数组
 
-  - 基本
-  ```js
-  /*  first page lazy load,
-          add a item at each 120ms until it reaches the current pagelenght.*/
-          const cur = this;
-          for (let i = 0; i < this.currentComponent.TablePageLength && i < result.Rows.length; i++) {
-            const item = JSON.parse(JSON.stringify(result.Rows[i]));
-            setTimeout(() => {
-              cur.firstInitPage.push(item);
-              if (i === this.currentComponent.TablePageLength - 1 || i > 20 || i > result.Rows.length - 2) {
-                cur.table.loadingStatus = true;
-              }
-            }, 120 * (i + 1));
-          }
-  ```
+- 基本
 
-  - hover太慢
-
-  ``` js
-
-   <div class=" btn-before option-data" 
-    (mouseenter)="storeMouseenter()"
-    (mouseleave)="storeLeave()"
-    id="p-store" >
-        <ul 
-        id="scrollid"
-        (mousewheel)="onScroll()"
-        class="option-list mallcss">
-            <ng-container 
-            *ngFor="let item of
-            (this.searchkey === ''?this.tempData:searchitemList);
-            let i = index">
-                <li class="checkbox-wrapper"
-                 {....当又2000+条的时候}
-                </li>
-            </ng-container>
-        </ul>
-
-  ```
-  point:清除的时候，用一个**数组**保存每个timer然后一一清除
-  ``` html
-
-  mainDiv = null;
-    tempData = [];
-    storeMouseenter() {
-  
-      this.mainDiv = document.getElementById('scrollid');
-      this.mainDiv.scrollTop = 0;
-      this.scollFlage = true;
+```js
+/*  first page lazy load,
+        add a item at each 120ms until it reaches the current pagelenght.*/
+const cur = this;
+for (
+  let i = 0;
+  i < this.currentComponent.TablePageLength && i < result.Rows.length;
+  i++
+) {
+  const item = JSON.parse(JSON.stringify(result.Rows[i]));
+  setTimeout(() => {
+    cur.firstInitPage.push(item);
+    if (
+      i === this.currentComponent.TablePageLength - 1 ||
+      i > 20 ||
+      i > result.Rows.length - 2
+    ) {
+      cur.table.loadingStatus = true;
     }
-  
-    storeLeave() {
-      this.clearTimer();
-      this.tempData = this.siteConfig.storeList.slice(0, 13);
-  
-  
-    }
-    clearTimer() {
-      for (let i = 0; i < this.tuttimer.length; i++) {
-        clearTimeout(this.tuttimer[i]);
-      }
-      this.tuttimer = [];
-    }
-  
-    scollFlage = true;// only trigger once
-    tuttimer = [];
-    onScroll() {
-      if (this.scollFlage) {
-        this.scollFlage = false;
-        const cur = this;
-        for (let i = 0, j = 14; i < this.siteConfig.storeList.length / 10; i++, j = j + 10) {
-          const timer = setTimeout(() => {
-            cur.tempData.push(...this.siteConfig.storeList.slice(j, j + 10));
-          }, 100 * (i + 1));
-          this.tuttimer.push(timer);
-        }
-      }
-    }
+  }, 120 * (i + 1));
+}
+```
 
-  ```
+- hover 太慢
 
-  ## 格式化JSON
-  ``` js
- public static formatJson(jsonObj) {
-    // 正则表达式匹配规则变量
-    const reg = null;
-    // 转换后的字符串变量
-    let formatted = '';
-    // 换行缩进位数
-    let pad = 0;
-    // 一个tab对应空格位数
-    const PADDING = '    ';
-    // json对象转换为字符串变量
-    let jsonString = jsonObj;
-    if (!jsonString) {
-      return jsonString;
-    }
-    // 存储需要特殊处理的字符串段
-    const _index = [];
-    // 存储需要特殊处理的“再数组中的开始位置变量索引
-    let _indexStart = null;
-    // 存储需要特殊处理的“再数组中的结束位置变量索引
-    let _indexEnd = null;
-    // 将jsonString字符串内容通过\r\n符分割成数组
-    let jsonArray = [];
-    // 正则匹配到{,}符号则在两边添加回车换行
-    jsonString = jsonString.replace(/([\{\}])/g, '\r\n$1\r\n');
-    // 正则匹配到[,]符号则在两边添加回车换行
-    jsonString = jsonString.replace(/([\[\]])/g, '\r\n$1\r\n');
-    // 正则匹配到,符号则在两边添加回车换行
-    jsonString = jsonString.replace(/(\,)/g, '$1\r\n');
-    // 正则匹配到要超过一行的换行需要改为一行
-    jsonString = jsonString.replace(/(\r\n\r\n)/g, '\r\n');
-    // 正则匹配到单独处于一行的,符号时需要去掉换行，将,置于同行
-    jsonString = jsonString.replace(/\r\n\,/g, ',');
-    // 特殊处理双引号中的内容
-    jsonArray = jsonString.split('\r\n');
-    jsonArray.forEach(function (node, index) {
-      // 获取当前字符串段中"的数量
-      const num = node.match(/\"/g) ? node.match(/\"/g).length : 0;
-      // 判断num是否为奇数来确定是否需要特殊处理
-      if (num % 2 && !_indexStart) {
-        _indexStart = index;
-      }
-      if (num % 2 && _indexStart && _indexStart !== index) {
-        _indexEnd = index;
-      }
-      // 将需要特殊处理的字符串段的其实位置和结束位置信息存入，并对应重置开始时和结束变量
-      if (_indexStart && _indexEnd) {
-        _index.push({
-          start: _indexStart,
-          end: _indexEnd
-        });
-        _indexStart = null;
-        _indexEnd = null;
-      }
-    })
-    // 开始处理双引号中的内容，将多余的"去除
-    _index.reverse().forEach(function (item, index) {
-      const newArray = jsonArray.slice(item.start, item.end + 1);
-      jsonArray.splice(item.start, item.end + 1 - item.start, newArray.join(''));
-    });
-    // 奖处理后的数组通过\r\n连接符重组为字符串
-    jsonString = jsonArray.join('\r\n');
-    // 将匹配到:后为回车换行加大括号替换为冒号加大括号
-    jsonString = jsonString.replace(/\:\r\n\{/g, ':{');
-    // 将匹配到:后为回车换行加中括号替换为冒号加中括号
-    jsonString = jsonString.replace(/\:\r\n\[/g, ':[');
-    // 将上述转换后的字符串再次以\r\n分割成数组
-    jsonArray = jsonString.split('\r\n');
-    // 将转换完成的字符串根据PADDING值来组合成最终的形态
-    jsonArray.forEach(function (item, index) {
-      console.log(item);
-      let i = 0;
-      // 表示缩进的位数，以tab作为计数单位
-      let indent = 0;
-      // 表示缩进的位数，以空格作为计数单位
-      let padding = '';
-      if (item.match(/\{$/) || item.match(/\[$/)) {
-        // 匹配到以{和[结尾的时候indent加1
-        indent += 1;
-      } else if (item.match(/\}$/) || item.match(/\]$/) || item.match(/\},$/) || item.match(/\],$/)) {
-        // 匹配到以}和]结尾的时候indent减1
-        if (pad !== 0) {
-          pad -= 1;
-        }
-      } else {
-        indent = 0;
-      }
-      for (i = 0; i < pad; i++) {
-        padding += PADDING;
-      }
-      formatted += padding + item + '\r\n';
-      pad += indent;
-    });
-    // 返回的数据需要去除两边的空格
-    return formatted.trim();
+```js
+
+ <div class=" btn-before option-data"
+  (mouseenter)="storeMouseenter()"
+  (mouseleave)="storeLeave()"
+  id="p-store" >
+      <ul
+      id="scrollid"
+      (mousewheel)="onScroll()"
+      class="option-list mallcss">
+          <ng-container
+          *ngFor="let item of
+          (this.searchkey === ''?this.tempData:searchitemList);
+          let i = index">
+              <li class="checkbox-wrapper"
+               {....当又2000+条的时候}
+              </li>
+          </ng-container>
+      </ul>
+
+```
+
+point:清除的时候，用一个**数组**保存每个 timer 然后一一清除
+
+```html
+mainDiv = null; tempData = []; storeMouseenter() { this.mainDiv =
+document.getElementById('scrollid'); this.mainDiv.scrollTop = 0; this.scollFlage
+= true; } storeLeave() { this.clearTimer(); this.tempData =
+this.siteConfig.storeList.slice(0, 13); } clearTimer() { for (let i = 0; i <
+this.tuttimer.length; i++) { clearTimeout(this.tuttimer[i]); } this.tuttimer =
+[]; } scollFlage = true;// only trigger once tuttimer = []; onScroll() { if
+(this.scollFlage) { this.scollFlage = false; const cur = this; for (let i = 0, j
+= 14; i < this.siteConfig.storeList.length / 10; i++, j = j + 10) { const timer
+= setTimeout(() => { cur.tempData.push(...this.siteConfig.storeList.slice(j, j +
+10)); }, 100 * (i + 1)); this.tuttimer.push(timer); } } }
+```
+
+## 格式化 JSON
+
+```js
+public static formatJson(jsonObj) {
+  // 正则表达式匹配规则变量
+  const reg = null;
+  // 转换后的字符串变量
+  let formatted = '';
+  // 换行缩进位数
+  let pad = 0;
+  // 一个tab对应空格位数
+  const PADDING = '    ';
+  // json对象转换为字符串变量
+  let jsonString = jsonObj;
+  if (!jsonString) {
+    return jsonString;
   }
+  // 存储需要特殊处理的字符串段
+  const _index = [];
+  // 存储需要特殊处理的“再数组中的开始位置变量索引
+  let _indexStart = null;
+  // 存储需要特殊处理的“再数组中的结束位置变量索引
+  let _indexEnd = null;
+  // 将jsonString字符串内容通过\r\n符分割成数组
+  let jsonArray = [];
+  // 正则匹配到{,}符号则在两边添加回车换行
+  jsonString = jsonString.replace(/([\{\}])/g, '\r\n$1\r\n');
+  // 正则匹配到[,]符号则在两边添加回车换行
+  jsonString = jsonString.replace(/([\[\]])/g, '\r\n$1\r\n');
+  // 正则匹配到,符号则在两边添加回车换行
+  jsonString = jsonString.replace(/(\,)/g, '$1\r\n');
+  // 正则匹配到要超过一行的换行需要改为一行
+  jsonString = jsonString.replace(/(\r\n\r\n)/g, '\r\n');
+  // 正则匹配到单独处于一行的,符号时需要去掉换行，将,置于同行
+  jsonString = jsonString.replace(/\r\n\,/g, ',');
+  // 特殊处理双引号中的内容
+  jsonArray = jsonString.split('\r\n');
+  jsonArray.forEach(function (node, index) {
+    // 获取当前字符串段中"的数量
+    const num = node.match(/\"/g) ? node.match(/\"/g).length : 0;
+    // 判断num是否为奇数来确定是否需要特殊处理
+    if (num % 2 && !_indexStart) {
+      _indexStart = index;
+    }
+    if (num % 2 && _indexStart && _indexStart !== index) {
+      _indexEnd = index;
+    }
+    // 将需要特殊处理的字符串段的其实位置和结束位置信息存入，并对应重置开始时和结束变量
+    if (_indexStart && _indexEnd) {
+      _index.push({
+        start: _indexStart,
+        end: _indexEnd
+      });
+      _indexStart = null;
+      _indexEnd = null;
+    }
+  })
+  // 开始处理双引号中的内容，将多余的"去除
+  _index.reverse().forEach(function (item, index) {
+    const newArray = jsonArray.slice(item.start, item.end + 1);
+    jsonArray.splice(item.start, item.end + 1 - item.start, newArray.join(''));
+  });
+  // 奖处理后的数组通过\r\n连接符重组为字符串
+  jsonString = jsonArray.join('\r\n');
+  // 将匹配到:后为回车换行加大括号替换为冒号加大括号
+  jsonString = jsonString.replace(/\:\r\n\{/g, ':{');
+  // 将匹配到:后为回车换行加中括号替换为冒号加中括号
+  jsonString = jsonString.replace(/\:\r\n\[/g, ':[');
+  // 将上述转换后的字符串再次以\r\n分割成数组
+  jsonArray = jsonString.split('\r\n');
+  // 将转换完成的字符串根据PADDING值来组合成最终的形态
+  jsonArray.forEach(function (item, index) {
+    console.log(item);
+    let i = 0;
+    // 表示缩进的位数，以tab作为计数单位
+    let indent = 0;
+    // 表示缩进的位数，以空格作为计数单位
+    let padding = '';
+    if (item.match(/\{$/) || item.match(/\[$/)) {
+      // 匹配到以{和[结尾的时候indent加1
+      indent += 1;
+    } else if (item.match(/\}$/) || item.match(/\]$/) || item.match(/\},$/) || item.match(/\],$/)) {
+      // 匹配到以}和]结尾的时候indent减1
+      if (pad !== 0) {
+        pad -= 1;
+      }
+    } else {
+      indent = 0;
+    }
+    for (i = 0; i < pad; i++) {
+      padding += PADDING;
+    }
+    formatted += padding + item + '\r\n';
+    pad += indent;
+  });
+  // 返回的数据需要去除两边的空格
+  return formatted.trim();
+}
 
-  ```
+```
 
-## 引入iconfont.ttf替代图标
-  - [阿里巴巴库](https://www.iconfont.cn/)
-  - 选中你要的图标放进篮子里
-  - 添加到项目，没有就新建
-  - `Unicode`类别下载到本地,把包解压放在对应的位置
-  ``` html
-      unicode: <i class="iconfont">&#xe614;</i>
-      class : <span class="icon iconfont icon-shezhi"></span>
-      svg:  <svg class="icon" aria-hidden="true">
-                  <use xlink:href="#icon-shezhi"></use>
-                </svg>
-  ```
-  ``` js
-    @import '../../asset/iconfont/iconfont.css'
-    @import '../../asset/iconfont/iconfont.js'
-  ```
+## 引入 iconfont.ttf 替代图标
 
-  ## 返回过去n天
-  ``` js
+- [阿里巴巴库](https://www.iconfont.cn/)
+- 选中你要的图标放进篮子里
+- 添加到项目，没有就新建
+- `Unicode`类别下载到本地,把包解压放在对应的位置
 
-  // use : getDay(0)当天，getDay(-7),过去七天
-   
-  getDay(day) {
-              var today = new Date();
-              var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
-              today.setTime(targetday_milliseconds);
-              var tYear = today.getFullYear();
-              var tMonth = today.getMonth();
-              var tDate = today.getDate();
-              tMonth = this.doHandleMonth(tMonth + 1);
-              tDate = this.doHandleMonth(tDate);
-              return tYear + "-" + tMonth + "-" + tDate;
-          },
-  doHandleMonth(month) {
-              var m = month;
-              if (month.toString().length == 1) {
-                  m = "0" + month;
-              }
-              return m;
+```html
+unicode: <i class="iconfont">&#xe614;</i> class :
+<span class="icon iconfont icon-shezhi"></span> svg:
+<svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-shezhi"></use>
+</svg>
+```
 
-          },
-  ```
+```js
+  @import '../../asset/iconfont/iconfont.css'
+  @import '../../asset/iconfont/iconfont.js'
+```
+
+## 返回过去 n 天
+
+```js
+
+// use : getDay(0)当天，getDay(-7),过去七天
+
+getDay(day) {
+            var today = new Date();
+            var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+            today.setTime(targetday_milliseconds);
+            var tYear = today.getFullYear();
+            var tMonth = today.getMonth();
+            var tDate = today.getDate();
+            tMonth = this.doHandleMonth(tMonth + 1);
+            tDate = this.doHandleMonth(tDate);
+            return tYear + "-" + tMonth + "-" + tDate;
+        },
+doHandleMonth(month) {
+            var m = month;
+            if (month.toString().length == 1) {
+                m = "0" + month;
+            }
+            return m;
+
+        },
+```

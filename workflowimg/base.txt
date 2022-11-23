@@ -1,0 +1,38 @@
+git commit -m 'fix 容错' --no-verify   
+----- --切错了咋办 don't worry!~
+git add . 
+git stash     (把暂存的文件提交到git的暂存栈)
+git checkout 本该提交代码的分支 
+git stash pop (将暂存栈中的代码放出来)
+---------------
+点金
+https://um.leyaoyao.com/pages/goldPlanPage.html?#/?page=goldPlanPage&out_trade_no=4200001599202209225623448899
+
+唐丹 13882653010
+张满光 15899974725 
+
+测试 123456
+正式 lyytest123456
+
+rbac
+开发地址：https://dsp.leyaoyao.com/#/
+开发账号：jyhe
+开发密码：123456
+测试地址：https://ssp.leyaoyao.com/#/
+测试账号：superuser
+测试密码：123456
+预发地址： https://usp.leyaoyao.com/#/
+预发帐号：ceshi
+预发密码：lyytest321
+正式地址： https://sp.leyaoyao.com/#/
+正式帐号：ceshi
+正式密码：lyytest321
+
+agent
+https://dag.leyaoyao.com/#/ 
+15899974725 123456
+
+蓝湖账号：www.1074507466@qq.com
+蓝湖密码：cwh940408
+
+前端组件库 https://dmicrofrontend.leyaoyao.com/service/doc/
